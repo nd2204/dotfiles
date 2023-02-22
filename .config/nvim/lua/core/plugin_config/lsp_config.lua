@@ -9,7 +9,7 @@ require("mason-lspconfig").setup({
 local opts = { noremap=true, silent=true }
 vim.api.nvim_set_keymap('n', ',e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 vim.api.nvim_set_keymap('n', 'ge', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', 'gE', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', 'GE', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', ',q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>`', ':VimuxOpenRunner<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>~', ':VimuxCloseRunner<CR>', opts)

@@ -1,15 +1,16 @@
-# #Remove Beeping 
+# #Remove Beeping
 unsetopt BEEP
 
 tmux -f ~/.tmux.conf
 
+export TMUX_INACTIVE_PANE_BG=''
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/home/harudesu/.local/share/bob/nvim-bin
 export PATH=$PATH:/usr/share/dotnet
 # If you come from bash you might have to change your $PATH.
 
-alias wgcc=x86_64-w64-mingw32-gcc
-alias config=~/.config 
+alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
+alias config=~/.config
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -91,7 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -101,10 +102,6 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

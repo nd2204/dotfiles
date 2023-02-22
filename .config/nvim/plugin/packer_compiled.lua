@@ -180,11 +180,6 @@ _G.packer_plugins = {
     path = "/home/harudesu/.local/share/nvim/site/pack/packer/start/vim-better-whitespace",
     url = "https://github.com/ntpeters/vim-better-whitespace"
   },
-  ["vim-easymotion"] = {
-    loaded = true,
-    path = "/home/harudesu/.local/share/nvim/site/pack/packer/start/vim-easymotion",
-    url = "https://github.com/easymotion/vim-easymotion"
-  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/harudesu/.local/share/nvim/site/pack/packer/start/vim-fugitive",

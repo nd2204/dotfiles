@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
   use 'ntpeters/vim-better-whitespace'
   use {'windwp/nvim-autopairs',config = function() require("nvim-autopairs").setup {} end}
 	use 'preservim/vimux'
-  use 'easymotion/vim-easymotion'
+  --use 'easymotion/vim-easymotion'
   use 'sjl/badwolf'
 
   -- Automatically set up your configuration after cloning packer.nvim

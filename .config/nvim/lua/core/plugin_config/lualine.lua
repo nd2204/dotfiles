@@ -1,3 +1,31 @@
+local colors = {
+  blue   = '#458588',
+  cyan   = '#79dac8',
+  black  = '#282828',
+  white  = '#c6c6c6',
+  red    = '#ff5189',
+  grey   = '#303030',
+  violet = '#d3869b'
+}
+--[[
+local gruvbox = {
+  normal = {
+    a = { fg = colors.black, bg = colors.violet },
+    b = { fg = colors.white, bg = colors.grey },
+    c = { fg = colors.black, bg = colors.black },
+  },
+
+  insert = { a = { fg = colors.black, bg = colors.blue } },
+  visual = { a = { fg = colors.black, bg = colors.cyan } },
+  replace = { a = { fg = colors.black, bg = colors.red } },
+
+  inactive = {
+    a = { fg = colors.white, bg = colors.black },
+    b = { fg = colors.white, bg = colors.black },
+    c = { fg = colors.black, bg = colors.black },
+  },
+}
+--]]
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -22,5 +50,3 @@ require('lualine').setup {
     lualine_z = {  },
   },
 }
-
-
