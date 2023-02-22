@@ -1,8 +1,9 @@
-# #Remove Beeping
-unsetopt BEEP
-
-tmux -f ~/.tmux.conf
-
+# Load tmux on shell startup
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+  clear
+fi
+source "$HOME/.config/gruvbox_256palette.sh"
 export TMUX_INACTIVE_PANE_BG=''
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/home/harudesu/.local/share/bob/nvim-bin
