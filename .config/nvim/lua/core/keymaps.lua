@@ -16,5 +16,5 @@ vim.opt.expandtab = true
 
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n','<leader>h',':nohlsearch<CR>')
-
-
+vim.keymap.set('n','<A-h>',':bprevious<CR>',opts)
+vim.keymap.set('n','<A-l>',':bnext<CR>',opts)

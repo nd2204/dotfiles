@@ -25,6 +25,9 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
+  use 'tpope/vim-commentary'
+  use 'fgheng/winbar.nvim'
+  use "lukas-reineke/indent-blankline.nvim"
   use {
     'nvim-telescope/telescope.nvim',
     tag='0.1.1',
@@ -43,11 +46,16 @@ return require('packer').startup(function(use)
     'hrsh7th/nvim-cmp',
     'hrsh7th/vim-vsnip',
   }
+  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
   use 'ntpeters/vim-better-whitespace'
-  use {'windwp/nvim-autopairs',config = function() require("nvim-autopairs").setup {} end}
-	use 'preservim/vimux'
+  use {
+    'windwp/nvim-autopairs',config = function() require("nvim-autopairs").setup {} end
+  }
+  use 'windwp/nvim-ts-autotag'
+  use 'norcalli/nvim-colorizer.lua'
+  use { "catppuccin/nvim", as = "catppuccin" } --breadcrumb in neovim
+	--use 'preservim/vimux'
   --use 'easymotion/vim-easymotion'
-  use 'sjl/badwolf'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

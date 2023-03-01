@@ -1,28 +1,32 @@
 local colors = {
-  blue   = '#458588',
-  cyan   = '#79dac8',
+  orange = '#fe8019',
+  blue   = '#83a598',
+  cyan   = '#8ec07c',
+  dark   = '#1d2021',
   black  = '#282828',
-  white  = '#c6c6c6',
-  red    = '#ff5189',
-  grey   = '#303030',
+  white  = '#ebdbb2',
+  red    = '#fb4934',
+  bg2    = '#504945',
+  gray   = '#3c3836',
   violet = '#d3869b'
 }
 --[[
 local gruvbox = {
   normal = {
     a = { fg = colors.black, bg = colors.violet },
-    b = { fg = colors.white, bg = colors.grey },
-    c = { fg = colors.black, bg = colors.black },
+    b = { fg = colors.white, bg = colors.bg2 },
+    c = { fg = colors.white, bg = colors.gray },
   },
 
-  insert = { a = { fg = colors.black, bg = colors.blue } },
-  visual = { a = { fg = colors.black, bg = colors.cyan } },
+  insert = { a = { fg = colors.black, bg = colors.cyan } },
+  visual = { a = { fg = colors.black, bg = colors.orange } },
+  command = { a = { fg = colors.black, bg = colors.blue } },
   replace = { a = { fg = colors.black, bg = colors.red } },
 
   inactive = {
-    a = { fg = colors.white, bg = colors.black },
-    b = { fg = colors.white, bg = colors.black },
-    c = { fg = colors.black, bg = colors.black },
+    a = { fg = colors.white, bg = colors.gray },
+    b = { fg = colors.white, bg = colors.gray },
+    c = { fg = colors.white, bg = colors.gray },
   },
 }
 --]]
@@ -30,14 +34,14 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'gruvbox' ,
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    --component_separators = { left = '', right = '' },
+    --section_separators = { left = '', right = '' },
   },
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch' },
     lualine_c = { 'filename' },
-    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_x = { 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location'  },
   },
