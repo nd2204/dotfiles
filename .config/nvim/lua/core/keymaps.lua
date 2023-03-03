@@ -1,20 +1,7 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
-vim.opt.backspace = '2'
-vim.opt.showcmd = true
-vim.opt.laststatus = 2
-vim.opt.autowrite = true
-vim.opt.autoread = true
-vim.opt.cursorline = true -- underline current row cursor on
-vim.opt.relativenumber = true
--- use spaces for tabs and whatnot
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.expandtab = true
-
 local opts = { noremap=true, silent=true }
 vim.keymap.set('n','<leader>h',':nohlsearch<CR>')
 vim.keymap.set('n','<A-h>',':bprevious<CR>',opts)
 vim.keymap.set('n','<A-l>',':bnext<CR>',opts)
+
+vim.api.nvim_set_keymap('n', '<leader>`', ':!x86_64-w64-mingw32-gcc % -o %<.exe<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>~', ':!gcc % -o %<<CR>', opts)

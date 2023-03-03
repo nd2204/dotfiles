@@ -29,7 +29,7 @@ local gruvbox = {
     c = { fg = colors.white, bg = colors.gray },
   },
 }
---]]
+]]
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -54,3 +54,19 @@ require('lualine').setup {
     lualine_z = {  },
   },
 }
+-- require('lualine').setup({
+--   options = {
+--     theme = 'gruvbox',
+--     section_separators = '',
+--     component_separators = '',
+--     icons_enabled = true,
+--     disabled_filetypes = {}
+--   },
+--   sections = {
+
+--     lualine_b = { {'branch'}, {'diff'} },
+--     lualine_x = { 'encoding', 'filetype', 'fileformat'},
+--     lualine_y = { 'progress' },
+--     lualine_z = { 'location'  },
+--   }
+-- })

@@ -9,7 +9,7 @@ require("gruvbox").setup({
   italic = true,
   strikethrough = true,
   invert_selection = false,
-  invert_signs = true,
+  invert_signs = false,
   invert_tabline = false,
   invert_intend_guides = false,
   inverse = true, -- invert background for search, diffs, statuslines and errors
