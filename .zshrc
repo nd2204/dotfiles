@@ -3,13 +3,13 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
   exec tmux
   clear
 fi
+clear
 source "$HOME/.config/gruvbox_256palette.sh"
 export TMUX_INACTIVE_PANE_BG=''
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/home/harudesu/.local/share/bob/nvim-bin
 export PATH=$PATH:/usr/share/dotnet
 # If you come from bash you might have to change your $PATH.
-
 alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
 alias config=~/.config
 # Path to your oh-my-zsh installation.
