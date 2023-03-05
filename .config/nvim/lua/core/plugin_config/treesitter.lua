@@ -7,11 +7,6 @@ require('nvim-treesitter.configs').setup ({
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
-    custom_captures = {
-        -- Define your color for specific nodes
-        ["entity.name.function"] = "Purple",
-        ["keyword.operator"] = "Red",
-    }
   },
   autotag = {
     enable = true,
@@ -24,16 +19,5 @@ require('nvim-treesitter.configs').setup ({
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
   },
-  underlines = {
-      -- Define the underline for the 'function' keyword
-      {highlight = "Function", color = "#fabd2f", style = "undercurl", text = "▁"},
-      -- Define the underline for function names
-      {highlight = "FunctionName", color = "#fabd2f", style = "undercurl", text = "▁"},
-      -- Define the underline for function parameters
-      {highlight = "Parameter", color = "#fabd2f", style = "undercurl", text = "▁"},
-
-      -- Define the underline for comments
-      {highlight = "Comment", color = "#fabd2f", style = "undercurl", text = "▔"}
-  }
 })
 

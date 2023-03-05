@@ -1,3 +1,12 @@
+local colorscheme = "gruvbox"
+
+local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+if not status_ok then
+  vim.notify("colorscheme " .. colorscheme .. " not found!")
+
+  return
+end
+
 vim.o.termguicolors = true
 -- setup must be called before loading the colorscheme
 -- Default options:
@@ -17,6 +26,8 @@ require("gruvbox").setup({
   palette_overrides = {},
   overrides = {},
   dim_inactive = false,
-  transparent_mode = false,
+  transparent_mode = true,
 })
 vim.cmd("colorscheme gruvbox")
+
+

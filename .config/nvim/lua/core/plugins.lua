@@ -23,55 +23,44 @@ local plugins = {
   'tpope/vim-commentary',
   'lewis6991/gitsigns.nvim',
   "lukas-reineke/indent-blankline.nvim",
+  'windwp/nvim-ts-autotag',
+  'norcalli/nvim-colorizer.lua',  -- remove also at the bottom of this file
+  -- 'ntpeters/vim-better-whitespace',
   {
     'nvim-telescope/telescope.nvim',
     tag='0.1.1',
     dependencies = {{'nvim-lua/plenary.nvim'}}
   },
+  -- cmp plugins
   {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  },
-  {
+    'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
     'hrsh7th/cmp-cmdline',
-    'hrsh7th/nvim-cmp',
-    'hrsh7th/vim-vsnip',
+    'saadparwaiz1/cmp_luasnip'
   },
-  'ntpeters/vim-better-whitespace',
+  {
+  -- Snippet
+    "L3MON4D3/LuaSnip",               -- snippet engine
+    "rafamadriz/friendly-snippets"    -- a bunch of snippets to use
+  },
+  {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    'onsails/lspkind.nvim', -- Vscode like picktogram for completion
+    'mfussenegger/nvim-dap', -- debugging plugins
+    'rcarriga/nvim-dap-ui', -- debugger UIs
+    "glepnir/lspsaga.nvim", event = "BufRead", -- LSP UIs
+  },
   {
     'windwp/nvim-autopairs',config = function() require("nvim-autopairs").setup {} end
   },
-  'windwp/nvim-ts-autotag',
-  'norcalli/nvim-colorizer.lua',
-  {
-    "glepnir/lspsaga.nvim",
-    event = "BufRead",
-    config = function()
-      require("lspsaga").setup({})
-    end,
-    dependencies = {
-      {"nvim-tree/nvim-web-devicons"},
-      --Please make sure you install markdown and markdown_inline parser
-      {"nvim-treesitter/nvim-treesitter"}
-    }
-  },
-  {
-    'kdheepak/tabline.nvim',
-    vim.cmd[[
-    set guioptions-=e " Use showtabline in gui vim
-    set sessionoptions+=tabpages,globals " store tabpages and globals in session
-    ]]
-  }
   --'junegunn/fzf',
   --'junegunn/fzf.vim',
   --use 'preservim/vimux'
   --use 'easymotion/vim-easymotion'
 }
-
 local opts = {}
-
 require("lazy").setup(plugins, opts)

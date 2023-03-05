@@ -10,40 +10,41 @@ local colors = {
   gray   = '#3c3836',
   violet = '#d3869b'
 }
---[[
-local gruvbox = {
-  normal = {
-    a = { fg = colors.black, bg = colors.violet },
-    b = { fg = colors.white, bg = colors.bg2 },
-    c = { fg = colors.white, bg = colors.gray },
-  },
 
-  insert = { a = { fg = colors.black, bg = colors.cyan } },
-  visual = { a = { fg = colors.black, bg = colors.orange } },
-  command = { a = { fg = colors.black, bg = colors.blue } },
-  replace = { a = { fg = colors.black, bg = colors.red } },
+-- local gruvbox = {
+--   normal = {
+--     a = { fg = colors.black, bg = colors.violet },
+--     b = { fg = colors.white, bg = colors.bg2 },
+--     c = { fg = colors.white, bg = colors.gray },
+--   },
 
-  inactive = {
-    a = { fg = colors.white, bg = colors.gray },
-    b = { fg = colors.white, bg = colors.gray },
-    c = { fg = colors.white, bg = colors.gray },
-  },
-}
-]]
+--   insert = { a = { fg = colors.black, bg = colors.cyan } },
+--   visual = { a = { fg = colors.black, bg = colors.orange } },
+--   command = { a = { fg = colors.black, bg = colors.blue } },
+--   replace = { a = { fg = colors.black, bg = colors.red } },
+
+--   inactive = {
+--     a = { fg = colors.white, bg = colors.gray },
+--     b = { fg = colors.white, bg = colors.gray },
+--     c = { fg = colors.white, bg = colors.gray },
+--   },
+-- }
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'gruvbox' ,
+    theme = 'gruvbox',
+    disabled_filetypes = {}
     --component_separators = { left = '', right = '' },
     --section_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = { 'mode' },
-    lualine_b = { 'branch' },
-    lualine_c = { 'filename' },
-    lualine_x = { 'filetype' },
-    lualine_y = { 'progress' },
-    lualine_z = { 'location'  },
+    lualine_a = {'mode'},
+    lualine_b = {'branch'},
+    lualine_c = {'filename'},
+    lualine_x = {{'diff'},{'filetype'}},
+    lualine_y = {'progress'},
+    lualine_z = {'location'},
   },
   inactive_sections = {
     lualine_a = {{'filename',path=1}},
@@ -53,20 +54,16 @@ require('lualine').setup {
     lualine_y = {  },
     lualine_z = {  },
   },
-}
--- require('lualine').setup({
---   options = {
---     theme = 'gruvbox',
---     section_separators = '',
---     component_separators = '',
---     icons_enabled = true,
---     disabled_filetypes = {}
---   },
---   sections = {
+  -- winbar = {
+  --   lualine_a = {},
+  --   lualine_b = {},
+  --   lualine_c = {'filename'},
+  --   lualine_x = {},
+  --   lualine_y = {},
+  --   lualine_z = {}
+  -- },
 
---     lualine_b = { {'branch'}, {'diff'} },
---     lualine_x = { 'encoding', 'filetype', 'fileformat'},
---     lualine_y = { 'progress' },
---     lualine_z = { 'location'  },
---   }
--- })
+  inactive_winbar = {
+
+  }
+}
