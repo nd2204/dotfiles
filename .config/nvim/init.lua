@@ -20,10 +20,12 @@ vim.opt.mouse = "a"               -- allow the mouse to be used in neovim
 vim.opt.showtabline = 0           -- always show tabs
 vim.opt.wrap = true               -- wrap line
 vim.opt.linebreak = true          -- wrap whole word when wrap is enable
+vim.opt.guifont = "FiraCode Nerd Font"
 
 require("core.keymaps")
 require("core.plugins")
 require("core.plugin_config")
+
 require'colorizer'.setup()
 
 vim.cmd([[

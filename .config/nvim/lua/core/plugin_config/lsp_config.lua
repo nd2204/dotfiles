@@ -1,4 +1,5 @@
 require("mason").setup()
+require("mason-nvim-dap").setup()
 require("lspsaga").setup({})
 require("mason-lspconfig").setup({
   ensure_installed = { "lua_ls" }
