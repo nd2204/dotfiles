@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
   -- My plugins here
+  'nvim-tree/nvim-web-devicons',
   'tpope/vim-surround',
   'tpope/vim-fugitive',
   'tpope/vim-commentary',
@@ -20,7 +21,7 @@ local plugins = {
   'windwp/nvim-autopairs',
   'nvim-tree/nvim-tree.lua',
   'nvim-lualine/lualine.nvim',
-  'nvim-tree/nvim-web-devicons',
+  'kdheepak/tabline.nvim',
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
   -- Colorscheme
@@ -51,6 +52,7 @@ local plugins = {
   'rcarriga/nvim-dap-ui', -- debugger UIs
   "glepnir/lspsaga.nvim", event = "BufRead", -- LSP UIs
 
+  -- 'akinsho/bufferline.nvim',
   -- 'ntpeters/vim-better-whitespace',
   -- 'junegunn/fzf',
   -- 'junegunn/fzf.vim',

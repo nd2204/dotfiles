@@ -1,26 +1,26 @@
 local lualine = require('lualine')
 local colors = {
-  bg0_h  = '#1D2021',
-  bg0_s  = '#32302F',
+  bg0_h  = '#1d2021',
+  bg0_s  = '#32302f',
   bg0    = '#282828',
-  bg1    = '#3C3836',
+  bg1    = '#3c3836',
   bg2    = '#504945',
   gray   = '#928374',
-  aqua   = '#689D6A',
-  orange = '#D65D0E',
+  aqua   = '#689d6a',
+  orange = '#d65d0e',
   blue   = '#458588',
-  white  = '#EBDBB2',
-  yellow = '#D79921',
-  purple = '#B16286',
+  white  = '#ebdbb2',
+  yellow = '#d79921',
+  purple = '#b16286',
 
   bright = {
-    gray   = '#A89984',
-    aqua   = '#8EC07C',
-    orange = '#FE8019',
-    blue   = '#83A598',
-    yellow = '#FABD2F',
-    purple = '#D3869B',
-    red    = '#FB4934',
+    gray   = '#a89984',
+    aqua   = '#8ec07c',
+    orange = '#fe8019',
+    blue   = '#83a598',
+    yellow = '#fabd2f',
+    purple = '#d3869b',
+    red    = '#fb4934',
   }
 }
 
@@ -77,9 +77,6 @@ local config = {
   --   lualine_y = {},
   --   lualine_z = {}
   -- },
-
-  inactive_winbar = {
-  }
 }
 
 lualine.setup(config)
