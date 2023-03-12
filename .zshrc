@@ -12,6 +12,7 @@ export PATH=$PATH:/usr/share/dotnet
 # If you come from bash you might have to change your $PATH.
 alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
 alias config=~/.config
+alias mnt=/mnt
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 

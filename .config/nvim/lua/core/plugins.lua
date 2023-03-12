@@ -21,7 +21,8 @@ local plugins = {
   'windwp/nvim-autopairs',
   'nvim-tree/nvim-tree.lua',
   'nvim-lualine/lualine.nvim',
-  'kdheepak/tabline.nvim',
+  'akinsho/bufferline.nvim',
+  -- 'kdheepak/tabline.nvim',
   'nvim-lua/plenary.nvim',
   'nvim-telescope/telescope.nvim',
   -- Colorscheme
@@ -51,8 +52,7 @@ local plugins = {
   'mfussenegger/nvim-dap', -- debugging plugins
   'rcarriga/nvim-dap-ui', -- debugger UIs
   "glepnir/lspsaga.nvim", event = "BufRead", -- LSP UIs
-
-  -- 'akinsho/bufferline.nvim',
+  { "catppuccin/nvim", name = "catppuccin" }
   -- 'ntpeters/vim-better-whitespace',
   -- 'junegunn/fzf',
   -- 'junegunn/fzf.vim',

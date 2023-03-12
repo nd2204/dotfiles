@@ -7,14 +7,10 @@ end
 bufferline.setup {
   options = {
     numbers = "none", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
-    close_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-    right_mouse_command = nil, -- can be a string | function, see "Mouse actions"
+    close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
+    right_mouse_command = "vertical sbuffer %d", -- can be a string | function, see "Mouse actions"
     left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-    middle_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-    -- NOTE: this plugin is designed with this icon in mind,
-
-    -- and so changing this is NOT recommended, this is intended
-    -- as an escape hatch for people who cannot bear it for whatever reason
+    middle_mouse_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
     indicator = {
       icon = "▎",
       style = "none"
@@ -22,7 +18,7 @@ bufferline.setup {
 
     buffer_close_icon = "",
     -- buffer_close_icon = '',
-    modified_icon = "●",
+    modified_icon = "~", -- ●
     close_icon = "",
     -- close_icon = '',
     left_trunc_marker = "",
@@ -39,7 +35,7 @@ bufferline.setup {
     -- end,
     max_name_length = 30,
     max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
-    tab_size = 21,
+    tab_size = 20,
     diagnostics = false, -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
     -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
@@ -67,17 +63,19 @@ bufferline.setup {
       {
       filetype = "NvimTree",
       text = "File Explorer",
-      separator = true
+      highlight = "BufferLineFill",
+      separator = false,
+      padding = 1,
       }
     },
     show_buffer_icons = true,
     show_buffer_close_icons = true,
-    show_close_icon = true,
+    show_close_icon = false,
     show_tab_indicators = true,
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "thick", -- | "thick" | "thin" | { 'any', 'any' },
+    separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },
     enforce_regular_tabs = true,
     always_show_bufferline = true,
     -- sort_by = 'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
@@ -87,51 +85,69 @@ bufferline.setup {
   },
   highlights = {
     fill = {
-      fg = { attribute = "fg", highlight = "#ff0000" },
-      bg = { attribute = "bg", highlight = "#3c3638" },
+      fg = "#83a598",
+      bg = "#282828",
+      bold = true,
     },
     background = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = "#928374",
+      bg = "#1d2021",
     },
-    -- buffer_selected = {
-    --   fg = {attribute='fg',highlight='#ff0000'},
-    --   bg = {attribute='bg',highlight='#0000ff'},
-    --   gui = 'none'
-    --   },
+    buffer_selected = {
+      fg = "#1D2021",
+      bg = "#83A598",
+      bold = true,
+      italic = false,
+    },
 
     buffer_visible = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = "#928374",
+      bg = "#1d2021",
+      bold = false,
     },
-
+    ---------------- CLOSE BUTTON -------------------
     close_button = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = "#ebdbb2",
+      bg = "#1d2021",
     },
     close_button_visible = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = "#928374",
+      bg = "#1d2021",
     },
-    -- close_button_selected = {
-    --   fg = {attribute='fg',highlight='TabLineSel'},
-    --   bg ={attribute='bg',highlight='TabLineSel'}
-    --   },
+    close_button_selected = {
+      fg = "#1d2021",
+      bg = "#83a598",
+    },
+    ------------------ SEPARATOR ---------------------
+    separator = {
+      fg = "#282828",
+      bg = "#1d2021",
+    },
+    separator_selected = {
+      fg = "#282828",
+      bg = "#83a598",
+    },
+    separator_visible = {
+      fg = "#282828",
+      bg = "#1d2021",
+    },
 
+    --------------------- TAB ------------------------
     tab_selected = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "Normal" },
+      fg = '#1d2021',
+      bg = '#83a598',
     },
     tab = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = '#928374',
+      bg = '#1d2021',
     },
-    tab_close = {
-      -- fg = {attribute='fg',highlight='LspDiagnosticsDefaultError'},
-      fg = { attribute = "fg", highlight = "TabLineSel" },
-      bg = { attribute = "bg", highlight = "Normal" },
+    tab_separator = {
+      fg = '#282828',
+      bg = '#282828',
+    },
+    tab_separator_selected = {
+      fg = "#282828",
+      bg = "#282828",
     },
 
     duplicate_selected = {
@@ -150,32 +166,23 @@ bufferline.setup {
       bg = { attribute = "bg", highlight = "TabLine" },
       italic = true
     },
-
+    offset_separator = {
+      fg = "#665c54",
+      bg = "#282828",
+    },
     modified = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = "#928374",
+      bg = "#1d2021",
     },
     modified_selected = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "Normal" },
+      fg = "#ebdbb2",
+      bg = "#83a598",
     },
     modified_visible = {
-      fg = { attribute = "fg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
+      fg = "#928374",
+      bg = "#1d2021",
     },
 
-    separator = {
-      fg = { attribute = "bg", highlight = "TabLine" },
-      bg = { attribute = "bg", highlight = "TabLine" },
-    },
-    separator_selected = {
-      fg = { attribute = "bg", highlight = "NONE" },
-      bg = { attribute = "bg", highlight = "NONE" },
-    },
-    separator_visible = {
-      fg = {attribute='bg',highlight='TabLine'},
-      bg = {attribute='bg',highlight='TabLine'}
-    },
     indicator_selected = {
       fg = { attribute = "fg", highlight = "LspDiagnosticsDefaultHint" },
       bg = { attribute = "bg", highlight = "Normal" },

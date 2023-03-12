@@ -31,7 +31,7 @@ local gruvbox = {
     c = { fg = colors.gray, bg = colors.bg0 },
   },
 
-  insert = { a = { fg = colors.bg0, bg = colors.aqua, gui = 'bold' } },
+  insert = { a = { fg = colors.bg0, bg = colors.bright.aqua, gui = 'bold' } },
   visual = { a = { fg = colors.bg0, bg = colors.orange, gui = 'bold' } },
   command = { a = { fg = colors.bg0, bg = colors.yellow, gui = 'bold'  } },
   replace = { a = { fg = colors.bg0, bg = colors.bright.red, gui = 'bold'  } },
