@@ -1,0 +1,5 @@
+require("configuration.interfaces.titlebar")
+require("configuration.interfaces.layout")
+require("configuration.interfaces.menu")
+require("configuration.interfaces.autofocus")
+require("configuration.interfaces.wibar")

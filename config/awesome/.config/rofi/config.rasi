@@ -1,0 +1,160 @@
+configuration {
+  modes: "window,drun,run,ssh";
+  font: "JetBrainsMono Nerd Font Bold 12";
+  show-icons: true;
+  terminal: "kitty";
+  run-shell-command: "kitty -e {cmd}";
+  sidebar-mode: true;
+  hover-select: true;
+  click-to-exit: true;
+  timeout {
+    action: "kb-cancel";
+    delay:  0;
+  }
+  filebrowser {
+    directories-first: true;
+    sorting-method:    "name";
+  }
+}
+
+* {
+  /* red:                         rgba ( 221, 103, 119, 100 % ); */
+  /* blue:                        rgba ( 49, 116, 143, 100 % ); */
+  /* lightfg:                     rgba ( 235, 188, 186, 100 % ); */
+  /* lightbg:                     rgba ( 25, 23, 36, 100 % ); */
+  /* foreground:                  rgba ( 224, 222, 244, 100 % ); */
+  /* dimfg:                       rgba ( 110, 106, 134, 100 %); */
+  /* background:                  rgba ( 13, 15, 24, 100 % ); */
+  red:                         rgba ( 242, 89, 75, 100 % );
+  blue:                        rgba ( 128, 170, 158, 100 % );
+  lightfg:                     rgba ( 226, 204, 169, 100 % );
+  lightbg:                     rgba ( 40, 40, 40, 100 % );
+  foreground:                  rgba ( 226, 204, 169, 100 % );
+  dimfg:                       rgba ( 176, 184, 70, 100 %);
+  background:                  rgba ( 20, 22, 23, 100 % );
+  background-color:            transparent;
+  border-color:                transparent;
+  separatorcolor:              var(foreground);
+  alternate-normal-foreground: var(foreground);
+  normal-foreground:           var(foreground);
+  selected-active-foreground:  var(background);
+  normal-background:           var(background); 
+  urgent-background:           var(background);
+  active-background:           var(background);
+  selected-urgent-foreground:  var(background);
+  alternate-urgent-background: var(background);
+  alternate-active-background: var(background);
+  selected-normal-foreground:  var(lightfg);
+  alternate-normal-background: var(background);
+  selected-normal-background:  var(lightbg);
+  urgent-foreground:           var(red);
+  selected-urgent-background:  var(red);
+  alternate-urgent-foreground: var(red);
+  active-foreground:           var(blue);
+  alternate-active-foreground: var(blue);
+  selected-active-background:  var(blue);
+  spacing:                     2;
+}
+/* filtered element section */
+element {
+  padding:            6px ;
+  cursor:             pointer;
+  spacing:            5px ;
+  border:             0;
+}
+element-text {
+  background-color: transparent;
+  cursor:           inherit;
+  highlight:        inherit;
+  text-color:       inherit;
+}
+element-icon {
+  background-color: transparent; 
+  size:             1em ;
+  cursor:           inherit; 
+  text-color:       inherit;
+}
+element selected {
+  background-color:               var(background-color);
+  border-radius:                  6px;
+}
+window {
+  padding:          12;
+  width:            35%;
+  height:           28%;
+  background-color: var(background);
+  border:           0;
+  border-radius:    7px;
+}
+mainbox {
+  padding: 0;
+  border:  0;
+}
+message {
+  padding:      1px ;
+  border-color: var(separatorcolor);
+  border:       2px dash 0px 0px ;
+}
+/*list box*/
+listview {
+  padding:      12px 0px 12px ;
+  scrollbar:    false;
+  cycle:        false;
+  /* border-color: var(separatorcolor); */
+  border-color: transparent;
+  spacing:      2px ;
+  fixed-height: 0;
+  border:       2px solid 0px 0px ;
+}
+sidebar {
+  border-color: var(separatorcolor);
+  border:       2px dash 0px 0px ;
+}
+button {
+  cursor:     pointer;
+  spacing:    0;
+  text-color: var(normal-foreground);
+}
+button selected {
+  background-color: transparent;
+  text-color:       var(lightfg);
+  border-radius:    10px;
+}
+
+/* input section */
+inputbar {
+  background-color:   var(lightbg);
+  border-radius:      10px; 
+  padding:            12px ;
+  spacing:            0px ;
+  text-color:         var(normal-foreground);
+  children:           ["entry","num-filtered-rows","textbox-num-sep","num-rows","case-indicator" ];
+}
+
+entry {
+  text-color:         var(normal-foreground);
+  cursor:             text;
+  border-radius:      0;            
+  spacing:            0;
+  placeholder-color:  var(dimfg);
+  placeholder:        "Your command here";
+}
+/* number filtered */
+num-filtered-rows {
+  expand:     false; 
+  text-color: var(dimfg);
+}
+textbox-num-sep {
+  expand:     false;
+  str:        "/";
+  text-color: var(dimfg);
+}
+num-rows {
+  expand:     false;
+  text-color: var(dimfg);
+}
+case-indicator {
+  spacing:    0;
+  text-color: var(normal-foreground);
+}
+/* vim:ft=css

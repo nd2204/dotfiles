@@ -1,0 +1,80 @@
+local colorscheme = "gruvbox-material"
+local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+if not status_ok then
+  vim.notify("colorscheme " .. colorscheme .. " not found!")
+  return
+end
+
+local M = {}
+
+-- local theme = {
+--     bg_dim  = { ["dark"] = "#141617", ["light"] = "#eee0b7" },
+--     bg_0    = { ["dark"] = "#16191a", ["light"] = "#f5edca" },
+--     bg_1    = { ["dark"] = "#1d2021", ["light"] = "#eddeb5" },
+--     bg_2    = { ["dark"] = "#323435", ["light"] = "#e6d5ae" },
+--     bg_3    = { ["dark"] = "#474849", ["light"] = "#dac9a5" },
+--     bg_4    = { ["dark"] = "#3c3836", ["light"] = "#d5c4a1" },
+--     bg_5    = { ["dark"] = "#504945", ["light"] = "#d5c4a1" },
+--     grey_0  = { ["dark"] = "#7c6f64", ["light"] = "#a89984" },
+--     grey_1  = { ["dark"] = "#928374", ["light"] = "#928374" },
+--     grey_2  = { ["dark"] = "#a89984", ["light"] = "#7c6f64" },
+--     fg_0    = { ["dark"] = "#e2cca9", ["light"] = "#654735" },
+--     fg_1    = { ["dark"] = "#e2cca9", ["light"] = "#654735" },
+--     red     = { ["dark"] = "#f2594b", ["light"] = "#c14a4a" },
+--     orange  = { ["dark"] = "#f28534", ["light"] = "#c35e0a" },
+--     yellow  = { ["dark"] = "#e9b143", ["light"] = "#b47109" },
+--     green   = { ["dark"] = "#b0b846", ["light"] = "#6c782e" },
+--     aqua    = { ["dark"] = "#8ec07c", ["light"] = "#4c7a5d" },
+--     blue    = { ["dark"] = "#80aa9e", ["light"] = "#45707a" },
+--     purple  = { ["dark"] = "#d3869b", ["light"] = "#945e80" },
+--     accent  = { ["dark"] = "#b0b846", ["light"] = "#6c782e" },
+-- }
+
+local theme = {
+    bg_dim  = { ["dark"] = "#1b1b1b", ["light"] = "#eee0b7" },
+    bg_0    = { ["dark"] = "#282828", ["light"] = "#f5edca" },
+    bg_1    = { ["dark"] = "#32302f", ["light"] = "#eddeb5" },
+    bg_2    = { ["dark"] = "#3a3735", ["light"] = "#e6d5ae" },
+    bg_3    = { ["dark"] = "#3c3836", ["light"] = "#dac9a5" },
+    bg_4    = { ["dark"] = "#45403d", ["light"] = "#d5c4a1" },
+    bg_5    = { ["dark"] = "#5a524c", ["light"] = "#d5c4a1" },
+    grey_0  = { ["dark"] = "#7c6f64", ["light"] = "#a89984" },
+    grey_1  = { ["dark"] = "#928374", ["light"] = "#928374" },
+    grey_2  = { ["dark"] = "#a89984", ["light"] = "#7c6f64" },
+    fg_0    = { ["dark"] = "#d4be98", ["light"] = "#654735" },
+    fg_1    = { ["dark"] = "#ddc7a1", ["light"] = "#654735" },
+    red     = { ["dark"] = "#ea6962", ["light"] = "#c14a4a" },
+    orange  = { ["dark"] = "#e78a4e", ["light"] = "#c35e0a" },
+    yellow  = { ["dark"] = "#d8a657", ["light"] = "#b47109" },
+    green   = { ["dark"] = "#a9b665", ["light"] = "#6c782e" },
+    aqua    = { ["dark"] = "#89b482", ["light"] = "#4c7a5d" },
+    blue    = { ["dark"] = "#7daea3", ["light"] = "#45707a" },
+    purple  = { ["dark"] = "#d3869b", ["light"] = "#945e80" },
+    accent  = { ["dark"] = "#a9b665", ["light"] = "#6c782e" },
+}
+
+M.getcolors = function(mode)
+    mode = mode or Arunvi.option.background.mode
+    local colors = {}
+    for i, v in pairs(theme) do
+        colors[i] = v[mode]
+    end
+    return colors
+end
+
+M.setup = function()
+    vim.g.gruvbox_material_background = 'medium';
+    vim.g.gruvbox_material_foreground = 'mix';
+    vim.g.gruvbox_material_enable_bold = 1;
+    vim.g.gruvbox_material_enable_italic = 1;
+    vim.cmd("set background="..Arunvi.option.background.mode);
+    vim.g.gruvbox_material_dim_inactive_windows = Arunvi.option.background.dim and 1 or 0;
+    vim.g.gruvbox_material_transparent_background = Arunvi.option.background.transparent and 2 or 0;
+    -- vim.g.gruvbox_material_visual = 'string_here'; -- see h: gruvbox-material
+    vim.g.gruvbox_material_ui_contrast = "hard";
+    vim.g.gruvbox_material_disable_terminal_colors = 1; -- maintain your terminal color inside nvim
+
+    vim.cmd("colorscheme gruvbox-material")
+end
+
+return M
