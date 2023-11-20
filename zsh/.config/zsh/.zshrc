@@ -78,11 +78,13 @@ alias nv=nvim
 alias vi=nvim
 alias mux=zellij
 alias lg='lazygit'
-alias l='colorls --sd'
-alias ls='colorls --sd'
-alias lgs='colorls --sd --gs'
-alias la='colorls --sd -la'
-alias ll='colorls --sd -ll'
+alias l='colorls --sd --time-style="+%Y-%b-%d"'
+alias ls='colorls --sd --time-style="+%Y-%b-%d"'
+alias la='colorls --sd -la --time-style="+%Y-%b-%d"'
+alias ll='colorls --sd -ll --time-style="+%Y-%b-%d"'
+alias las='colorls --sd -la --time-style="+%Y-%b-%d"'
+alias lls='colorls --sd --gs -ll --time-style="+%Y-%b-%d"'
+alias lss='colorls --sd --gs --time-style="+%Y-%b-%d"'
 alias tree='colorls --tree'
 alias rshift="pkill -USR1 '^redshift$'"
 alias python='python3'

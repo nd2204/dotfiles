@@ -231,7 +231,7 @@ simplified_ui true
 //   - true (default)
 //   - false
 //
-pane_frames false
+pane_frames true
 
 // Toggle between having Zellij lay out panes according to a predefined set of layouts whenever possible
 // Options:
@@ -272,38 +272,43 @@ themes {
         orange 254
     }
     gruvbox_dark {
-        // bg "#141617"
-        // bg "#1d2021"
-        // bg "#30302f"
-        bg "#16191a"
-        fg "#e2cca9"
-        black "#16191a"
-        red "#f2594b"
-        green "#b0b846"
-        yellow "#e9b143"
-        blue "#80aa9e"
+        bg      "#16191a"
+        black   "#16191a"
+        fg      "#e2cca9"
+        white   "#e2cca9"
+        red     "#f2594b"
+        orange  "#f28534"
+        yellow  "#e9b143"
+        green   "#b0b846"
+        cyan    "#8ec07c"
+        blue    "#80aa9e"
         magenta "#d3869b"
-        cyan "#8ec07c"
-        white "#e2cca9"
-        orange "#f28534"
     }
     gruvbox_light {
-        // bg  "#eee0b7" 
-        // bg  "#eddeb5" 
-        // bg  "#e6d5ae" 
-        // bg  "#dac9a5" 
-        // bg  "#d5c4a1" 
-        bg "#f5edca" 
-        fg "#654735" 
-        black "#654735" 
-        red "#c14a4a" 
-        yellow "#b47109" 
-        blue "#45707a" 
+        fg      "#654735" 
+        black   "#654735" 
+        bg      "#f5edca" 
+        white   "#f5edca" 
+        red     "#c14a4a" 
+        orange  "#c35e0a" 
+        yellow  "#b47109" 
+        green   "#6c782e" 
+        cyan    "#4c7a5d" 
+        blue    "#45707a" 
         magenta "#945e80" 
-        green "#6c782e" 
-        cyan "#4c7a5d" 
-        white "#f5edca" 
-        orange "#c35e0a" 
+    }
+    everforest_dark {
+        bg      "#2e383c"
+        black   "#2e383c"
+        fg      "#d3c6aa"
+        white   "#d3c6aa"
+        red     "#e67e80"
+        orange  "#e69875"
+        yellow  "#dbbc7f"
+        green   "#a7c080"
+        cyan    "#83c092"
+        blue    "#7fbbb3"
+        magenta "#d699b6"
     }
 }
 
@@ -317,7 +322,7 @@ ui {
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-theme "gruvbox_dark"
+theme "everforest_dark"
 
 // The name of the default layout to load on startup
 // Default: "default"

@@ -6,7 +6,7 @@ dir:               green
 
 # Link
 dead_link: red
-link:      black
+link:      cyan
 
 # special files
 socket:    green
@@ -14,9 +14,9 @@ blockdev:  green
 chardev:   green
 
 # Access Modes
-write:     red
+write:     yellow
 read:      red
-exec:      red
+exec:      green
 no_access: red
 
 # Age

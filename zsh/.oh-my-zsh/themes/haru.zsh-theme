@@ -93,9 +93,9 @@ prepareGitStatusLine() {
 # Prepare prompt line limiter
 printPsOneLimiter() {
     local termwidth
-    local spacing=" "
+    local spacing=""
 
-    ((termwidth = ${COLUMNS} - 2))
+    ((termwidth = ${COLUMNS}))
 
     for i in {1..$termwidth}; do
         spacing="${spacing}${char_vertical_divider}"

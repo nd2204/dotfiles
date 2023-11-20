@@ -38,7 +38,7 @@ vim.api.nvim_set_hl(0, "MsgSeparator",              { bg = nil, fg = colors.grey
 -- Uis --
 vim.api.nvim_set_hl(0, "NormalNC",                  { link = "Normal" })
 vim.api.nvim_set_hl(0, "NormalFloat",               { link = "NvimTreeNormal" })
-vim.api.nvim_set_hl(0, "Visual",                    { link = "Cursorline" } )
+vim.api.nvim_set_hl(0, "Visual",                    { bg = colors.bg_2 } )
 vim.api.nvim_set_hl(0, "EndOfBuffer",               { link = "Normal" })
 vim.api.nvim_set_hl(0, "NonText",                   { fg = colors.bg_2 })
 vim.api.nvim_set_hl(0, "StatusLine",                { link = "NvimTreeNormal" })

@@ -3,7 +3,6 @@ shell:
 
 env:
   TERM: xterm-256color
-  #TERM: alacritty
 
 font:
   normal:
@@ -18,21 +17,7 @@ font:
   bold_italic:
     family: "JetBrainsMono Nerd Font Mono"
     style: Bold Italic
-  
-  # normal:
-  #   family: "JetBrainsMono NFM"
-  #   style: Regular
-  # bold:
-  #   family: "JetBrainsMono NFM"
-  #   style: Bold
-  # italic:
-  #   family: "JetBrainsMono NFM"
-  #   style: Italic
-  # bold_italic:
-  #   family: "JetBrainsMono NFM"
-  #   style: Bold Italic
   size: 13
-
   offset:
     x: 0
     y: 0
@@ -53,124 +38,17 @@ window:
     y: 0
 
   # Startup Mode (changes require restart)
-  startup_mode: Windowed # Available option: Windowed | Maximized | Fullscreen (must turn comment off position and dimension to have effect)
+  # Available option: Windowed | Maximized | Fullscreen (must turn comment off position and dimension to have effect)
+  startup_mode: Windowed 
   # Available values:
-  # - full: borders and title bar
-  # - none: neither borders nor title bar
-  # - transparent: title bar, transparent background and title bar buttons
-  # - buttonless: title bar, transparent background, but no title bar buttons
+  # - full, none, transparent, buttonless
   decorations: full
   
-# import:
-#   - ~/.config/alacritty/themes/themes/haru_gruvbox.yaml
+import:
+  - C:\\Users\\dn200\\Appdata\\Roaming\\alacritty\\themes\\everforest.yml
 transparent_background_colors: true
 
 custom_cursor_colors: true
-
-# Apply the color scheme.
-# colors:
-#   # Colors the cursor will use if `custom_cursor_colors` is true
-#   cursor:
-#     text: '0x1d2021'
-#     cursor: '0xd5c4a1'
-#   vi_mode_cursor:
-#     text: '0x1d2021'
-#     cursor: '0xd5c4a1'
-#   primary:
-#     background: '0x141617'
-#     foreground: '0xd5c4a1'
-#       # Normal colors
-#   normal:
-#     black:   '0x595d5f'
-#     red:     '0xe67e80'
-#     green:   '0xb8bb26'
-#     yellow:  '0xfabd2f'
-#     blue:    '0x8bc1ad'
-#     magenta: '0xd3869b'
-#     cyan:    '0x8ec07c'
-#     white:   '0xd5c4a1'
-#     # Bright colors
-#   bright:
-#     black:   '0x665c54'
-#     red:     '0xfe8019'
-#     green:   '0x3c3836'
-#     yellow:  '0x504945'
-#     blue:    '0xbdae93'
-#     magenta: '0xebdbb2'
-#     cyan:    '0xd65d0e'
-
-colors:
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x272e33'
-    cursor: '0xd3c6aa'
-  vi_mode_cursor:
-    text: '0x272e33'
-    cursor: '0xd3c6aa'
-  primary:
-    background: '0x272e33'
-    foreground: '0xd3c6aa'
-      # Normal colors
-  normal:
-    black:   '0x374145'
-    red:     '0xe67e80'
-    green:   '0xa7c080'
-    yellow:  '0xdbbc7f'
-    blue:    '0x7fbbb3'
-    magenta: '0xd699b6'
-    cyan:    '0x83c092'
-    white:   '0xd3c6aa'
-    # Bright colors
-  bright:
-    black:   '0x374145'
-    red:     '0xe67e80'
-    green:   '0xa7c080'
-    yellow:  '0xdbbc7f'
-    blue:    '0x7fbbb3'
-    magenta: '0xd699b6'
-    cyan:    '0x83c092'
-
-# colors:
-#   primary:
-#     background: "0x0d0f18"
-#     foreground: "0xe0def4"
-#   cursor:
-#     text: "0xe0def4"
-#     cursor: "0x524f67"
-#   vi_mode_cursor:
-#     text: "0xe0def4"
-#     cursor: "0x524f67"
-#   line_indicator:
-#     foreground: None
-#     background: None
-#   selection:
-#     text: "0xe0def4"
-#     background: "0x403d52"
-#   normal:
-#     black: "0x26233a"
-#     red: "0xeb6f92"
-#     green: "0x31748f"
-#     yellow: "0xf6c177"
-#     blue: "0x9ccfd8"
-#     magenta: "0xc4a7e7"
-#     cyan: "0xebbcba"
-#     white: "0xe0def4"
-#   bright:
-#     black: "0x6e6a86"
-#     red: "0xeb6f92"
-#     green: "0x31748f"
-#     yellow: "0xf6c177"
-#     blue: "0x9ccfd8"
-#     magenta: "0xc4a7e7"
-#     cyan: "0xebbcba"
-#     white: "0x26233a"
-#   hints:
-#     start:
-#       foreground: "#908caa"
-#       background: "#1f1d2e"
-#     end:
-#       background: "#1f1d2e" 
-#       foreground: "#6e6a86"
 
 cursor:
   style:
@@ -182,7 +60,7 @@ cursor:
       #   - Off: Disable blinking by default
       #   - On: Enable blinking by default
       #   - Always: Force the cursor to always blink
-    blinking: On
+    blinking: Always
 
       # Cursor blinking interval in milliseconds.
 
@@ -209,7 +87,6 @@ key_bindings:
   - { key: N,        mods: Control|Shift, action: SpawnNewInstance }
   - { key: Q,        mods: Alt,           action: Quit             }
   - { key: Return,   mods: Alt,           action: ToggleFullscreen }
-
   - { key: Plus,     mods: Control,       action: IncreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
   - { key: Key0,     mods: Control,       action: ResetFontSize    }
