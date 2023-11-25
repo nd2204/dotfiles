@@ -26,7 +26,7 @@ font:
     y: 0
 
 window:
-  opacity: 1
+  opacity: 0.95
   #position:
   #  x: 14
   #  y: 14
@@ -34,18 +34,18 @@ window:
   #  columns: 171
   #  lines: 38
   padding:
-    x: 0
-    y: 0
+    x: 5
+    y: 5
 
   # Startup Mode (changes require restart)
   # Available option: Windowed | Maximized | Fullscreen (must turn comment off position and dimension to have effect)
-  startup_mode: Windowed 
+  startup_mode: Windowed
   # Available values:
   # - full, none, transparent, buttonless
-  decorations: full
+  decorations: none
   
 import:
-  - C:\\Users\\dn200\\Appdata\\Roaming\\alacritty\\themes\\everforest.yml
+  - C:\\Users\\dn200\\Appdata\\Roaming\\alacritty\\themes\\gruvbox.yml
 transparent_background_colors: true
 
 custom_cursor_colors: true

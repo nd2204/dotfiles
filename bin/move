@@ -1,0 +1,56 @@
+#!/usr/bin/bash
+
+alacritty_dpath="$DOTFILES/config/alacritty_win"
+dest="/mnt/c/Users/*/AppData/Roaming/alacritty/"
+
+dirs=$(find /mnt/c/Users -mindepth 1 -maxdepth 1 -type d)
+dirs_name=$(basename -a $dirs)
+
+function update() {
+    cp -r ${alacritty_dpath}/themes ${dest}
+    cp ${alacritty_dpath}/alacritty.yml ${dest}
+}
+
+if [[ $# -lt 1 ]]; then
+    update
+else
+    case "$1" in
+        "-o" | "--opacity" | "-t" | "--transparency")
+            result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0 || n1 > 1) print 0; else print 1 }')
+            if [ $result -eq 0 ]; then
+                echo "Decimal must in range 0.00 to 1.00"
+                exit 1
+            fi
+            sed -i "s/opacity:.*/opacity: $2/" ${alacritty_dpath}/alacritty.yml
+            update
+            exit 0
+        ;;
+        "-d" | "--decoration")
+            decorations="full | none | transparent | buttonless"
+            if ! [[ $decorations =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
+                echo "Available value: [$decorations]"
+                exit 1
+            fi
+            sed -i "s/decorations:.*/decorations: $2/" ${alacritty_dpath}/alacritty.yml
+            echo "Please restart for setting to take effect"
+            update
+            exit 0
+        ;;
+        "--theme")
+            themes="gruvbox | catppuccin | everforest"
+            if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
+                echo "Available value: [$themes]"
+                exit 1
+            fi
+            for name in $dirs_name; do
+                winpath="/mnt/c/Users/$name/AppData/Roaming/alacritty/alacritty.yml"
+                if [ -f "$winpath" ]; then
+                    sed -i "s/\(C:..Users..\).*\(..Appdata..Roaming..alacritty..themes..\).*/\1$name\2$2.yml/" \
+                        ${alacritty_dpath}/alacritty.yml
+                    update
+                fi
+            done
+            exit 0
+        ;;
+    esac
+fi
