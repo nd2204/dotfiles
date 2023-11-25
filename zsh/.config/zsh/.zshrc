@@ -19,6 +19,10 @@ export MUX="tmux"
 export BROWSER=wslview
 export ZSH="$HOME/.oh-my-zsh"
 export ZDOTDIR="$HOME/.config/zsh"
+export DOTFILES="$HOME/dotfiles"
+export PATH="$PATH:$DOTFILES/bin"
+export BAT_THEME="ansi"
+export BAT_STYLE="auto"
 # End Custom Env ----------------------------------------------------------
 
 # Theme ----------------------------------------------------------------
@@ -74,6 +78,7 @@ nvm() {
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
+alias bat="batcat --style auto"
 alias nv=nvim
 alias vi=nvim
 alias mux=zellij
