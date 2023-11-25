@@ -28,7 +28,7 @@ nvim_tree.setup {
         cursorline = true,
         debounce_delay = 15,
         width = Arunvi.plugins.NvimTreeWidth,
-        side = "right",
+        side = "left",
         preserve_window_proportions = false,
         number = false,
         relativenumber = false,

@@ -7,7 +7,8 @@ require("core.plugin_config.colorscheme")
 require("core.plugin_config.whichkey")
 -- require("core.plugin_config.smoothcursor")
 require("core.plugin_config.colorizer")
--- require("core.plugin_config.presence")
+
+require("core.plugin_config.misc.presence")
 require("core.plugin_config.bigfile")
 
 -- require("core.plugin_config.project")

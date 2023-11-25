@@ -40,7 +40,7 @@ M.setup = function ()
         return
     end
 
-    vim.g.everforest_background = "medium";
+    vim.g.everforest_background = "hard";
     vim.g.everforest_enable_bold = 1;
     vim.g.everforest_enable_italic = 1;
     vim.cmd("set background=" .. Arunvi.option.background.mode);
@@ -48,7 +48,7 @@ M.setup = function ()
     vim.g.everforest_transparent_background = Arunvi.option.background.transparent and 2 or 0;
 
     -- vim.g.everforest_visual = 'string_here'; -- see h: gruvbox-material
-    vim.g.everforest_ui_contrast = "low";
+    vim.g.everforest_ui_contrast = "high";
     vim.g.everforest_disable_terminal_colors = 1; -- maintain your terminal color inside nvim
 
     vim.cmd([[colorscheme everforest]])

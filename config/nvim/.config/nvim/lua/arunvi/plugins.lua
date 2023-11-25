@@ -12,7 +12,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
 local function is_enabled(plugin)
     return Arunvi.plugins[plugin].enabled
 end
@@ -176,7 +175,7 @@ local plugins = {
     -------------------------------------------------------------------------
     -- Markdown
     'godlygeek/tabular',
-    'preservim/vim-markdown',
+    -- 'preservim/vim-markdown',
 
     -- 'ntpeters/vim-better-whitespace',
     -- 'junegunn/fzf',

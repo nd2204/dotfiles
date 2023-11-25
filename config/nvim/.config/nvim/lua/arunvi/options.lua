@@ -63,7 +63,7 @@ opt.guifont = "JetBrainsMono NFM"
 opt.termguicolors = true
 opt.fillchars='msgsep:─,lastline:~,eob: ,vert:▕,vertright:▕,vertleft:▕,verthoriz:▕,horizup:─,horizdown:─' --▕▏
 opt.list = true
-opt.listchars = 'tab:··,trail:~,space:·' -- ',eol:¬,extends:>,precedes:<,'
+opt.listchars = 'tab:··,trail:~,space:·,eol:↵' -- ',eol:¬,eol:↵,extends:>,precedes:<,'
 
 -- folding
 -- opt.foldmethod = "expr"

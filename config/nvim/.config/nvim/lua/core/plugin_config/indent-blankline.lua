@@ -21,7 +21,7 @@ ibl.setup {
     },
     indent = {
         char = "▏", --┇
-        highlight = { "FloatBorder" },
+        highlight = { "IndentBlanklineChar" },
     },
     -- whitespace = {
         -- highlight = { "Comment" },
