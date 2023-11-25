@@ -144,22 +144,19 @@ local mappings = {
     },
     t = {
         name = "Terminal",
-        t = { "<cmd>VimuxOpenRunner<cr>", "Open Vimux" },
-        T = { "<cmd>VimuxCloseRunner<cr>", "Close Vimux" },
-        v = { "<cmd>ToggleTerm direction=vertical<cr>", "Split vertical" },
-        s = { "<cmd>ToggleTerm direction=horizontal<cr>", "Tmux Split Below" },
-        f = { "<cmd>ToggleTerm direction=float<cr>", "Floating" },
-        l = { "<cmd>lua Arunvi.plugins.toggleterm.lazygit()<cr>", "LazyGit" },
-        h = { "<cmd>lua Arunvi.plugins.toggleterm.htop()<cr>", "Htop" },
-        b = { "<cmd>lua Arunvi.plugins.toggleterm.bs()<cr>", "Live Server" },
+        a = { "<CMD>ToggleTerm direction=float<CR>", "Floating" },
+        l = { "<CMD>lua Arunvi.plugins.toggleterm.lazygit()<CR>", "LazyGit" },
+        h = { "<CMD>lua Arunvi.plugins.toggleterm.htop()<CR>", "Htop" },
+        b = { "<CMD>lua Arunvi.plugins.toggleterm.bs()<CR>", "Live Server" },
     },
-    x = { ":bdelete<cr>", "Close Buffer"},
+    r = { "<CMD>lua Arunvi.plugins.toggleterm.make()<CR>", "Run Makefile" },
+    x = { ":w | bdelete<cr>", "Close Buffer"},
     X = { ":bdelete!<cr>", "Close Buffer Force"},
     q = { ":q<CR>", "Exit Nvim"},
     Q = { ":q!<cr>", "Force Quit"},
     w = { ":w<CR>", "Write"},
     W = { ":w!<cr>", "Force Write"},
-    e = { "<cmd>NvimTreeFindFileToggle<CR>", "Directory tree"},
+    e = { "<cmd>NvimTreeFindFileToggle<CR>", " Directory tree"},
     E = { ":e ~/.config/nvim/lua/arunvi/init.lua<cr>", "Edit Config File"},
     L = { ":Lazy<cr>", "Package Manager"},
     z = {
@@ -169,11 +166,26 @@ local mappings = {
     },
 }
 
+
 local prefix = {prefix = "<leader>"}
 
-vim.g.VimuxHeight = "30"
-
-local colors = require("core.plugin_config.colorscheme."..Arunvi.option.background.colorscheme).colors
-local opt_mode = Arunvi.option.background.mode
+if Arunvi.helper.tmuxIsRunning() then
+    vim.g.VimuxHeight = "35"
+    wk.register({
+        p = { "<CMD>VimuxPromptCommand<CR>", "Prompt Command" },
+        t = {
+            t = { "<CMD>VimuxTogglePane<CR>", "toggle Vimux" },
+            s = { "<CMD>VimuxOpenRunner<CR>", "toggle Vimux" },
+            S = { "<CMD>VimuxCloseRunner<CR>", "toggle Vimux" },
+        }
+    },prefix)
+else
+    wk.register({
+        t = {
+            t = { "<cmd>ToggleTerm direction=vertical<cr>", "Split vertical" },
+            s = { "<cmd>ToggleTerm direction=horizontal<cr>", "Split Below" },
+        }
+    },prefix)
+end
 
 wk.register(mappings,prefix)
