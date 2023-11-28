@@ -1,17 +1,38 @@
 #!/usr/bin/bash
 
-alacritty_dpath="$DOTFILES/config/alacritty_win"
-dest="/mnt/c/Users/*/AppData/Roaming/alacritty/"
+if [ -d $DOTFILES ]; then
+    ALACRITTY_DIR="$DOTFILES/config/alacritty_win"
+else
+    read -r -p "Where's the dotfiles: " dotfiles_path
+    if [ -d $dotfiles_path ]; then
+        export DOTFILES=$(realpath $dotfiles_path)
+        ALACRITTY_DIR="$DOTFILES/config/alacritty_win"
+    else
+        echo "Error: $dotfiles_path Not a directory"
+        exit 1
+    fi
+fi
 
-dirs=$(find /mnt/c/Users -mindepth 1 -maxdepth 1 -type d)
-dirs_name=$(basename -a $dirs)
+# Append to a list of usernames that has alacritty directory
+dirs_name=()
+while IFS= read -r -d '' dir; do
+    if [ -d "$dir/AppData/Roaming/alacritty" ]; then
+        dirs_name+=("$(basename "$dir")")
+    else
+        mkdir "$dir/AppData/Roaming/alacritty" 2> /dev/null \
+        && dirs_name+=("$(basename "$dir")")
+    fi
+done < <(find /mnt/c/Users -mindepth 1 -maxdepth 1 -type d -print0)
 
 function refresh() {
-    cp -r ${alacritty_dpath}/themes ${dest}
-    cp ${alacritty_dpath}/alacritty.yml ${dest}
+    for usrname in ${dirs_name[@]}; do
+        dest="/mnt/c/Users/$usrname/AppData/Roaming/alacritty/"
+        cp -r ${ALACRITTY_DIR}/themes ${dest}
+        cp ${ALACRITTY_DIR}/alacritty.yml ${dest}
+    done
 }
 
-function alter() {
+function temu() {
     case "$1" in
         "-o" | "--opacity" | "-t" | "--transparency")
             result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0 || n1 > 1) print 0; else print 1 }')
@@ -19,7 +40,8 @@ function alter() {
                 echo "Decimal must in range 0.00 to 1.00"
                 exit 1
             fi
-            sed -i "s/opacity:.*/opacity: $2/" ${alacritty_dpath}/alacritty.yml
+            sed -i "s/opacity:.*/opacity: $2/" \
+                ${ALACRITTY_DIR}/alacritty.yml
         ;;
         "-d" | "--decoration")
             decorations="full | none | transparent | buttonless"
@@ -27,21 +49,20 @@ function alter() {
                 echo "Available value: [$decorations]"
                 exit 1
             fi
-            sed -i "s/decorations:.*/decorations: $2/" ${alacritty_dpath}/alacritty.yml
+            sed -i "s/decorations:.*/decorations: $2/" \
+                ${ALACRITTY_DIR}/alacritty.yml
             echo "Please restart for setting to take effect"
         ;;
         "--theme")
             themes="gruvbox | catppuccin | everforest"
             if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
-                echo "Usage: $1 [$themes]"
+                echo "Usage: $0 $1 [$themes]"
                 exit 1
             fi
-            for name in $dirs_name; do
-                winpath="/mnt/c/Users/$name/AppData/Roaming/alacritty/"
-                if [ -d "$winpath" ]; then
-                    sed -i "s/\(C:..Users..\).*\(..Appdata..Roaming..alacritty..themes..\).*/\1$name\2$2.yml/" \
-                        ${alacritty_dpath}/alacritty.yml
-                fi
+            for usrname in ${dirs_name[@]}; do
+                winpath="C:\\\\Users\\\\$usrname\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.yml"
+                sed -i "/import:/{N;s/\(.*\-\).*/\1 $(printf "%q" $winpath)/}" \
+                    ${ALACRITTY_DIR}/alacritty.yml
             done
         ;;
     esac
@@ -54,7 +75,7 @@ else
     # refresh
     args=("$@")
     for num in $(seq 0 2 $#); do
-        alter ${args[$num]} ${args[$num+1]}
+        temu ${args[$num]} ${args[$num+1]}
         refresh
     done
 fi

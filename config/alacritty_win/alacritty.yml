@@ -45,7 +45,8 @@ window:
   decorations: none
   
 import:
-  - C:\\Users\\dn200\\Appdata\\Roaming\\alacritty\\themes\\gruvbox.yml
+  - C:\\Users\\dn200\\AppData\\Roaming\\alacritty\\themes\\gruvbox.yml
+
 transparent_background_colors: true
 
 custom_cursor_colors: true

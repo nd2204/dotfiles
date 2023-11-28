@@ -14,7 +14,7 @@ export FZF_COMPLETION_TRIGGER='**'
 
 export FZF_DEFAULT_OPTS="
 --height 80% --layout=reverse --border sharp
---color=fg:grey,fg+:green
+--color=fg:white,fg+:green
 --color=bg:-1,bg+:-1
 --color=hl:magenta,hl+:magenta
 --color=border:green
