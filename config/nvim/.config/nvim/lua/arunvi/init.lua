@@ -60,6 +60,10 @@ Arunvi.helper = {
     tmuxIsRunning = function()
         local result = os.getenv("TMUX")
         return not (result == nil or result == "")
+    end,
+    zellijIsRunning = function()
+        local result = os.getenv("ZELLIJ")
+        return not (nil == result or "" == result)
     end
 }
 

@@ -16,9 +16,9 @@ ${YELLOW}fzf${NC} - Find files, dir interface
 ${YELLOW}jq${NC} - Json Input Processor
 ${YELLOW}cloc${NC} - Count line of code
 ${YELLOW}stow${NC} - dotfiles manager
-${YELLOW}colorls${NC} - prettier ls
+${YELLOW}exa${NC} - oxidized ls
 ${YELLOW}ripgrep${NC} - Find matched patterns in file
-${YELLOW}make, cmake${NC} - compiles (and run) c/c++ project
+${YELLOW}make, cmake${NC} - Build system 
 ${YELLOW}neovim${NC} - powerful file editor
 ${YELLOW}btop${NC} - better top
 ${YELLOW}bat${NC} - cat with wing
@@ -55,10 +55,10 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
     sudo apt install -y stow cloc ripgrep bat jq
     echo -e "${GREEN}DONE${NC}"
 
-    echo -e "${YELLOW}INSTALLING COLORLS DEPENDENCIES${NC}"
-    sudo apt install ruby-dev g++ gcc clang make cmake 
+    echo -e "${YELLOW}INSTALLING EXA DEPENDENCIES${NC}"
+    sudo apt install ruby-dev g++ gcc clang make cmake cargo
     echo -e "${YELLOW}INSTALLING COLORLS${NC}"
-    sudo gem install colorls
+    sudo cargo install exa
     echo -e "${GREEN}DONE${NC}"
     # Add your Ubuntu-specific setup code here
     

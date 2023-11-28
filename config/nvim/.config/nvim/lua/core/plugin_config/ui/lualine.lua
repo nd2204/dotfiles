@@ -13,32 +13,32 @@ if cls then
     custom_theme = {
         normal = {
             a = {bg = colors.green, fg = colors.bg_0, gui = 'bold'},
-            b = {bg = colors.bg_2, fg = colors.grey_2},
+            b = {bg = colors.bg_4, fg = colors.grey_2},
             c = {bg = colors.bg_1, fg = colors.bg_4}
         },
         insert = {
             a = {bg = colors.blue, fg = colors.bg_0, gui = 'bold'},
-            b = {bg = colors.bg_2, fg = colors.grey_2},
+            b = {bg = colors.bg_4, fg = colors.grey_2},
             c = {bg = colors.bg_1, fg = colors.bg_4}
         },
         visual = {
             a = {bg = colors.yellow, fg = colors.bg_0, gui = 'bold'},
-            b = {bg = colors.bg_2, fg = colors.grey_2},
+            b = {bg = colors.bg_4, fg = colors.grey_2},
             c = {bg = colors.bg_1, fg = colors.bg_4}
         },
         replace = {
             a = {bg = colors.red, fg = colors.bg_0, gui = 'bold'},
-            b = {bg = colors.bg_2, fg = colors.grey_2},
+            b = {bg = colors.bg_5, fg = colors.grey_2},
             c = {bg = colors.bg_1, fg = colors.bg_4}
         },
         command = {
             a = {bg = colors.aqua, fg = colors.bg_0, gui = 'bold'},
-            b = {bg = colors.bg_2, fg = colors.grey_2},
+            b = {bg = colors.bg_4, fg = colors.grey_2},
             c = {bg = colors.bg_1, fg = colors.bg_4}
         },
         inactive = {
             a = {bg = colors.bg_1, fg = colors.bg_4, gui = 'none'},
-            b = {bg = colors.bg_2, fg = colors.grey_2},
+            b = {bg = colors.bg_4, fg = colors.grey_2},
             c = {bg = colors.bg_1, fg = colors.bg_4}
         }
     }

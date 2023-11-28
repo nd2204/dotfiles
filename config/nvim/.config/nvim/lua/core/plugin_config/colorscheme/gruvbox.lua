@@ -75,6 +75,8 @@ M.setup = function()
     vim.g.gruvbox_material_disable_terminal_colors = 1; -- maintain your terminal color inside nvim
 
     vim.cmd("colorscheme gruvbox-material")
+    local colors = M.getcolors(Arunvi.option.background.mode)
+    vim.api.nvim_set_hl(0, "TSPunctBracket",            { bg = nil, fg = colors.orange })
 end
 
 return M

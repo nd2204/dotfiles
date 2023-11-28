@@ -47,13 +47,8 @@ local plugins = {
         -- {'glepnir/dashboard-nvim', event = "VimEnter", dependencies = {'nvim-tree/nvim-web-devicons'}},
 
         {
-            -- 'gen740/SmoothCursor.nvim',
             -- which-key
             "folke/which-key.nvim",
-            config = function()
-                vim.o.timeout = true
-                vim.o.timeoutlen = 500
-            end,
         },
 
         {
@@ -66,7 +61,7 @@ local plugins = {
                 timeout = 1500,
                 top_down = true,
                 max_height = function()
-                    return math.floor(vim.o.lines * 0.75)
+                    return math.floor(vim.o.lines * 0.5)
                 end,
                 max_width = function()
                     return math.floor(vim.o.columns * 0.75)
@@ -99,7 +94,7 @@ local plugins = {
     -------------------------------------------------------------------------
     {
         -- Colorscheme
-        { "catppuccin/nvim", name = "catppuccin" },
+        {"catppuccin/nvim", name = "catppuccin" },
         {'rose-pine/neovim', name = 'rose-pine'},
         "ellisonleao/gruvbox.nvim",
         "sainnhe/gruvbox-material",
@@ -139,49 +134,26 @@ local plugins = {
         -- LSP plugins
         {"williamboman/mason.nvim", enabled = is_enabled('lsp')},
         {"williamboman/mason-lspconfig.nvim", enabled = is_enabled('lsp')},
-        {
-            'jay-babu/mason-nvim-dap.nvim',
-            event = "VeryLazy",
-            dependencies = {
-                "williamboman/mason.nvim",
-                "mfussenegger/nvim-dap"
-            },
-            enabled = is_enabled('dap'),
-        },
         {"neovim/nvim-lspconfig", enabled = is_enabled('lsp')},
         {"onsails/lspkind.nvim", enabled = is_enabled('lsp')}, -- Vscode like picktogram for completion
-        "glepnir/lspsaga.nvim", event = "BufRead", -- LSP UIs
+        {"glepnir/lspsaga.nvim", event = "BufRead"}, -- LSP UIs
         {"jose-elias-alvarez/null-ls.nvim", enabled = is_enabled('lsp')},
-        'RRethy/vim-illuminate',
-        {
-            "jay-babu/mason-null-ls.nvim",
-            event = { "BufReadPre", "BufNewFile" },
-            dependencies = {
-                "williamboman/mason.nvim",
-                "jose-elias-alvarez/null-ls.nvim",
-            },
-            enabled = is_enabled('lsp')
-        }
+        {'RRethy/vim-illuminate'},
+        {'jay-babu/mason-null-ls.nvim', event = { "BufReadPre", "BufNewFile" }, enabled = is_enabled('lsp')}
     },
-
     {
         -- Debugger
         {'mfussenegger/nvim-dap', enabled = is_enabled('dap')}, -- debugging plugins
         {'theHamsta/nvim-dap-virtual-text', enabled = is_enabled('dap')}, -- inline variable definition
-        {'nvim-telescope/telescope-dap.nvim', enabled = is_enabled('dap')},
+        -- {'nvim-telescope/telescope-dap.nvim', enabled = is_enabled('dap')},
         {'rcarriga/nvim-dap-ui', enabled = is_enabled('dap')}, -- debugger UIs
+        {'jay-babu/mason-nvim-dap.nvim', event = "VeryLazy", enabled = is_enabled('dap')},
     },
 
     -------------------------------------------------------------------------
     -- Markdown
     'godlygeek/tabular',
-    -- 'preservim/vim-markdown',
-
-    -- 'ntpeters/vim-better-whitespace',
-    -- 'junegunn/fzf',
     'preservim/vimux',
-    -- 'easymotion/vim-easymotion'
-
 }
 
 local opts = {}

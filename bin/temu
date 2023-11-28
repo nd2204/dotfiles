@@ -6,14 +6,12 @@ dest="/mnt/c/Users/*/AppData/Roaming/alacritty/"
 dirs=$(find /mnt/c/Users -mindepth 1 -maxdepth 1 -type d)
 dirs_name=$(basename -a $dirs)
 
-function update() {
+function refresh() {
     cp -r ${alacritty_dpath}/themes ${dest}
     cp ${alacritty_dpath}/alacritty.yml ${dest}
 }
 
-if [[ $# -lt 1 ]]; then
-    update
-else
+function alter() {
     case "$1" in
         "-o" | "--opacity" | "-t" | "--transparency")
             result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0 || n1 > 1) print 0; else print 1 }')
@@ -22,8 +20,6 @@ else
                 exit 1
             fi
             sed -i "s/opacity:.*/opacity: $2/" ${alacritty_dpath}/alacritty.yml
-            update
-            exit 0
         ;;
         "-d" | "--decoration")
             decorations="full | none | transparent | buttonless"
@@ -33,24 +29,32 @@ else
             fi
             sed -i "s/decorations:.*/decorations: $2/" ${alacritty_dpath}/alacritty.yml
             echo "Please restart for setting to take effect"
-            update
-            exit 0
         ;;
         "--theme")
             themes="gruvbox | catppuccin | everforest"
             if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
-                echo "Available value: [$themes]"
+                echo "Usage: $1 [$themes]"
                 exit 1
             fi
             for name in $dirs_name; do
-                winpath="/mnt/c/Users/$name/AppData/Roaming/alacritty/alacritty.yml"
-                if [ -f "$winpath" ]; then
+                winpath="/mnt/c/Users/$name/AppData/Roaming/alacritty/"
+                if [ -d "$winpath" ]; then
                     sed -i "s/\(C:..Users..\).*\(..Appdata..Roaming..alacritty..themes..\).*/\1$name\2$2.yml/" \
                         ${alacritty_dpath}/alacritty.yml
-                    update
                 fi
             done
-            exit 0
         ;;
     esac
+}
+
+if [[ $# -lt 1 ]]; then
+    refresh
+else
+    # alter $1 $2
+    # refresh
+    args=("$@")
+    for num in $(seq 0 2 $#); do
+        alter ${args[$num]} ${args[$num+1]}
+        refresh
+    done
 fi

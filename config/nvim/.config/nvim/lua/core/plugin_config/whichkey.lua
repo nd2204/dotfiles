@@ -1,5 +1,8 @@
 local wk = require("which-key")
 
+vim.o.timeout = true
+vim.o.timeoutlen = 500
+
 wk.setup({
     plugins = {
         marks = true, -- shows a list of your marks on ' and `
@@ -130,13 +133,13 @@ local mappings = {
     },
     f = {
         name = "Search/Telescope",
-        p = {'<cmd>Telescope projects<CR>', "Recent Projects"},
+        p = {'<cmd>Telescope projects<CR>', 'Recent Projects'},
         D = {'<cmd>Telescope diagnostics bufnr=0<CR>', "Diagnostics"},
         d = {"<cmd>Telescope find_files<cr>", "Cwd Files"},
         f = {"<cmd>Telescope fd<cr>", "Find Files"},
         o = {"<cmd>Telescope oldfiles<cr>", "Recent File"},
         g = {"<cmd>lua require'telescope.builtin'.live_grep(require'telescope.themes'.get_dropdown({previewer = false}))<cr>", "Grep"},
-        h = {"<cmd>Telescope help_tags<cr>", "Help Tags"},
+        h = {"<cmd>lua require'telescope.builtin'.help_tags(require'telescope.themes'.get_dropdown({previewer = true}))<cr>", "Help Tags"},
         k = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
         n = {"<cmd>Telescope notify<cr>", "Notification"},
         b = {"<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require'telescope.themes'.get_dropdown({previewer = false}))<cr>", "Current Buffer"},
@@ -171,6 +174,15 @@ local prefix = {prefix = "<leader>"}
 
 if Arunvi.helper.tmuxIsRunning() then
     vim.g.VimuxHeight = "35"
+    wk.register({
+        p = { "<CMD>VimuxPromptCommand<CR>", "Prompt Command" },
+        t = {
+            t = { "<CMD>VimuxTogglePane<CR>", "toggle Vimux" },
+            s = { "<CMD>VimuxOpenRunner<CR>", "toggle Vimux" },
+            S = { "<CMD>VimuxCloseRunner<CR>", "toggle Vimux" },
+        }
+    },prefix)
+elseif Arunvi.helper.zellijIsRunning() then
     wk.register({
         p = { "<CMD>VimuxPromptCommand<CR>", "Prompt Command" },
         t = {

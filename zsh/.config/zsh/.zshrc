@@ -83,14 +83,12 @@ alias nv=nvim
 alias vi=nvim
 alias mux=zellij
 alias lg='lazygit'
-alias l='colorls --sd --time-style="+%Y-%b-%d"'
-alias ls='colorls --sd --time-style="+%Y-%b-%d"'
-alias la='colorls --sd -la --time-style="+%Y-%b-%d"'
-alias ll='colorls --sd -ll --time-style="+%Y-%b-%d"'
-alias las='colorls --sd -la --time-style="+%Y-%b-%d"'
-alias lls='colorls --sd --gs -ll --time-style="+%Y-%b-%d"'
-alias lss='colorls --sd --gs --time-style="+%Y-%b-%d"'
-alias tree='colorls --tree'
+alias l='exa --icons --sort type'
+alias ls='exa --icons --sort type'
+alias la='exa --icons -la --sort type --tree -L 2'
+alias las='exa --icons -la --git --sort type --tree -L 2'
+alias lss='exa --icons --git --sort type'
+alias tree='exa --icons --tree -L 2 --sort type'
 alias rshift="pkill -USR1 '^redshift$'"
 alias python='python3'
 alias py='python3'
@@ -128,7 +126,7 @@ function run_multplexer() {
 function jd() {
     local dir
     dir=$(cd "$HOME" && find ${1:-.} -type d -print 2> /dev/null | fzf +m --preview 'tree -C {} | head -200')
-    abs_dir=$(cd "$HOME" && realpath ${dir#./})
+    abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
     if [ -d "$abs_dir" ]; then
         cd "$abs_dir"
     fi

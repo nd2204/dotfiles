@@ -6,7 +6,7 @@ local theme = {
     bg_1    = { ["dark"] = "#2e383c", ["light"] = "#eae4ca" },
     bg_2    = { ["dark"] = "#374145", ["light"] = "#e5dfc5" },
     bg_3    = { ["dark"] = "#414b50", ["light"] = "#ddd8be" },
-    bg_4    = { ["dark"] = "#495156", ["light"] = "#d8d3ba" },
+    bg_4    = { ["dark"] = "#374145", ["light"] = "#d8d3ba" },
     bg_5    = { ["dark"] = "#4f5b58", ["light"] = "#b9c0ab" },
     grey_0  = { ["dark"] = "#7a8478", ["light"] = "#a6b0a0" },
     grey_1  = { ["dark"] = "#859289", ["light"] = "#939f91" },
@@ -52,6 +52,8 @@ M.setup = function ()
     vim.g.everforest_disable_terminal_colors = 1; -- maintain your terminal color inside nvim
 
     vim.cmd([[colorscheme everforest]])
+    -- local colors = M.getcolors(Arunvi.option.background.mode)
+    -- vim.api.nvim_set_hl(0, "TSPunctBracket",            { bg = nil, fg = colors.orange })
 end
 
 return M

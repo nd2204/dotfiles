@@ -23,10 +23,10 @@ ibl.setup {
         char = "▏", --┇
         highlight = { "IndentBlanklineChar" },
     },
-    -- whitespace = {
+    whitespace = {
         -- highlight = { "Comment" },
-        -- remove_blankline_trail = false,
-    -- },
+        remove_blankline_trail = false,
+    },
     scope = {
         enabled = true,
         show_start = false,
