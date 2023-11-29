@@ -16,19 +16,25 @@ fi
 # Append to a list of usernames that has alacritty directory
 dirs_name=()
 while IFS= read -r -d '' dir; do
-    if [ -d "$dir/AppData/Roaming/alacritty" ]; then
-        dirs_name+=("$(basename "$dir")")
+    # eval echo ${dir/-/ }
+    if [ -d "${dir/-/ }/AppData/Roaming/alacritty" ]; then
+        dirs_name+=("$( basename $dir | tr ' ' '-')")
     else
-        mkdir "$dir/AppData/Roaming/alacritty" 2> /dev/null \
-        && dirs_name+=("$(basename "$dir")")
-    fi
-done < <(find /mnt/c/Users -mindepth 1 -maxdepth 1 -type d -print0)
+        mkdir "$(eval echo ${dir/-/ })/AppData/Roaming/alacritty" 2> /dev/null \
+            && dirs_name+=("$( basename "$dir" | tr ' ' '-')")
+        fi
+done < <(find /mnt/c/Users -mindepth 1 -maxdepth 1 -type d -print0 | tr ' ' '-')
+
+# for name in ${dirs_name[@]}; do
+#     echo "${name/-/ }"
+# done
+
 
 function refresh() {
     for usrname in ${dirs_name[@]}; do
-        dest="/mnt/c/Users/$usrname/AppData/Roaming/alacritty/"
-        cp -r ${ALACRITTY_DIR}/themes ${dest}
-        cp ${ALACRITTY_DIR}/alacritty.yml ${dest}
+        dest="\"/mnt/c/Users/${usrname/-/ }/AppData/Roaming/alacritty/\""
+        eval cp -r ${ALACRITTY_DIR}/themes ${dest}
+        eval cp ${ALACRITTY_DIR}/alacritty.yml ${dest}
     done
 }
 
@@ -60,8 +66,10 @@ function temu() {
                 exit 1
             fi
             for usrname in ${dirs_name[@]}; do
-                winpath="C:\\\\Users\\\\$usrname\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.yml"
-                sed -i "/import:/{N;s/\(.*\-\).*/\1 $(printf "%q" $winpath)/}" \
+                winpath="C:\\\\Users\\\\${usrname}\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.yml"
+                winpath=$(printf "%s" ${winpath})
+                echo $winpath
+                sed -i "/import:/{n;s/\(.*\-\).*/\1 ${winpath/-/ }/}" \
                     ${ALACRITTY_DIR}/alacritty.yml
             done
         ;;
