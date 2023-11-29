@@ -11,6 +11,7 @@
 
 # Custom Env --------------------------------------------------------------
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
 export THEME="gruvbox"
@@ -33,6 +34,7 @@ DISABLE_LS_COLORS="true"
 ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd-mm-yyyy"
+export VIRTUAL_ENV_DISABLE_PROMPT=0
 # End Theme ------------------------------------------------------------
 
 

@@ -14,7 +14,7 @@ export FZF_COMPLETION_TRIGGER='**'
 
 export FZF_DEFAULT_OPTS="
 --height 80% --layout=reverse --border sharp
---color=fg:white,fg+:green
+--color=fg:grey,fg+:green
 --color=bg:-1,bg+:-1
 --color=hl:magenta,hl+:magenta
 --color=border:green
@@ -27,8 +27,8 @@ export FZF_DEFAULT_OPTS="
 --color=prompt:green
 --no-scrollbar
 "
-export FZF_ALT_C_OPTS="
---preview 'tree -C {}'
-"
+# export FZF_ALT_C_OPTS="
+# --preview 'tree -C {}'
+# "
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
