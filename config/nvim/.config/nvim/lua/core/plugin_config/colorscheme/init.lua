@@ -44,7 +44,7 @@ vim.api.nvim_set_hl(0, "NonText",                   { fg = colors.bg_1 })
 vim.api.nvim_set_hl(0, "StatusLine",                { link = "NvimTreeNormal" })
 vim.api.nvim_set_hl(0, "StatusLineNC",              { link = "NormalNC" })
 vim.api.nvim_set_hl(0, "WhiteSpace",                { fg = colors.bg_2 })
-vim.api.nvim_set_hl(0, "Comment",                   { bg = nil, fg = colors.grey_0})
+vim.api.nvim_set_hl(0, "Comment",                   { bg = nil, fg = colors.aqua})
 ---------------------------------------- Plugins ----------------------------------------
 -- WhichKey --
 vim.api.nvim_set_hl(0, "WhichKeyFloat",             { link = "NvimTreeNormal" })
