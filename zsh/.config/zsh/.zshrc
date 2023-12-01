@@ -23,6 +23,7 @@ export DOTFILES="$HOME/dotfiles"
 export PATH="$PATH:$DOTFILES/bin"
 export BAT_THEME="ansi"
 export BAT_STYLE="auto"
+export DISPLAY=:0
 # End Custom Env ----------------------------------------------------------
 
 # Theme ----------------------------------------------------------------
