@@ -49,6 +49,7 @@ plugins=(
     zsh-completions
     web-search
     virtualenv
+    colored-man-pages
 )
 
 source $ZSH/oh-my-zsh.sh
