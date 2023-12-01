@@ -33,40 +33,27 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
     sudo apt install zsh tmux
     echo -e "${GREEN}DONE${NC}"
 
-    echo -e "${YELLOW}INSTALLING NVM -> SETTING UP NODEJS${NC}"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-    nvm install --lts
-    echo -e "${GREEN}DONE${NC}"
-
     echo -e "${YELLOW}INSTALLING FZF${NC}"
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
     echo -e "${GREEN}DONE${NC}"
 
     echo -e "${YELLOW}INSTALLING LAZYGIT${NC}"
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    tar xf lazygit.tar.gz lazygit
-    sudo install lazygit /usr/local/bin
-    rm lazygit lazygit.tar.gz
+    $DOTFILE/bin/setup/installer/install-lazygit.sh
     echo -e "${GREEN}DONE${NC}"
 
-    echo -e "${YELLOW}INSTALLING STOW,CLOC,RIPGREP,BAT,JQ${NC}"
-    sudo apt install -y stow cloc ripgrep bat jq
+    echo -e "${YELLOW}INSTALLING STOW, CLOC, RIPGREP, BAT, JQ, BTOP${NC}"
+    sudo apt install -y stow cloc ripgrep bat jq btop
     echo -e "${GREEN}DONE${NC}"
 
     echo -e "${YELLOW}INSTALLING EXA DEPENDENCIES${NC}"
-    sudo apt install ruby-dev g++ gcc clang make cmake cargo
-    echo -e "${YELLOW}INSTALLING COLORLS${NC}"
     sudo cargo install exa
     echo -e "${GREEN}DONE${NC}"
     # Add your Ubuntu-specific setup code here
 
-    echo -e "${YELLOW}INSTALLING BTOP${NC}"
-    sudo apt install btop
-    echo -e "${GREEN}DONE${NC}"
-
     echo -e "${YELLOW}INSTALLING NEOVIM${NC}"
+    $DOTFILE/bin/setup/installer/install-nvim.sh
+    echo -e "${GREEN}DONE${NC}"
 else
     echo "Aborting."
     exit 1
