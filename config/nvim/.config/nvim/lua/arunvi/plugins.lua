@@ -132,6 +132,7 @@ local plugins = {
     -------------------------------------------------------------------------
     {
         -- LSP plugins
+        {"folke/neodev.nvim", opts = {} },
         {"williamboman/mason.nvim", enabled = is_enabled('lsp')},
         {"williamboman/mason-lspconfig.nvim", enabled = is_enabled('lsp')},
         {"neovim/nvim-lspconfig", enabled = is_enabled('lsp')},

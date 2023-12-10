@@ -97,15 +97,16 @@ wk.setup({
 })
 
 local mappings = {
-    j = { "<CMD>lua require('treesj').toggle()<CR>", "Toggle breakline" },
-    l = {
+    ["/"] = {"<CMD>Commentary<CR>", "Toggle Comment"},
+    ["j"] = { "<CMD>lua require('treesj').toggle()<CR>", "Toggle breakline" },
+    ["l"] = {
         name = "LSP",
-        i = {":LspInfo<cr>", "Connected Language Servers"},
-        k = {'<cmd>lua vim.lsp.buf.signature_help()<CR>', "Signature help"},
-        K = {"Hover doc (use K instead)"},
-        w = {'<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', "Add workspace folder"},
-        W = {'<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', "Remove workspace folder"},
-        l = {
+        ["i"] = {":LspInfo<cr>", "Connected Language Servers"},
+        ["k"] = {'<cmd>lua vim.lsp.buf.signature_help()<CR>', "Signature help"},
+        ["K"] = {"Hover doc (use K instead)"},
+        ["w"] = {'<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', "Add workspace folder"},
+        ["W"] = {'<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', "Remove workspace folder"},
+        ["l"] = {
             '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
             "List workspace folder"
         },
@@ -153,7 +154,7 @@ local mappings = {
         b = { "<CMD>lua Arunvi.plugins.toggleterm.bs()<CR>", "Live Server" },
     },
     r = { "<CMD>lua Arunvi.plugins.toggleterm.make()<CR>", "Run Makefile" },
-    x = { ":w | bdelete<cr>", "Close Buffer"},
+    x = { ":bdelete<cr>", "Close Buffer"},
     X = { ":bdelete!<cr>", "Close Buffer Force"},
     q = { ":q<CR>", "Exit Nvim"},
     Q = { ":q!<cr>", "Force Quit"},

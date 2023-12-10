@@ -63,6 +63,7 @@ local function lsp_highlight_document(client)
     -- end
 end
 
+
 local function lsp_keymaps(bufnr)
     local bufopts = { noremap = true, silent = true , buffer = bufnr}
     -- local keymap = vim.api.nvim_buf_set_keymap
@@ -71,7 +72,7 @@ local function lsp_keymaps(bufnr)
     keymap({"n","v"}, "<leader>la",  "<cmd>Lspsaga code_action<CR>", bufopts)
 
     keymap("n", "K",           "<cmd>Lspsaga hover_doc<CR>",bufopts)
-    keymap("n", "<leader>lf",  "<cmd>Lspsaga lsp_finder<CR>", bufopts)
+    keymap("n", "<leader>lf",  "<cmd>Lspsaga finder<CR>", bufopts)
     keymap("n", "<leader>lR",  "<cmd>Lspsaga rename<CR>", bufopts)
 
     keymap("n", "<leader>ld",  "<cmd>Lspsaga peek_definition<CR>", bufopts)

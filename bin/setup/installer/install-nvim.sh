@@ -1,6 +1,9 @@
 #!/usr/bin/bash
 
-if [ -n $(command -v nvim) ]; then
+if [ -x $(command -v nvim) ]
+then
+    echo "Neovim already installed"
+else
     case $1 in
         "latest")
             curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -16,11 +19,19 @@ if [ -n $(command -v nvim) ]; then
     rm -rf nvim.appimage
     sudo mv squashfs-root /
     sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
-else
-    echo "Neovim already installed"
 fi
 
 # Install extensions
-sudo apt install python3 python3-venv pip
-gem install neovim
-python3 -m pip install --user --upgrade pynvim
+if [ -x $(command -v gem) ]
+then
+    gem install neovim
+else
+    echo "gem not found on path or installed please install using your package manager"
+fi
+
+if [ -x $(command -v python3) ]
+then
+    python3 -m pip install --user --upgrade pynvim
+else
+    echo "python3 not found on path or installed please install using your package manager or through https://www.python.org/"
+fi

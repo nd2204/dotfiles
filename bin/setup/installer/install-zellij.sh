@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-dir="/tmp/zellij/bootstrap"
-mkdir -p "$dir"
+dir="$HOME/.local/bin/"
+if [ -d "$dir" ]
+then
+    mkdir $dir
+fi
 
 if [[ -x "$dir/zellij" ]]
 then
@@ -45,5 +48,6 @@ then
     echo "Maybe try again later? :)"
     exit 1
 fi
+
 "$dir/zellij" "$@"
 exit

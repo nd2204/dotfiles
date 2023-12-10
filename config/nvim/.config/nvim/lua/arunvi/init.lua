@@ -67,6 +67,41 @@ Arunvi.helper = {
     end
 }
 
+local api = vim.api
+
+api.nvim_command("autocmd TermOpen * startinsert")             -- starts in insert mode
+api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber")       -- no numbers
+api.nvim_command("autocmd TermEnter * setlocal signcolumn=no") -- no sign column
+
+local aucmds =
+{
+    ["cpp"] = "<CMD>term g++ % -o main && ./main && rm main<CR>",
+    ["c"] = "<CMD>term g++ % -o main && ./main && rm main<CR>",
+    ["rs"] = "<CMD>term rustc % -o main && ./main && rm main <CR>"
+}
+
+local buffopts = {buffer = true, noremap = true}
+api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    pattern = {"*.cpp"},
+    callback = function()
+        vim.keymap.set("n", "<C-b>", "<CMD>term g++ % -o main && ./main && rm main<CR>", buffopts)
+    end
+})
+
+api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    pattern = {"*.c"},
+    callback = function()
+        vim.keymap.set("n", "<C-b>", "<CMD>term gcc % -o main && ./main && rm main<CR>", buffopts)
+    end
+})
+
+api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    pattern = {"*.rs"},
+    callback = function()
+        vim.keymap.set("n", "<C-b>", "<CMD>term rustc % -o main && ./main && rm main<CR>", buffopts)
+    end
+})
+
 require("arunvi.options")
 require("arunvi.plugins")
 require("arunvi.keymaps")

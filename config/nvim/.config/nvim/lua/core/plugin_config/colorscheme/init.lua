@@ -44,7 +44,11 @@ vim.api.nvim_set_hl(0, "NonText",                   { fg = colors.bg_1 })
 vim.api.nvim_set_hl(0, "StatusLine",                { link = "NvimTreeNormal" })
 vim.api.nvim_set_hl(0, "StatusLineNC",              { link = "NormalNC" })
 vim.api.nvim_set_hl(0, "WhiteSpace",                { fg = colors.bg_2 })
-vim.api.nvim_set_hl(0, "Comment",                   { bg = nil, fg = colors.aqua})
+vim.api.nvim_set_hl(0, "Comment",                   { bg = nil, fg = colors.grey_0})
+vim.api.nvim_set_hl(0, "VirtualTextHint",           { fg = colors.blue, bg = "#2e3b3b"})
+vim.api.nvim_set_hl(0, "VirtualTextInfo",           { fg = colors.blue, bg = "#2e3b3b"})
+vim.api.nvim_set_hl(0, "VirtualTextError",          { fg = colors.red, bg = "#442e2d"})
+vim.api.nvim_set_hl(0, "VirtualTextWarning",        { fg = colors.yellow, bg = "#473c29"})
 ---------------------------------------- Plugins ----------------------------------------
 -- WhichKey --
 vim.api.nvim_set_hl(0, "WhichKeyFloat",             { link = "NvimTreeNormal" })
@@ -80,6 +84,9 @@ vim.api.nvim_set_hl(0, "TSComment",                 { link = "Comment" })
 vim.api.nvim_set_hl(0, "TelescopeSelection",        { link = "CursorLine" })
 -- IndentBlankline --
 vim.api.nvim_set_hl(0, "IndentBlanklineChar",       { bg = nil, fg = colors.bg_2 })
+-- LspSaga
+vim.api.nvim_set_hl(0, "SagaNormal",                { link = "Normal" })
+
 
 local istransparent = Arunvi.option.background.transparent
 if istransparent then

@@ -89,8 +89,8 @@ alias mux=zellij
 alias lg='lazygit'
 alias l='exa --icons --sort type'
 alias ls='exa --icons --sort type'
-alias la='exa --icons -la --sort type --tree -L 2'
-alias las='exa --icons -la --git --sort type --tree -L 2'
+alias la='exa --icons -la --sort type'
+alias las='exa --icons -la --git --sort type'
 alias lss='exa --icons --git --sort type'
 alias tree='exa --icons --tree -L 2 --sort type'
 alias rshift="pkill -USR1 '^redshift$'"
@@ -109,13 +109,13 @@ alias bs='browser-sync' # more detail on https://browsersync.io/docs/command-lin
 function run_multplexer() {
     case $1 in
         tmux)
-            if [ -z "$TMUX" ]; then
+            if [[ -z "$TMUX" && -z "$ZELLIJ" ]]; then
                 tmux
                 return 0
             fi
             ;;
         zellij)
-            if [ -z "$ZELLIJ" ]; then
+            if [[ -z "$ZELLIJ" && -z "$TMUX" ]]; then
                 zellij
                 return 0
             fi
@@ -133,8 +133,8 @@ function jd() {
     abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
     if [ -d "$abs_dir" ]; then
         cd "$abs_dir"
+        run_multplexer $MUX
     fi
-    run_multplexer $MUX
 }
 
 function ffd() {
