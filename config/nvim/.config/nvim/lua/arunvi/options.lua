@@ -30,6 +30,7 @@ opt.sidescrolloff   = 5
 opt.clipboard       = "unnamedplus"
 
 wo.wrap             = false                 -- wrap line
+opt.textwidth       = 80
 wo.colorcolumn      = "+1"
 wo.cursorline       = true            -- underline current row cursor on
 wo.cursorcolumn     = false         -- highlight column

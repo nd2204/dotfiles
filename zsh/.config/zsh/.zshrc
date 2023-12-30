@@ -29,6 +29,7 @@ export DISPLAY=:0
 
 # Theme ----------------------------------------------------------------
 ZSH_THEME="haru"
+# ZSH_THEME="geoffgarside"
 PROMPT_EOL_MARK=
 # source ~/powerlevel10k/powerlevel10k.zsh-theme
 DISABLE_LS_COLORS="true"
@@ -81,17 +82,17 @@ nvm() {
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
-alias bat="batcat --style auto"
-alias nv=nvim
-alias vi=nvim
-alias mux=zellij
-alias lg='lazygit'
-alias l='exa --icons --sort type'
-alias ls='exa --icons --sort type'
-alias la='exa --icons -la --sort type'
-alias las='exa --icons -la --git --sort type'
-alias lss='exa --icons --git --sort type'
-alias tree='exa --icons --tree -L 2 --sort type'
+alias  bat="batcat --style auto"
+alias   nv=nvim
+alias   vi=nvim
+alias  mux=zellij
+alias   lg='lazygit'
+alias    l='exa --color=never --icons --sort type'
+alias   ls='exa --color=never --icons --sort type'
+alias   la='exa --color=never --icons --sort type -la'
+alias  las='exa --color=never --icons --sort type -la --git '
+alias  lss='exa --color=never --icons --sort type --git'
+alias tree='exa --color=never --icons --sort type --tree -L 2'
 alias rshift="pkill -USR1 '^redshift$'"
 alias python='python3'
 alias py='python3'

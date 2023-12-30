@@ -92,9 +92,10 @@ require('lualine').setup {
             },
             'encoding',
             'fileformat',
+            'progress'
         },
-        lualine_y = {'progress'},
-        lualine_z = {get_current_dir}
+        lualine_y = {get_current_dir},
+        lualine_z = {}
     },
     inactive_sections = {
         lualine_a = {},
