@@ -1,37 +1,27 @@
--- UI
-require("core.plugin_config.ui") -- both staline and stabline
-
--- colorscheme
+------------------ UI ------------------
+require("core.plugin_config.ui")
+-------------- colorscheme -------------
 require("core.plugin_config.colorscheme")
-
 require("core.plugin_config.whichkey")
--- require("core.plugin_config.smoothcursor")
 require("core.plugin_config.colorizer")
-
 require("core.plugin_config.misc.presence")
-require("core.plugin_config.bigfile")
-
 -- require("core.plugin_config.project")
-
--- Terminal
+--------------- Terminal ---------------
 require("core.plugin_config.toggleterm")
-
--- Optimization
+------------- Optimization -------------
 require("core.plugin_config.impatient")
-
--- Navigation
+require("core.plugin_config.bigfile")
+-------------- Navigation --------------
 require("core.plugin_config.nvimtree")
 require("core.plugin_config.telescope")
-
--- Syntax
+---------------- Syntax ----------------
 require("core.plugin_config.treesitter")
 require("core.plugin_config.autopairs")
 require("core.plugin_config.indent-blankline")
-
--- Distraction Free
+----------- Distraction Free -----------
 require("core.plugin_config.zen-mode")
 require("core.plugin_config.twilight")
-
--- LSP
+----------------- LSP ------------------
 require("core.plugin_config.completion")
 require("core.plugin_config.gitsigns")
+require("core.plugin_config.autocmd")

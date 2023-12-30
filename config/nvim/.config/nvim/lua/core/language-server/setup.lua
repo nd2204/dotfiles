@@ -23,10 +23,12 @@ require("lspsaga").setup({
         folder_level = 0,
         color_mode = true,
     },
-    ui = {kind = {
-        border = "rounded",
-        ["Folder"] = { "  ", "NvimTreeFolderIcon" },
-    }},
+    -- ui = {
+    --     kind = {
+    --         border = "rounded",
+    --         ["Folder"] = { "  ", "NvimTreeFolderIcon" },
+    --     },
+    -- },
     diagnostic = {
         -- diagnostic_only_current = true,
         show_layout = 'float',

@@ -60,7 +60,7 @@ function temu() {
             echo "Please restart for setting to take effect"
         ;;
         "--theme")
-            themes="gruvbox | catppuccin | everforest"
+            themes="gruvbox | gruvbox_light | catppuccin | everforest"
             if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
                 echo "Usage: $0 $1 [$themes]"
                 exit 1

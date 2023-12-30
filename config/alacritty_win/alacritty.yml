@@ -26,7 +26,7 @@ font:
     y: 0
 
 window:
-  opacity: 0.99
+  opacity: 1
   #position:
   #  x: 14
   #  y: 14
@@ -45,7 +45,7 @@ window:
   decorations: full
   
 import:
-  - C:\\Users\\dn200\\AppData\\Roaming\\alacritty\\themes\\gruvbox.yml
+  - C:\Users\dn200\AppData\Roaming\alacritty\themes\gruvbox.yml
 
 transparent_background_colors: true
 

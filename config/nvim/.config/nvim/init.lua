@@ -6,3 +6,5 @@
 -- [[╚═╝  ╚═╝ ╚═╝  ╚═╝  ╚═════╝  ╚═╝  ╚═══╝   ╚═══╝   ╚═╝]],
 
 require("arunvi")
+require("core")
+require("custom")

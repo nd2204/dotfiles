@@ -1,7 +1,7 @@
 local function get_current_dir()
   local cwd = vim.fn.getcwd()
   local last_separator = string.find(string.reverse(cwd), "/")
-  return [[ ]]..string.sub(cwd, -last_separator + 1)
+  return [[ ]]..string.sub(cwd, last_separator * -1 + 1)
 end
 
 local theme = Arunvi.option.background.colorscheme
@@ -53,18 +53,18 @@ require('lualine').setup {
         icons_enabled = true,
         -- section_separators = { left = '', right = ''},
         -- section_separators = { left = '', right = '' },
-        -- section_separators = { left = '', right = '' },
-        section_separators = { left = '', right = ''},
+        section_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = ''},
         -- component_separators = { left = '', right = ''},
-        -- component_separators = { left = '/', right = '/'},
-        component_separators = { left = '|', right = '|'},
+        component_separators = { left = '/', right = '/'},
+        -- component_separators = { left = '|', right = '|'},
         disabled_filetypes = {
-            statusline = {'NvimTree'},
+            -- statusline = {'NvimTree'},
             winbar = {},
         },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
             statusline = 1000,
             tabline = 1000,
@@ -76,6 +76,7 @@ require('lualine').setup {
             {
                 'buffers',
                 use_mode_colors = true,
+                max_length = vim.o.columns * 1/2,
                 symbols = { alternate_file = '' },
             }
         },

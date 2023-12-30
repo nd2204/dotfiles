@@ -23,7 +23,7 @@ Arunvi.plugins = {
         enable = true, rainbow = {enable = false},
     },
     project = {enable = true},
-    NvimTreeWidth = 40,
+    NvimTreeWidth = 30,
     toggleterm = {
         make = function()
             local Terminal = require('toggleterm.terminal').Terminal
@@ -35,15 +35,10 @@ Arunvi.plugins = {
             local _lazygit = Terminal:new({cmd="lazygit", direction = "float"})
             return _lazygit:toggle()
         end,
-        ranger = function()
+        btop = function()
             local Terminal = require('toggleterm.terminal').Terminal
-            local _ranger = Terminal:new({cmd="ranger", direction = "float"})
-            return _ranger:toggle()
-        end,
-        htop = function()
-            local Terminal = require('toggleterm.terminal').Terminal
-            local _htop = Terminal:new({cmd="htop", direction = "float"})
-            return _htop:toggle()
+            local _btop = Terminal:new({cmd="btop", direction = "float"})
+            return _btop:toggle()
         end,
         bs = function()
             local Terminal = require('toggleterm.terminal').Terminal
@@ -67,43 +62,6 @@ Arunvi.helper = {
     end
 }
 
-local api = vim.api
-
-api.nvim_command("autocmd TermOpen * startinsert")             -- starts in insert mode
-api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber")       -- no numbers
-api.nvim_command("autocmd TermEnter * setlocal signcolumn=no") -- no sign column
-
-local aucmds =
-{
-    ["cpp"] = "<CMD>term g++ % -o main && ./main && rm main<CR>",
-    ["c"] = "<CMD>term g++ % -o main && ./main && rm main<CR>",
-    ["rs"] = "<CMD>term rustc % -o main && ./main && rm main <CR>"
-}
-
-local buffopts = {buffer = true, noremap = true}
-api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    pattern = {"*.cpp"},
-    callback = function()
-        vim.keymap.set("n", "<C-b>", "<CMD>term g++ % -o main && ./main && rm main<CR>", buffopts)
-    end
-})
-
-api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    pattern = {"*.c"},
-    callback = function()
-        vim.keymap.set("n", "<C-b>", "<CMD>term gcc % -o main && ./main && rm main<CR>", buffopts)
-    end
-})
-
-api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-    pattern = {"*.rs"},
-    callback = function()
-        vim.keymap.set("n", "<C-b>", "<CMD>term rustc % -o main && ./main && rm main<CR>", buffopts)
-    end
-})
-
 require("arunvi.options")
 require("arunvi.plugins")
 require("arunvi.keymaps")
-require("core.plugin_config")
-require("core.language-server")

@@ -24,3 +24,17 @@ vim.cmd [[
         autocmd VimResized * tabdo wincmd = 
     augroup end
 ]]
+
+-- local function getDirectoryPath(filePath)
+--     return filePath:match("^(.*[\\/])")
+-- end
+
+-- local rc = vim.fn.getenv("MYVIMRC")
+-- local dirpath = getDirectoryPath(rc)
+-- vim.api.nvim_create_autocmd({"BufWritePost"}, {
+--   pattern = {dirpath.."*"},
+--   callback = function()
+--     vim.cmd("so "..rc)
+--     print("Yessir")
+--   end
+-- })

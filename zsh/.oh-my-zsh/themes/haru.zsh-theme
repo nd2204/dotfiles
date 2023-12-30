@@ -11,7 +11,7 @@ local ANSI_dim_black="\x1B[38;05;8m"
 
 # LOCAL/VARIABLES/GRAPHIC ======================================================
 
-local char_prompt="λ"                                            #Unicode: \u039b
+local char_prompt="$"                                            #Unicode: \u039b
 local char_arrow="›"                                            #Unicode: \u039b
 local char_up_and_right_divider="└"                             #Unicode: \u2514
 local char_down_and_right_divider="┌"                           #Unicode: \u250c
@@ -22,13 +22,13 @@ local char_vertical_divider="─"                                 #Unicode: \u25
 export VCS="git"
 
 local current_vcs="\":vcs_info:*\" enable $VCS"
-local char_badge="%F{white} on %f%F{white}${char_arrow}%f"
-local vc_branch_name="%F{cyan}%b%f"
+local char_badge="%F{yellow}git:%f%F{white}%f"
+local vc_branch_name="%F{yellow}(%b)%f"
 
 local vc_action="%F{240}%a %f%F{240}${char_arrow}%f"
 local vc_unstaged_status="%F{yellow} M ${char_arrow}%f"
 
-local vc_git_staged_status="%F{108} A ${char_arrow}%f"
+local vc_git_staged_status="%F{108}A%f"
 local vc_git_hash="%F{151}%6.6i%f %F{240}${char_arrow}%f"
 local vc_git_untracked_status="%F{yellow} U ${char_arrow}%f"
 
@@ -46,8 +46,8 @@ case "$VCS" in
         zstyle ':vcs_info:git*+set-message:*' hooks use_git_untracked
         zstyle ':vcs_info:git:*' stagedstr $vc_git_staged_status
         zstyle ':vcs_info:git:*' unstagedstr $vc_unstaged_status
-        zstyle ':vcs_info:git:*' actionformats "  ${vc_action} ${vc_git_hash}%m%u%c${char_badge} ${vc_branch_name}"
-        zstyle ':vcs_info:git:*' formats " %c%u%m${char_badge} ${vc_branch_name}"
+        zstyle ':vcs_info:git:*' actionformats "  ${vc_action} ${vc_git_hash}%m%u%c ${char_badge}${vc_branch_name}"
+        zstyle ':vcs_info:git:*' formats " %c%u%m ${char_badge}${vc_branch_name}"
         ;;
 
   # svn sepecific 
@@ -58,7 +58,7 @@ case "$VCS" in
 
   # hg sepecific 
   "hg")
-  zstyle ':vcs_info:hg:*' branchformat "%b"
+  # zstyle ':vcs_info:hg:*' branchformat "%b"
   zstyle ':vcs_info:hg:*' formats " ${char_badge} ${vc_branch_name}"
   ;;
 esac
@@ -78,7 +78,7 @@ fi
 local ssh_marker=""
 
 if [[ -n "$SSH_CLIENT" || -n "$SSH2_CLIENT" ]]; then
-    ssh_marker="%F{115}SSH%f%F{240}:%f"
+    ssh_marker=" %F{115}SSH%f%F{240}:%f"
 fi
 
 # UTILS ========================================================================
@@ -104,12 +104,27 @@ printPsOneLimiter() {
     echo $ANSI_dim_black$spacing$ANSI_reset
 }
 
+username()
+{
+    echo "%f%F{blue}%n%f"
+}
+
+sep()
+{
+    # echo "%f%F{240}::%f"
+    echo " "
+}
+
+dir()
+{
+    echo "%f%F{green}%1~%f"
+}
+
 # ENV/VARIABLES/PROMPT_LINES ===================================================
 
-PROMPT="%F{240}${ssh_marker} %f%F{red}%~%f$(prepareGitStatusLine)
-%F{11} ${char_prompt}%f "
+PROMPT="%f%F{white}[%*]%f%f%F{240}${ssh_marker}%f$(sep)$(username):$(dir)$(sep)%F{white}${char_prompt}%f "
 
-RPROMPT="%f%F{cyan}%*%f"
+RPROMPT="$(prepareGitStatusLine)"
 
 # ENV/HOOKS ==================================================================== 
 

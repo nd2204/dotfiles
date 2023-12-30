@@ -13,22 +13,23 @@ export FZF_COMPLETION_TRIGGER='**'
 # 	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 
 export FZF_DEFAULT_OPTS="
---height 80% --layout=reverse --border sharp
---color=fg:grey,fg+:green
---color=bg:-1,bg+:-1
---color=hl:magenta,hl+:magenta
---color=border:green
+--height 50% --layout=reverse --border horizontal
+--info=right
+--color=fg:grey,fg+:white
+--color=bg:-1,bg+:grey
+--color=hl:green,hl+:green
+--color=border:grey
 --color=header:blue
 --color=gutter:-1
---color=spinner:yellow
---color=info:blue
+--color=spinner:blue
+--color=info:white
 --color=pointer:cyan
 --color=marker:red
 --color=prompt:green
 --no-scrollbar
 "
-# export FZF_ALT_C_OPTS="
+export FZF_ALT_C_OPTS="
+"
 # --preview 'tree -C {}'
-# "
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

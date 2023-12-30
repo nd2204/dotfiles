@@ -7,7 +7,7 @@
 
 # Load tmux on shell startup 
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then exec tmux clear 
-# fi 
+# fi
 
 # Custom Env --------------------------------------------------------------
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
@@ -35,7 +35,6 @@ DISABLE_LS_COLORS="true"
 ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd-mm-yyyy"
-export VIRTUAL_ENV_DISABLE_PROMPT=0
 # End Theme ------------------------------------------------------------
 
 
@@ -129,7 +128,7 @@ function run_multplexer() {
 # directory jumper
 function jd() {
     local dir
-    dir=$(cd "$HOME" && find ${1:-.} -type d -print 2> /dev/null | fzf +m --preview 'tree -C {} | head -200')
+    dir=$(cd "$HOME" && find ${1:-.} -type d -print 2> /dev/null | fzf +m)
     abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
     if [ -d "$abs_dir" ]; then
         cd "$abs_dir"
@@ -139,7 +138,7 @@ function jd() {
 
 function ffd() {
     local dir
-    dir=$(find ${1:-.} -type d -print 2> /dev/null | fzf +m --preview 'tree -C {} | head -200') && cd "$dir"
+    dir=$(find ${1:-.} -type d -print 2> /dev/null | fzf +m) && cd "$dir"
     run_multplexer $MUX
 }
 

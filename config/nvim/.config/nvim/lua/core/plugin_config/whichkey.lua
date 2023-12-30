@@ -150,7 +150,7 @@ local mappings = {
         name = "Terminal",
         a = { "<CMD>ToggleTerm direction=float<CR>", "Floating" },
         l = { "<CMD>lua Arunvi.plugins.toggleterm.lazygit()<CR>", "LazyGit" },
-        h = { "<CMD>lua Arunvi.plugins.toggleterm.htop()<CR>", "Htop" },
+        p = { "<CMD>lua Arunvi.plugins.toggleterm.btop()<CR>", "Process Manager" },
         b = { "<CMD>lua Arunvi.plugins.toggleterm.bs()<CR>", "Live Server" },
     },
     r = { "<CMD>lua Arunvi.plugins.toggleterm.make()<CR>", "Run Makefile" },
@@ -170,7 +170,6 @@ local mappings = {
     },
 }
 
-
 local prefix = {prefix = "<leader>"}
 
 if Arunvi.helper.tmuxIsRunning() then
@@ -184,14 +183,8 @@ if Arunvi.helper.tmuxIsRunning() then
         }
     },prefix)
 elseif Arunvi.helper.zellijIsRunning() then
-    wk.register({
-        p = { "<CMD>VimuxPromptCommand<CR>", "Prompt Command" },
-        t = {
-            t = { "<CMD>VimuxTogglePane<CR>", "toggle Vimux" },
-            s = { "<CMD>VimuxOpenRunner<CR>", "toggle Vimux" },
-            S = { "<CMD>VimuxCloseRunner<CR>", "toggle Vimux" },
-        }
-    },prefix)
+    -- wk.register({
+    -- },prefix)
 else
     wk.register({
         t = {
