@@ -1,0 +1,60 @@
+# All values held in this file can be changed to whatever you'd
+# like in order to customize Draconis.
+
+[main]
+# hostname = "john@homepc" # Defaults to system username@hostname
+# name = "John" # Defaults to system realname
+
+[util]
+width = 55
+
+[greeting]
+enabled = true
+
+[icons]
+enabled = true 
+kind = "normal" # normal or emoji
+
+[time]
+enabled = true 
+kind = "12h" # 12h or 24h
+
+[weather]
+enabled = false
+
+[weather.values]
+# api_key = "abc123" # OpenWeatherMap API key
+# lang = "en" # Language code for weather
+# location = "New York" # Location to get weather for
+# units = "imperial" # Units to use for weather
+
+[system]
+
+[system.release]
+enabled = true
+
+[system.kernel]
+enabled = true
+
+[system.mem_usage]
+enabled = true
+free_before_used = false
+
+[system.disk_usage]
+enabled = true
+free_before_used = true
+
+[system.desktop_env]
+enabled = true
+
+[packages]
+package_managers = ["pacman", "apt"] # pacman, apt, xbps, portage, apk, and/or dnf
+
+[packages.package_count]
+enabled = true
+
+[packages.update_count]
+enabled = true
+
+[song]
+enabled = true

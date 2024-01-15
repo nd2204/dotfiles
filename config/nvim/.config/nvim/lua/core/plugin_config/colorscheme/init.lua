@@ -9,7 +9,6 @@ local M = {}
 local colors = cls.getcolors()
 
 M.theme = colors
-
 -- Run the colorscheme setup function
 cls.setup()
 local hl = vim.api.nvim_set_hl
@@ -38,7 +37,7 @@ hl(0, "FloatBorder",        { bg = nil, fg = colors.grey_1 })
 hl(0, "LineNr",             { fg = colors.grey_0 })
 hl(0, "Normal",             { bg = colors.bg_0, fg = colors.fg_0 })
 hl(0, "NormalFloat",        { bg = colors.bg_dim, fg = colors.fg_0 })
-hl(0, "Terminal",           { bg = colors.bg_0, fg = colors.fg_0 })
+hl(0, "Terminal",           { bg = colors.bg_dim, fg = colors.fg_0 })
 hl(0, "VertSplit",          { bg = colors.bg_dim, fg = colors.bg_3 })
 hl(0, "WinSeparator",       { bg = nil, fg = colors.bg_4 })
 hl(0, "MsgSeparator",       { bg = nil, fg = colors.grey_0 })
@@ -94,7 +93,8 @@ hl(0, "IndentBlanklineChar",    { bg = nil, fg = colors.bg_2 })
 -- LspSaga
 hl(0, "SagaNormal",             { link = "Normal" })
 -- Gitsign
-hl(0, "GitSignsChange",  { link = "YellowSign" })
+hl(0, "GitSignsChange",         { link = "GreenSign" })
+hl(0, "GitSignsAdd",         { link = "AquaSign" })
 
 local istransparent = Arunvi.option.background.transparent
 if istransparent then
@@ -111,8 +111,23 @@ if istransparent then
     vim.cmd('hi NvimTreeVertSplit guibg=NONE')
     vim.cmd('hi VertSplit guibg=NONE')
     vim.cmd('hi WinSeparator guibg=NONE')
-    vim.cmd('hi Cursorline ctermbg=240 guibg=NONE gui=italic')
+    vim.cmd('hi Cursorline ctermbg=240 guibg=NONE gui=NONE')
 
+    hl(0, "GreenSign",          { ctermfg = 147, bg = nil, fg = colors.green,})
+    hl(0, "RedSign",            { ctermfg = 167, bg = nil, fg = colors.red})
+    hl(0, "BlueSign",           { ctermfg = 109, bg = nil, fg = colors.blue})
+    hl(0, "YellowSign",         { ctermfg = 214, bg = nil, fg = colors.yellow})
+    hl(0, "PurpleSign",         { ctermfg = 175, bg = nil, fg = colors.purple})
+    hl(0, "OrangeSign",         { ctermfg = 208, bg = nil, fg = colors.orange})
+    hl(0, "AquaSign",           { ctermfg = 108, bg = nil, fg = colors.aqua})
+
+    hl(0, "NvimTreeNormal",         { bg = nil, fg = colors.fg_0 })
+    hl(0, "NvimTreeEndOfBuffer",    { fg = nil })
+    hl(0, "NvimTreeWinSeparator",   { bg = nil, fg = colors.bg_4})
+    hl(0, "NvimTreeVertSplit" ,     { bg = nil, fg = colors.bg_4})
+
+    vim.opt.fillchars       = 'msgsep:─,lastline:~,eob: ,vert:▕,vertright:▕,vertleft:▕,verthoriz:▕,horizup:─,horizdown:─' --▕▏
+    vim.opt.listchars       = 'trail: ,space: ,eol:↵' -- ',tab:·,eol:¬,eol:↵,extends:>,precedes:<,'
     -- vim.cmd('hi BufferLineFill guibg=NONE')
     -- vim.cmd('hi BufferLineOffSetSeparator ctermbg=NONE guibg=NONE')
     -- vim.cmd('hi BufferLineCloseButton ctermbg=NONE guibg=NONE')

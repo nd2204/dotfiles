@@ -1,17 +1,17 @@
 colors:
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text:     '#1d2021'
+    text:     '#282828'
     cursor:   '#d5c4a1'
   vi_mode_cursor:
-    text:     '#1d2021'
+    text:     '#282828'
     cursor:   '#d5c4a1'
   primary:
     background: '#1b1b1b'
     foreground: '#d5c4a1'
       # Normal colors
   normal:
-    black:   '#595d5f'
+    black:   '#7c6f64'
     red:     '#e67e80'
     green:   '#b8bb26'
     yellow:  '#fabd2f'
@@ -28,4 +28,4 @@ colors:
     blue:    '#bdae93'
     magenta: '#d5c4a1'
     cyan:    '#d65d0e'
-    white:   '#d65d0e'
+    white:   '#d5c4a1'

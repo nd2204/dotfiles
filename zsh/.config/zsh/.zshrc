@@ -9,6 +9,9 @@
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then exec tmux clear 
 # fi
 
+if command -v draconis &> /dev/null; then draconis
+fi
+
 # Custom Env --------------------------------------------------------------
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
@@ -87,12 +90,12 @@ alias   nv=nvim
 alias   vi=nvim
 alias  mux=zellij
 alias   lg='lazygit'
-alias    l='exa --color=never --icons --sort type'
-alias   ls='exa --color=never --icons --sort type'
-alias   la='exa --color=never --icons --sort type -la'
-alias  las='exa --color=never --icons --sort type -la --git '
-alias  lss='exa --color=never --icons --sort type --git'
-alias tree='exa --color=never --icons --sort type --tree -L 2'
+alias    l='exa --color=never --icons -F --sort type'
+alias   ls='exa --color=never --icons -F --sort type'
+alias   la='exa --color=never --icons -F --sort type -la'
+alias  las='exa --color=never --icons -F --sort type -la --git '
+alias  lss='exa --color=never --icons -F --sort type --git'
+alias tree='exa --color=never --icons -F --sort type --tree -L 2'
 alias rshift="pkill -USR1 '^redshift$'"
 alias python='python3'
 alias py='python3'
@@ -145,7 +148,7 @@ function ffd() {
 
 function fe() {
     local file
-    file=$(fzf --preview 'tree -C {} | head -200') && nvim "$file"
+    file=$(fzf --preview 'batcat --style auto {}') && nvim "$file"
 }
 # End Custom Function -----------------------------------------------------
 

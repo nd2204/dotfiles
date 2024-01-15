@@ -13,9 +13,10 @@ export FZF_COMPLETION_TRIGGER='**'
 # 	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 
 export FZF_DEFAULT_OPTS="
+--preview-window=border-sharp
 --height 50% --layout=reverse --border horizontal
 --info=right
---color=fg:grey,fg+:white
+--color=fg:black,fg+:white
 --color=bg:-1,bg+:grey
 --color=hl:green,hl+:green
 --color=border:grey
