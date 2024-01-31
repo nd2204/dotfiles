@@ -64,7 +64,7 @@ opt.linebreak       = false         -- wrap whole word when wrap is enable
 opt.termguicolors   = true
 opt.fillchars       = 'msgsep:─,lastline:~,eob:~,vert:▕,vertright:▕,vertleft:▕,verthoriz:▕,horizup:─,horizdown:─' --▕▏
 opt.list            = true
-opt.listchars       = 'trail:~,space:·,eol:↵' -- ',tab:·,eol:¬,eol:↵,extends:>,precedes:<,'
+opt.listchars       = 'trail:~,space:·,eol:↵,tab:  ' -- ',tab:·,eol:¬,eol:↵,extends:>,precedes:<,'
 -- opt.guifont         = "JetBrainsMono NFM"
 
 -- folding

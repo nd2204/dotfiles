@@ -132,7 +132,7 @@ function run_multplexer() {
 # directory jumper
 function jd() {
     local dir
-    dir=$(cd "$HOME" && find ${1:-.} -type d -print 2> /dev/null | fzf +m)
+    dir=$(cd "$HOME" && find ${1:-.} -type d ! -name "*.git" -print 2> /dev/null | fzf +m)
     abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
     if [ -d "$abs_dir" ]; then
         cd "$abs_dir"

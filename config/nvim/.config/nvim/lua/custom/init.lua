@@ -20,7 +20,7 @@ for ext, cmd in pairs(aucmds)  do
     api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
         pattern = {"*." .. ext},
         callback = function()
-            vim.keymap.set({"n", "i"}, "<C-b>", cmd, buffopts)
+            vim.keymap.set({"n"}, "<C-b>", cmd, buffopts)
         end
     })
     -- print(ext, cmd)
