@@ -34,7 +34,7 @@ function refresh() {
     for usrname in ${dirs_name[@]}; do
         dest="\"/mnt/c/Users/${usrname/-/ }/AppData/Roaming/alacritty/\""
         eval cp -r ${ALACRITTY_DIR}/themes ${dest}
-        eval cp ${ALACRITTY_DIR}/alacritty.yml ${dest}
+        eval cp ${ALACRITTY_DIR}/alacritty.toml ${dest}
     done
 }
 
@@ -46,8 +46,17 @@ function temu() {
                 echo "Decimal must in range 0.00 to 1.00"
                 exit 1
             fi
-            sed -i "s/opacity:.*/opacity: $2/" \
-                ${ALACRITTY_DIR}/alacritty.yml
+            sed -i "s/\(opacity.*=\).*/\1 $2/" \
+                ${ALACRITTY_DIR}/alacritty.toml
+        ;;
+        "-p" | "--padding" )
+            result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0) print 0; else print 1 }')
+            if [ $result -eq 0 ]; then
+                echo "Padding value must be a non negative integer"
+                exit 1
+            fi
+            sed -i "s/\(padding.*=.*{\).*/\1 x = $2, y = $2 }/" \
+                ${ALACRITTY_DIR}/alacritty.toml
         ;;
         "-d" | "--decoration")
             decorations="full | none | transparent | buttonless"
@@ -55,8 +64,8 @@ function temu() {
                 echo "Available value: [$decorations]"
                 exit 1
             fi
-            sed -i "s/decorations:.*/decorations: $2/" \
-                ${ALACRITTY_DIR}/alacritty.yml
+            sed -i "s/\(decorations.*=\).*/\1 \"$2\"/" \
+                ${ALACRITTY_DIR}/alacritty.toml
             echo "Please restart for setting to take effect"
         ;;
         "--theme")
@@ -66,11 +75,11 @@ function temu() {
                 exit 1
             fi
             for usrname in ${dirs_name[@]}; do
-                winpath="C:\\\\Users\\\\${usrname}\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.yml"
+                winpath="['C:\\\Users\\\\${usrname}\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.toml']"
                 winpath=$(printf "%s" ${winpath})
                 echo $winpath
-                sed -i "/import:/{n;s/\(.*\-\).*/\1 ${winpath/-/ }/}" \
-                    ${ALACRITTY_DIR}/alacritty.yml
+                sed -i "s/\(import.*\=\).*/\1 ${winpath/-/ }/" \
+                    ${ALACRITTY_DIR}/alacritty.toml
             done
         ;;
     esac

@@ -34,7 +34,7 @@ cursor  = "#585b70"
 start   = { foreground = "#908caa", background = "#1e1e2e" }
 end     = { foreground = "#6e6a86", background = "#1e1e2e" }
 
-[colors.line_indiccator]
+[colors.line_indicator]
 foreground = "None"
 background = "None"
 
