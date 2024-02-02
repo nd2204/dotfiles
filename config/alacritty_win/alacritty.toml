@@ -1,0 +1,67 @@
+# custom_cursor_colors = true
+import = ['C:\Users\dn200\AppData\Roaming\alacritty\themes\gruvbox.toml']
+live_config_reload = true
+
+[shell]
+program = "ubuntu2204.exe"
+
+[cursor]
+style               = { shape = "Beam", blinking = "Always" }
+vi_mode_style       = { shape = "Beam", blinking = "Always" }
+blink_interval      = 750
+blink_timeout       = 0
+unfocused_hollow    = true
+thickness           = 0.15
+
+[colors]
+transparent_background_colors = true
+draw_bold_text_with_bright_colors = true
+
+[scrolling]
+history     = 10000
+multiplier  = 10
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal      = { family = "JetBrainsMono Nerd Font Mono", style = "Medium" }
+bold        = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+italic      = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
+
+size                = 13
+offset              = { x = 0, y = 0 }
+glyph_offset        = { x = 0, y = 0 }
+builtin_box_drawing = true
+
+[keyboard]
+bindings = [
+    { key = "V"         , action = "Paste"              , mods = "Control|Shift", mode = "~Vi"},
+    { key = "C"         , action = "Copy"               , mods = "Control|Shift" },
+    { key = "N"         , action = "SpawnNewInstance"   , mods = "Control|Shift" },
+    { key = "Q"         , action = "Quit"               , mods = "Alt" },
+    { key = "Return"    , action = "ToggleFullscreen"   , mods = "Alt" },
+    { key = "Plus"      , action = "IncreaseFontSize"   , mods = "Control" },
+    { key = "Minus"     , action = "DecreaseFontSize"   , mods = "Control" },
+    { key = "Key0"      , action = "ResetFontSize"      , mods = "Control" }
+]
+
+
+[mouse]
+hide_when_typing = true
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+# dimensions = { columns = 100, lines = 100 }
+decorations = "full"
+opacity = 0.9
+startup_mode = "Windowed"
+padding = { x = 6, y = 6 }
+blur = true
+title = "Alacritty"
+dynamic_title = false
+resize_increments = false
