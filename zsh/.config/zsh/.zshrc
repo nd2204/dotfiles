@@ -9,8 +9,8 @@
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then exec tmux clear 
 # fi
 
-if command -v draconis &> /dev/null; then draconis
-fi
+# if command -v draconis &> /dev/null; then draconis
+# fi
 
 # Custom Env --------------------------------------------------------------
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
@@ -23,6 +23,7 @@ export MUX="tmux"
 export BROWSER=wslview
 export ZSH="$HOME/.oh-my-zsh"
 export ZDOTDIR="$HOME/.config/zsh"
+export TMUXRC="$HOME/.tmux.conf"
 export DOTFILES="$HOME/dotfiles"
 export PATH="$PATH:$DOTFILES/bin"
 export BAT_THEME="ansi"
@@ -132,8 +133,8 @@ function run_multplexer() {
 # directory jumper
 function jd() {
     local dir
-    dir=$(cd "$HOME" && find ${1:-.} -type d ! -name "*.git" -print 2> /dev/null | fzf +m)
-    abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
+    abs_dir=$(find $HOME -type d -name ".*" -prune -o -type d -print | fzf +m)
+    # abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
     if [ -d "$abs_dir" ]; then
         cd "$abs_dir"
         run_multplexer $MUX
@@ -142,7 +143,7 @@ function jd() {
 
 function ffd() {
     local dir
-    dir=$(find ${1:-.} -type d -print 2> /dev/null | fzf +m) && cd "$dir"
+    dir=$(find ${1:-.} -type d -path "*/.*" -prune -print 2> /dev/null | fzf +m) && cd "$dir"
     run_multplexer $MUX
 }
 

@@ -76,7 +76,7 @@ require('lualine').setup {
             {
                 'buffers',
                 use_mode_colors = true,
-                max_length = vim.o.columns * 1/2,
+                max_length = vim.o.columns * 2/3,
                 symbols = { alternate_file = '' },
             }
         },

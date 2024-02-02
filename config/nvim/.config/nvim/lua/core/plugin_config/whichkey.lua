@@ -173,7 +173,7 @@ local mappings = {
 local prefix = {prefix = "<leader>"}
 
 if Arunvi.helper.tmuxIsRunning() then
-    vim.g.VimuxHeight = "35"
+    vim.g.VimuxHeight = "20"
     wk.register({
         p = { "<CMD>VimuxPromptCommand<CR>", "Prompt Command" },
         t = {

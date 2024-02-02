@@ -132,7 +132,7 @@ printPsOneLimiter() {
 precmd() {
   # if [[ $VCS != "" ]]; then
   #   vcs_info
-    printPsOneLimiter
+    # printPsOneLimiter
   # fi
 }
 
