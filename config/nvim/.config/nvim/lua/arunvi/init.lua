@@ -5,7 +5,7 @@ Arunvi.option = {
     background = {
         colorscheme = "gruvbox", -- Available: gruvbox | rose-pine | catppuccin | everforest
         mode = "dark", -- Available: "dark" | "light" -- NOT RECOMMENDED
-        transparent = true,
+        transparent = false,
         dim = false,
     },
     cmdheight = 1,

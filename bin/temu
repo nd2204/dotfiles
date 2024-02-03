@@ -48,7 +48,16 @@ function temu() {
             fi
             sed -i "s/\(opacity.*=\).*/\1 $2/" \
                 ${ALACRITTY_DIR}/alacritty.toml
-        ;;
+            ;;
+        "--font-size" )
+            result=$(awk -v n1="$2" 'BEGIN { if (n1 <= 0) print 0; else print 1 }')
+            if [ $result -eq 0 ]; then
+                echo "font size must be a positive integer"
+                exit 1
+            fi
+            sed -i "s/\(\bsize\b.*=\).*/\1 $2/" \
+                ${ALACRITTY_DIR}/alacritty.toml
+            ;;
         "-p" | "--padding" )
             result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0) print 0; else print 1 }')
             if [ $result -eq 0 ]; then
@@ -57,7 +66,7 @@ function temu() {
             fi
             sed -i "s/\(padding.*=.*{\).*/\1 x = $2, y = $2 }/" \
                 ${ALACRITTY_DIR}/alacritty.toml
-        ;;
+            ;;
         "-d" | "--decoration")
             decorations="full | none | transparent | buttonless"
             if ! [[ $decorations =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
@@ -67,7 +76,7 @@ function temu() {
             sed -i "s/\(decorations.*=\).*/\1 \"$2\"/" \
                 ${ALACRITTY_DIR}/alacritty.toml
             echo "Please restart for setting to take effect"
-        ;;
+            ;;
         "--theme")
             themes="gruvbox | gruvbox_light | catppuccin | everforest"
             if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
@@ -81,7 +90,7 @@ function temu() {
                 sed -i "s/\(import.*\=\).*/\1 ${winpath/-/ }/" \
                     ${ALACRITTY_DIR}/alacritty.toml
             done
-        ;;
+            ;;
     esac
 }
 

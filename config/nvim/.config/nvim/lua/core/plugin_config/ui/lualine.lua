@@ -53,11 +53,11 @@ require('lualine').setup {
         icons_enabled = true,
         -- section_separators = { left = '', right = ''},
         -- section_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-        -- section_separators = { left = '', right = ''},
+        -- section_separators = { left = '', right = '' },
+        section_separators = { left = '', right = ''},
         -- component_separators = { left = '', right = ''},
-        component_separators = { left = '/', right = '/'},
-        -- component_separators = { left = '|', right = '|'},
+        -- component_separators = { left = '/', right = '/'},
+        component_separators = { left = '|', right = '|'},
         disabled_filetypes = {
             -- statusline = {'NvimTree'},
             winbar = {},
@@ -73,18 +73,19 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = {
+            get_current_dir
+        },
+        lualine_b = {
             {
                 'buffers',
                 use_mode_colors = true,
-                max_length = vim.o.columns * 2/3,
                 symbols = { alternate_file = '' },
             }
         },
-        lualine_b = {
+        lualine_c = {
             { 'branch', icon = '' },
             { 'diff' },
         },
-        lualine_c = {},
         lualine_x = {
             {
                 'diagnostics',
@@ -94,7 +95,7 @@ require('lualine').setup {
             'fileformat',
             'progress'
         },
-        lualine_y = {get_current_dir},
+        lualine_y = {},
         lualine_z = {}
     },
     inactive_sections = {

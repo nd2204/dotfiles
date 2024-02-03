@@ -1,5 +1,5 @@
 # custom_cursor_colors = true
-import = ['C:\Users\dn200\AppData\Roaming\alacritty\themes\everforest.toml']
+import = ['C:\Users\dn200\AppData\Roaming\alacritty\themes\gruvbox.toml']
 live_config_reload = true
 
 [shell]
@@ -15,7 +15,7 @@ thickness           = 0.15
 
 [colors]
 transparent_background_colors = true
-draw_bold_text_with_bright_colors = true
+draw_bold_text_with_bright_colors = false
 
 [scrolling]
 history     = 10000
@@ -30,10 +30,10 @@ bold        = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
 italic      = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
 
-size                = 13
+size                = 10.5
 offset              = { x = 0, y = 0 }
 glyph_offset        = { x = 0, y = 0 }
-builtin_box_drawing = true
+builtin_box_drawing = false
 
 [keyboard]
 bindings = [
@@ -57,10 +57,10 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 # dimensions = { columns = 100, lines = 100 }
-decorations = "full"
-opacity = 0.9
+decorations = "none"
+opacity = 0.95
 startup_mode = "Windowed"
-padding = { x = 6, y = 6 }
+padding = { x = 4, y = 4 }
 blur = true
 title = "Alacritty"
 dynamic_title = false
