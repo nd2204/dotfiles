@@ -124,6 +124,7 @@ printPsOneLimiter() {
 # # ENV/VARIABLES/PROMPT_LINES ===================================================
 
 # PROMPT="$(time_stat)${ssh_marker}$(sep)$(username):$(dir)$(sep)%F{white}${char_prompt}%f "
+PROMPT='[%*] %{$fg[cyan]%}%n%{$reset_color%}:%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
 
 # RPROMPT="$(prepareGitStatusLine)"
 
@@ -175,8 +176,6 @@ precmd() {
 #                                  zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 # # ==============================================================================
-
-PROMPT='[%*] %{$fg[cyan]%}%n%{$reset_color%}:%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
 
 ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[yellow]%}git:("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")%{$reset_color%}"

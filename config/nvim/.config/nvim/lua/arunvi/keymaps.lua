@@ -34,7 +34,7 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
-vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww<CR>')
+vim.keymap.set('n', '<C-f>',"<cmd>lua require'telescope.builtin'.buffers(require'telescope.themes'.get_dropdown({previewer = false}))<cr>")
 
 -- VISUAL
 -- Move text up and down

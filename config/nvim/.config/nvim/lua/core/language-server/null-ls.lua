@@ -21,6 +21,7 @@ local null_ls_servers = {
 
 require("mason-null-ls").setup({
     ensure_installed = null_ls_servers,
+    automatic_installation = true,
 })
 
 null_ls.setup({
