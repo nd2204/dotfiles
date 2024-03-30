@@ -1,9 +1,11 @@
 #!/bin/bash
 
-local RED="\e[0;31m"
-local NC="\e[0m"
-local YELLOW="\e[0;33m"
-local GREEN="\e[0;32m"
+RED="\e[0;31m"
+NC="\e[0m"
+YELLOW="\e[0;33m"
+GREEN="\e[0;32m"
+
+[[ -z $DOTFILES ]] && echo "ERROR: DOTFILE env variable not set. Aborting"; exit 1
 
 echo "This script will install the following pakage:"
 echo -e "
@@ -39,20 +41,20 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
     echo -e "${GREEN}DONE${NC}"
 
     echo -e "${YELLOW}INSTALLING LAZYGIT${NC}"
-    $DOTFILE/bin/setup/installer/install-lazygit.sh
+    $DOTFILES/bin/setup/installer/install-lazygit.sh
     echo -e "${GREEN}DONE${NC}"
 
     echo -e "${YELLOW}INSTALLING STOW, CLOC, RIPGREP, BAT, JQ, BTOP${NC}"
     sudo apt install -y stow cloc ripgrep bat jq btop
     echo -e "${GREEN}DONE${NC}"
 
-    echo -e "${YELLOW}INSTALLING EXA DEPENDENCIES${NC}"
-    sudo cargo install exa
+    echo -e "${YELLOW}INSTALLING EXA${NC}"
+    [[ -x $(command -v cargo) ]] && sudo cargo install exa || echo "ERROR: cargo not installed"
     echo -e "${GREEN}DONE${NC}"
     # Add your Ubuntu-specific setup code here
 
     echo -e "${YELLOW}INSTALLING NEOVIM${NC}"
-    $DOTFILE/bin/setup/installer/install-nvim.sh
+    $DOTFILES/bin/setup/installer/install-nvim.sh
     echo -e "${GREEN}DONE${NC}"
 else
     echo "Aborting."
