@@ -28,7 +28,8 @@ export DOTFILES="$HOME/dotfiles"
 export PATH="$PATH:$DOTFILES/bin"
 export BAT_THEME="ansi"
 export BAT_STYLE="auto"
-export DISPLAY=:0
+[[ -z $DISPLAY ]] && export DISPLAY=:0 || export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+export LIBGL_ALWAYS_INDIRECT=0
 # End Custom Env ----------------------------------------------------------
 
 # Theme ----------------------------------------------------------------
@@ -157,18 +158,4 @@ function fe() {
 source $HOME/.config/fzf/config.sh
 source $(dirname $(gem which colorls))/tab_complete.sh
 
-NVM_DIR="$HOME/.nvm"
-if [[ -d $NVM_DIR ]]; then
-    export NVM_DIR
-    # shellcheck disable=SC1090
-    source "${NVM_DIR}/nvm.sh"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-    if [[ -e "$HOME/.nvm/alias/default" ]]; then
-        PATH="${PATH}:${HOME}.nvm/versions/node/$(cat ~/.nvm/alias/default)/bin"
-    fi
-else
-    echo "nvm is not installed" >&2
-    return 1
-fi
 # End Autorun -------------------------------------------------------------
