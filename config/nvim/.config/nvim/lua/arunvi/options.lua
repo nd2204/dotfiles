@@ -29,7 +29,7 @@ opt.scrolloff       = 5             -- spare n line between your cursor and the 
 opt.sidescrolloff   = 5
 opt.clipboard       = "unnamedplus"
 
-wo.wrap             = true          -- wrap line
+wo.wrap             = false          -- wrap line
 opt.textwidth       = 80
 wo.colorcolumn      = "+1"
 wo.cursorline       = true          -- underline current row cursor on
@@ -62,9 +62,9 @@ opt.shiftround      = true
 opt.smartindent     = true          -- make indenting smarter again
 opt.linebreak       = false         -- wrap whole word when wrap is enable
 opt.termguicolors   = true
-opt.fillchars       = 'msgsep:─,lastline:~,eob:~,vert:▕,vertright:▕,vertleft:▕,verthoriz:▕,horizup:─,horizdown:─' --▕▏
+opt.fillchars       = 'msgsep:─,lastline: ,eob: ,vert:▕,vertright:▕,vertleft:▕,verthoriz:▕,horizup:─,horizdown:─' --▕▏
 opt.list            = true
-opt.listchars       = 'trail:~,space:·,eol:↵,tab:  ' -- ',tab:·,eol:¬,eol:↵,extends:>,precedes:<,'
+opt.listchars       = 'trail:~,space: ,eol:↵,tab:  ' -- ',tab:·,eol:¬,eol:↵,extends:>,precedes:<,'
 -- opt.guifont         = "JetBrainsMono NFM"
 
 -- folding

@@ -1,7 +1,7 @@
 Arunvi = {}
 
 Arunvi.option = {
-    tabwidth = 4,
+    tabwidth = 2,
     background = {
         colorscheme = "gruvbox", -- Available: gruvbox | rose-pine | catppuccin | everforest
         mode = "dark", -- Available: "dark" | "light" -- NOT RECOMMENDED
