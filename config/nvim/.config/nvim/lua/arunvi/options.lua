@@ -42,6 +42,7 @@ wo.signcolumn       = 'yes'
 opt.autowrite       = true
 opt.autoread        = true
 
+-- TABS
 opt.tabstop         = Arunvi.option.tabwidth        -- insert 2 spaces for a tab
 bo.tabstop          = Arunvi.option.tabwidth
 opt.softtabstop     = Arunvi.option.tabwidth
