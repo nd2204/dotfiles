@@ -13,12 +13,9 @@
 # fi
 
 # Custom Env --------------------------------------------------------------
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin"
+# TODO: Change PATH env to accept only  existing path
+export PATH="$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 export THEME="gruvbox"
-export EDITOR="nvim"
 export MUX="tmux"
 export BROWSER=wslview
 export ZSH="$HOME/.oh-my-zsh"
@@ -29,6 +26,13 @@ export PATH="$PATH:$DOTFILES/bin"
 export BAT_THEME="ansi"
 export BAT_STYLE="auto"
 export DISPLAY=:0
+if [[ ! -z $(command -v nvim) ]]; then
+	export EDITOR="nvim";
+elif [[ ! -z $(comman -v vim) ]]; then
+	export EDITOR="vim";
+else
+	export EDITOR="nano"
+fi
 # End Custom Env ----------------------------------------------------------
 
 # Theme ----------------------------------------------------------------
@@ -57,7 +61,10 @@ plugins=(
     colored-man-pages
 )
 
-source $ZSH/oh-my-zsh.sh
+[[ ! -z $ZSH ]] . $ZSH/oh-my-zsh.sh || echo "omz not found"
+
+# Loading aliases
+[[ -f $HOME/.config/.zsh_aliases ]] . $HOME/.config/zsh/.zsh_aliases
 
 # Lazyloading -------------------------------------------------------------
 nvm() {
@@ -80,34 +87,6 @@ nvm() {
 }
 # End Lazyloading ---------------------------------------------------------
 
-# Aliases -----------------------------------------------------------------
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
-alias  bat="batcat --style auto"
-alias   nv=nvim
-alias   vi=nvim
-alias  mux=zellij
-alias   lg='lazygit'
-alias    l='exa --color=never --icons -F --sort type'
-alias   ls='exa --color=never --icons -F --sort type'
-alias   la='exa --color=never --icons -F --sort type -la'
-alias  las='exa --color=never --icons -F --sort type -la --git '
-alias  lss='exa --color=never --icons -F --sort type --git'
-alias tree='exa --color=never --icons -F --sort type --tree -L 2'
-alias rshift="pkill -USR1 '^redshift$'"
-alias python='python3'
-alias py='python3'
-# Tmux
-alias ta='tmux attach'
-alias td='tmux detach'
-alias t='tmux'
-alias trs='tmux rename-session'
-alias trw='tmux rename-window'
-alias bs='browser-sync' # more detail on https://browsersync.io/docs/command-line
-# End Aliases -------------------------------------------------------------
 
 # Custom function ---------------------------------------------------------
 function run_multplexer() {
@@ -149,26 +128,12 @@ function ffd() {
 
 function fe() {
     local file
-    file=$(fzf --preview 'batcat --style auto {}') && nvim "$file"
+    file=$(fzf --preview 'batcat --style auto {}') && $EDITOR "$file"
 }
 # End Custom Function -----------------------------------------------------
 
 # Autorun -----------------------------------------------------------------
-source $HOME/.config/fzf/config.sh
-source $(dirname $(gem which colorls))/tab_complete.sh
-
-NVM_DIR="$HOME/.nvm"
-if [[ -d $NVM_DIR ]]; then
-    export NVM_DIR
-    # shellcheck disable=SC1090
-    source "${NVM_DIR}/nvm.sh"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-    if [[ -e "$HOME/.nvm/alias/default" ]]; then
-        PATH="${PATH}:${HOME}.nvm/versions/node/$(cat ~/.nvm/alias/default)/bin"
-    fi
-else
-    echo "nvm is not installed" >&2
-    return 1
-fi
+[[ -d  $DOTFILES ]] . $DOTFILES/.config/fzf/config.sh
+# . $(dirname $(gem which colorls))/tab_complete.sh
+#
 # End Autorun -------------------------------------------------------------
