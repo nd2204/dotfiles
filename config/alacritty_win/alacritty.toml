@@ -3,7 +3,7 @@ import = ['']
 live_config_reload = true
 
 [shell]
-program = "wsl.exe"
+program = "wsl.exe --cd ~"
 
 [cursor]
 style               = { shape = "Block", blinking = "Always" }
