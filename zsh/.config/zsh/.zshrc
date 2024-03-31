@@ -25,6 +25,7 @@ export DOTFILES="$HOME/dotfiles"
 export PATH="$PATH:$DOTFILES/bin"
 export BAT_THEME="ansi"
 export BAT_STYLE="auto"
+[[ -z $DISPLAY ]] && export DISPLAY=:0 || export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 export DISPLAY=:0
 if [[ ! -z $(command -v nvim) ]]; then
 	export EDITOR="nvim";
@@ -33,6 +34,7 @@ elif [[ ! -z $(comman -v vim) ]]; then
 else
 	export EDITOR="nano"
 fi
+export LIBGL_ALWAYS_INDIRECT=0
 # End Custom Env ----------------------------------------------------------
 
 # Theme ----------------------------------------------------------------

@@ -7,6 +7,8 @@ end
 local M = {}
 
 local colors = cls.getcolors()
+-- local signcolor = colors.bg_1;
+local signBg = nil;
 
 M.theme = colors
 -- Run the colorscheme setup function
@@ -23,14 +25,15 @@ hl(0, "Purple", {ctermfg = 175, bg = nil, fg = colors.purple })
 
 ---------------------------------------- Builtin ----------------------------------------
 hl(0, "Cursorline",         { bg = nil })
-hl(0, "SignColumn",         { bg = colors.bg_1 })
-hl(0, "GreenSign",          { ctermfg = 147, bg = colors.bg_1, fg = colors.green,})
-hl(0, "RedSign",            { ctermfg = 167, bg = colors.bg_1, fg = colors.red})
-hl(0, "BlueSign",           { ctermfg = 109, bg = colors.bg_1, fg = colors.blue})
-hl(0, "YellowSign",         { ctermfg = 214, bg = colors.bg_1, fg = colors.yellow})
-hl(0, "PurpleSign",         { ctermfg = 175, bg = colors.bg_1, fg = colors.purple})
-hl(0, "OrangeSign",         { ctermfg = 208, bg = colors.bg_1, fg = colors.orange})
-hl(0, "AquaSign",           { ctermfg = 108, bg = colors.bg_1, fg = colors.aqua})
+-- hl(0, "SignColumn",         { bg = colors.bg_1 })
+hl(0, "SignColumn",         { bg = nil })
+hl(0, "GreenSign",          { ctermfg = 147, bg = signBg, fg = colors.green,})
+hl(0, "RedSign",            { ctermfg = 167, bg = signBg, fg = colors.red})
+hl(0, "BlueSign",           { ctermfg = 109, bg = signBg, fg = colors.blue})
+hl(0, "YellowSign",         { ctermfg = 214, bg = signBg, fg = colors.yellow})
+hl(0, "PurpleSign",         { ctermfg = 175, bg = signBg, fg = colors.purple})
+hl(0, "OrangeSign",         { ctermfg = 208, bg = signBg, fg = colors.orange})
+hl(0, "AquaSign",           { ctermfg = 108, bg = signBg, fg = colors.aqua})
 hl(0, "CursorlineNr",       { fg = colors.fg_1 })
 hl(0, "CurrentWord",        { bg = colors.bg_3 })
 hl(0, "FloatBorder",        { bg = nil, fg = colors.grey_1 })
@@ -41,7 +44,8 @@ hl(0, "Terminal",           { bg = colors.bg_dim, fg = colors.fg_0 })
 hl(0, "VertSplit",          { bg = colors.bg_dim, fg = colors.bg_3 })
 hl(0, "WinSeparator",       { bg = nil, fg = colors.bg_4 })
 hl(0, "MsgSeparator",       { bg = nil, fg = colors.grey_0 })
-hl(0, "ColorColumn",        { ctermbg = 236, bg = colors.bg_1 })
+-- hl(0, "ColorColumn",        { ctermbg = 236, bg = colors.bg_1 })
+hl(0, "ColorColumn",        { ctermbg = 236, bg = nil })
 -- Uis --
 hl(0, "NormalNC",           { link = "Normal" })
 hl(0, "NormalFloat",        { link = "NvimTreeNormal" })
@@ -71,12 +75,13 @@ hl(0, "NvimTreeVertSplit" ,     { bg = colors.bg_dim, fg = colors.bg_dim})
 hl(0, "NvimTreeCursorLine" ,    { link = "Cursorline" } )
 hl(0, "NvimTreeIndentMarker",   { link = "IndentBlanklineChar" } )
 hl(0, "NvimTreeGitNew",         { link = "Yellow" } )
+---------------------------------------- Syntax ----------------------------------------
 -- Treesitter --
 -- hl(0, "TSPunctBracket",         { bg = nil, fg = colors.fg_0 })
 hl(0, "TSProperty",             { bg = nil, fg = colors.fg_0 })
 hl(0, "TSField",                { bg = nil, fg = colors.fg_0 })
 hl(0, "Identifier",             { bg = nil, fg = colors.fg_0 })
-hl(0, "TSTypeBuiltin",          { bg = nil, fg = colors.yellow })
+hl(0, "TSTypeBuiltin",          { bg = nil, fg = colors.red })
 hl(0, "Function",               { bg = nil, fg = colors.green })
 hl(0, "TSFunctionCall",         { bg = nil, fg = colors.green })
 hl(0, "TSFuncBuiltin",          { bg = nil, fg = colors.green })
@@ -88,6 +93,7 @@ hl(0, "TSKeyword",              { bg = nil, fg = colors.red })
 hl(0, "TSKeywordFunction",      { bg = nil, fg = colors.red })
 hl(0, "TSKeywordReturn",        { bg = nil, fg = colors.red })
 hl(0, "TSTypeDefinition",       { bg = nil, fg = colors.red })
+hl(0, "@lsp.type.enumMember",   { bg = nil, fg = colors.blue })
 hl(0, "TSComment",              { link = "Comment" })
 -- Telescope --
 hl(0, "TelescopeSelection",     { bg = colors.bg_1 })

@@ -10,25 +10,38 @@ port = get_random_port
 Neovim.plugin do |plug|
   # check dependencies
   plug.autocmd(:VimEnter) do |nvim|
+  end
+
+  plug.command(:P5StartServer) do |nvim|
     if !check requirements
-      # raise "Missing p5 requirement"
+      raise "Missing p5 requirement"
+    else
+      cwd = nvim.command_output(:pwd)
+      if serverPid == nil
+        serverPid = spawn("browser-sync start --no-open --no-ui --no-notify --port #{port} -w -f --server #{cwd}")
+      end
+      nvim.command("echo 'server running on port #{port}'")
     end
   end
 
   # preview
   plug.command(:P5Preview) do |nvim|
-    cwd = nvim.command_output(:pwd)
+    if !check requirements
+      raise "Missing p5 requirement"
+    else
+      cwd = nvim.command_output(:pwd)
 
-    if serverPid == nil
-      serverPid = spawn("browser-sync start --no-open --no-ui --no-notify --port #{port} -w -f --server #{cwd}")
+      if serverPid == nil
+        serverPid = spawn("browser-sync start --no-open --no-ui --no-notify --port #{port} -w -f --server #{cwd}")
+      end
+
+      if browserPid == nil
+        # browserPid = spawn("chromium-browser --app=http://localhost:#{port}")
+        browserPid = spawn("\"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe\" --app=http://localhost:#{port}")
+      end
+
+      nvim.command("echo 'server running on port #{port}'")
     end
-
-    if browserPid == nil
-      # browserPid = spawn("chromium-browser --app=http://localhost:#{port}")
-      browserPid = spawn("\"/mnt/c/Program Files/Google/Chrome/Application/chrome.exe\" --app=http://localhost:#{port}")
-    end
-
-    nvim.command("echo 'server running on port #{port}'")
   end
 
   plug.command(:P5PreviewStop) do |nvim|

@@ -12,7 +12,7 @@ if cls then
     local colors = cls.getcolors()
     custom_theme = {
         normal = {
-            a = {bg = colors.green, fg = colors.bg_0, gui = 'bold'},
+            a = {bg = colors.grey_2, fg = colors.bg_0, gui = 'bold'},
             b = {bg = colors.bg_4, fg = colors.grey_2},
             c = {bg = colors.bg_1, fg = colors.grey_0}
         },
