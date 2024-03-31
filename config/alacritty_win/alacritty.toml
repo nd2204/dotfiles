@@ -1,13 +1,13 @@
 # custom_cursor_colors = true
-import = ['C:\Users\dn200\AppData\Roaming\alacritty\themes\gruvbox.toml']
+import = ['']
 live_config_reload = true
 
 [shell]
-program = "ubuntu2204.exe"
+program = "wsl.exe"
 
 [cursor]
-style               = { shape = "Beam", blinking = "Always" }
-vi_mode_style       = { shape = "Beam", blinking = "Always" }
+style               = { shape = "Block", blinking = "Always" }
+vi_mode_style       = { shape = "Block", blinking = "Always" }
 blink_interval      = 750
 blink_timeout       = 0
 unfocused_hollow    = true
@@ -57,8 +57,8 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 # dimensions = { columns = 100, lines = 100 }
-decorations = "none"
-opacity = 1
+decorations = "full"
+opacity = 1.0
 startup_mode = "Windowed"
 padding = { x = 4, y = 4 }
 blur = true
