@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-if [ -d $DOTFILES ]; then
+if [[ -d $DOTFILES && ! -z $DOTFILES ]]; then
     ALACRITTY_DIR="$DOTFILES/config/alacritty_win"
 else
     read -r -p "Where's the dotfiles: " dotfiles_path

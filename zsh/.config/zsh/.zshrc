@@ -1,32 +1,18 @@
 # zmodload zsh/zprof
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc. 
-# Initialization code that may require console input (password prompts, [y/n] confirmations, etc.) must go above this block; everything else may go below. 
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-# Load tmux on shell startup 
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then exec tmux clear 
-# fi
-
-# if command -v draconis &> /dev/null; then draconis
-# fi
 
 # Custom Env --------------------------------------------------------------
-# TODO: Change PATH env to accept only  existing path
-export PATH="$HOME/.cargo/bin:$HOME/.local/share/gem/ruby/3.0.0/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
+[[ ! -z $(command -v cargo) ]] && export PATH="$PATH:$HOME/.cargo/bin" 
+[[ ! -z $(command -v gem) ]] && export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin" 
+[[ -d $HOME/.oh-my-zsh ]] && export ZSH="$HOME/.oh-my-zsh"
+export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
 export THEME="gruvbox"
 export MUX="tmux"
 export BROWSER=wslview
-export ZSH="$HOME/.oh-my-zsh"
-export ZDOTDIR="$HOME/.config/zsh"
 export TMUXRC="$HOME/.tmux.conf"
 export DOTFILES="$HOME/dotfiles"
 export PATH="$PATH:$DOTFILES/bin"
 export BAT_THEME="ansi"
 export BAT_STYLE="auto"
-[[ -z $DISPLAY ]] && export DISPLAY=:0 || export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-export DISPLAY=:0
 if [[ ! -z $(command -v nvim) ]]; then
 	export EDITOR="nvim";
 elif [[ ! -z $(comman -v vim) ]]; then
@@ -34,6 +20,7 @@ elif [[ ! -z $(comman -v vim) ]]; then
 else
 	export EDITOR="nano"
 fi
+[[ -z $DISPLAY ]] && export DISPLAY=:0 || export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 export LIBGL_ALWAYS_INDIRECT=0
 # End Custom Env ----------------------------------------------------------
 
@@ -63,10 +50,10 @@ plugins=(
     colored-man-pages
 )
 
-[[ ! -z $ZSH ]] . $ZSH/oh-my-zsh.sh || echo "omz not found"
+[[ ! -z $ZSH ]] && . $ZSH/oh-my-zsh.sh || echo "omz not found. Installing"
 
 # Loading aliases
-[[ -f $HOME/.config/.zsh_aliases ]] . $HOME/.config/zsh/.zsh_aliases
+[[ -f $HOME/.config/zsh/.zsh_aliases ]] && . $HOME/.config/zsh/.zsh_aliases
 
 # Lazyloading -------------------------------------------------------------
 nvm() {
@@ -75,13 +62,13 @@ nvm() {
         export NVM_DIR
         # shellcheck disable=SC1090
         source "${NVM_DIR}/nvm.sh"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-        [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+        [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
         if [[ -e "$HOME/.nvm/alias/default" ]]; then
             PATH="${PATH}:${HOME}.nvm/versions/node/$(cat ~/.nvm/alias/default)/bin"
         fi
         # invoke the real nvm function now
-        nvm "$@"
+	[ $# -lt 2] && nvm "$@"
     else
         echo "nvm is not installed" >&2
         return 1
@@ -135,7 +122,7 @@ function fe() {
 # End Custom Function -----------------------------------------------------
 
 # Autorun -----------------------------------------------------------------
-[[ -d  $DOTFILES ]] . $DOTFILES/.config/fzf/config.sh
+[[ -f "~/.fzf.zsh" ]] && source ~/.fzf.zsh
+source ${DOTFILES:-~/dotfiles}/config/fzf_config.sh
 # . $(dirname $(gem which colorls))/tab_complete.sh
-#
 # End Autorun -------------------------------------------------------------
