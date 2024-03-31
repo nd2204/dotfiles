@@ -1,0 +1,28 @@
+# Aliases -----------------------------------------------------------------
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
+alias  bat="batcat --style auto"
+alias   nv=nvim
+alias   vi=nvim
+alias  mux=zellij
+alias   lg='lazygit'
+alias    l='exa --color=never --icons -F --sort type'
+alias   ls='exa --color=never --icons -F --sort type'
+alias   la='exa --color=never --icons -F --sort type -la'
+alias  las='exa --color=never --icons -F --sort type -la --git '
+alias  lss='exa --color=never --icons -F --sort type --git'
+alias tree='exa --color=never --icons -F --sort type --tree -L 2'
+alias rshift="pkill -USR1 '^redshift$'"
+alias python='python3'
+alias py='python3'
+# Tmux
+alias ta='tmux attach'
+alias td='tmux detach'
+alias t='tmux'
+alias trs='tmux rename-session'
+alias trw='tmux rename-window'
+alias bs='browser-sync' # more detail on https://browsersync.io/docs/command-line
+# End Aliases -------------------------------------------------------------
