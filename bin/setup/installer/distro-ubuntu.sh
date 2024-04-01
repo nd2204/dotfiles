@@ -1,9 +1,13 @@
 #!/bin/bash
 
+# INSTALL ORDER --
+
 RED="\e[0;31m"
 NC="\e[0m"
 YELLOW="\e[0;33m"
 GREEN="\e[0;32m"
+
+DOTFILES=${DOTFILES:-~/dotfiles}
 
 [[ -z $DOTFILES ]] && echo "ERROR: DOTFILES env variable not set. Aborting" && exit 1
 
