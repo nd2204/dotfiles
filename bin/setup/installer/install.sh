@@ -173,10 +173,10 @@ function install_rustup() {
     echo -e "${GREEN}DONE${NC}";
 }
 
-[[ "lazygit" =~ $@ ]] && install_lazygit
-[[ "neovim" =~ $@ ]]  && install_neovim
-[[ "zellij" =~ $@ ]]  && install_zellij
-[[ "rustup" =~ $@ ]]  && install_rustup
-[[ "omz" =~ $@ ]]     && install_omz
-[[ "nvm" =~ $@ ]]     && install_nvm
-[[ "fzf" =~ $@ ]]     && install_fzf
+[[ $@ =~ "lazygit" ]] && install_lazygit
+[[ $@ =~ "neovim"  ]] && install_neovim
+[[ $@ =~ "zellij"  ]] && install_zellij
+[[ $@ =~ "rustup"  ]] && install_rustup
+[[ $@ =~ "omz"     ]] && install_omz
+[[ $@ =~ "nvm"     ]] && install_nvm
+[[ $@ =~ "fzf"     ]] && install_fzf

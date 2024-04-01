@@ -1,24 +1,22 @@
 #!/usr/bin/bash
 
-if [ "$#" -lt 1 ]; then
-	echo "Invalid usage"
-	exit 1
-fi
-
+DOTFILES=""
 if [[ ! -d $DOTFILES || -z $DOTFILES ]]; then
 	echo "ERROR: DOTFILES environment variable not set! Searching for the dotfiles in current user home directory..."
-	dotfiles_path=$(find ~ -type d -name "dotfiles" -print | head -n 1)
-	if [[ -z $dotfiles_path ]]; then
-		read -r -p "Where's the dotfiles: " dotfiles_path
+	DOTFILES=$(find ~ -type d -name "dotfiles" -print | head -n 1)
+	if [[ -z $DOTFILES ]]; then
+		read -r -p "Where's the dotfiles: " DOTFILES
 		if [ -d $dotfiles_path ]; then
-			export DOTFILES=$(realpath $dotfiles_path)
+			export DOTFILES=$(realpath ${DOTFILES})
 		else
-			echo "Error: $dotfiles_path Not a directory"
+			echo "Error: $DOTFILES Not a directory"
 			exit 1
 		fi
 	fi
-	export DOTFILES=$dotfiles_path
+	echo "Found dotfiles at: $DOTFILES"
 fi
+
+DOTFILES=${DOTFILES:-~/dotfiles}
 
 if [ -f /etc/os-release ]; then
     . /etc/os-release

@@ -31,7 +31,8 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
   echo -e "${YELLOW}UPDATING UBUNTU${NC}"
   sudo apt update && sudo apt upgrade -y
   sudo apt install -y build-essential
-  sudo apt install -y g++ gcc clang make cmake ruby-dev python3 python3-venv pip
+  sudo apt install -y g++ gcc clang make cmake ruby-dev python3 python3-venv pip cargo
+  $DOTFILES/bin/setup/installer/install.sh rustup;
   echo -e "${GREEN}DONE${NC}"
   [[ -z $(command -v rg) ]]      && echo -e "${YELLOW}INSTALLING RIPGREP${NC}" && sudo apt install -y ripgrep && echo -e "${GREEN}DONE${NC}";
   [[ -z $(command -v tmux) ]]    && echo -e "${YELLOW}INSTALLING TMUX${NC}" && sudo apt install tmux && echo -e "${GREEN}DONE${NC}";

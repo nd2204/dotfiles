@@ -1,5 +1,5 @@
 # custom_cursor_colors = true
-import = ['C:\Users\sf\AppData\Roaming\alacritty\themes\gruvbox.toml']
+import = ['C:\Users\dn200\AppData\Roaming\alacritty\themes\gruvbox.toml']
 live_config_reload = true
 
 [shell]
