@@ -30,7 +30,7 @@ bold        = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
 italic      = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
 
-size                = 10.5
+size                = 14
 offset              = { x = 0, y = 0 }
 glyph_offset        = { x = 0, y = 0 }
 builtin_box_drawing = false
@@ -58,7 +58,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 # dimensions = { columns = 100, lines = 100 }
 decorations = "full"
-opacity = 1.0
+opacity = 1
 startup_mode = "Windowed"
 padding = { x = 4, y = 4 }
 blur = true

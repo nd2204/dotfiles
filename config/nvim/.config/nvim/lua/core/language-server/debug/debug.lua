@@ -1,4 +1,9 @@
-local dap, dapui = require('dap'), require('dapui')
+local ok, dapui = pcall(require, "dapui")
+if not ok then
+    return
+end
+
+local dap = require('dap')
 
 dapui.setup()
 

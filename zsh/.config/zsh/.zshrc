@@ -68,7 +68,7 @@ nvm() {
             PATH="${PATH}:${HOME}.nvm/versions/node/$(cat ~/.nvm/alias/default)/bin"
         fi
         # invoke the real nvm function now
-	[ $# -lt 2] && nvm "$@"
+	[ $# -lt 2 ] && nvm "$@"
     else
         echo "nvm is not installed" >&2
         return 1

@@ -49,7 +49,7 @@ function temu() {
             sed -i "s/\(opacity.*=\).*/\1 $2/" \
                 ${ALACRITTY_DIR}/alacritty.toml
             ;;
-        "--font-size" )
+        "--font-size" | "-f")
             result=$(awk -v n1="$2" 'BEGIN { if (n1 <= 0) print 0; else print 1 }')
             if [ $result -eq 0 ]; then
                 echo "font size must be a positive integer"
