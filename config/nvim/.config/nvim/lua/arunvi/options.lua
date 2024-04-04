@@ -28,6 +28,7 @@ opt.mouse           = "a"           -- allow the mouse to be used in neovim
 opt.scrolloff       = 5             -- spare n line between your cursor and the bottom of the screen when scroll down
 opt.sidescrolloff   = 5
 opt.clipboard       = "unnamedplus"
+vim.cmd("set guicursor=\"n-v-c-sm-i-ci-ve:block,r-cr-e:hor20\"")
 
 wo.wrap             = false          -- wrap line
 opt.textwidth       = 80

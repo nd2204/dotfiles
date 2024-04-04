@@ -42,7 +42,7 @@ Arunvi.plugins = {
         end,
         bs = function()
             local Terminal = require('toggleterm.terminal').Terminal
-            local _bs = Terminal:new({cmd="browser-sync -s -f -w", direction = "horizontal"})
+            local _bs = Terminal:new({cmd="browser-sync start -s -f -w", direction = "horizontal"})
             return _bs:toggle()
         end,
     },
