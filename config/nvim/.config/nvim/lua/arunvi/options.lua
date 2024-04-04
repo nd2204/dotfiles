@@ -46,8 +46,8 @@ opt.autoread        = true
 -- TABS
 opt.tabstop         = Arunvi.option.tabwidth        -- insert 2 spaces for a tab
 bo.tabstop          = Arunvi.option.tabwidth
-opt.softtabstop     = Arunvi.option.tabwidth
-bo.softtabstop      = Arunvi.option.tabwidth
+-- opt.softtabstop     = Arunvi.option.tabwidth
+-- bo.softtabstop      = Arunvi.option.tabwidth
 opt.shiftwidth      = Arunvi.option.tabwidth        -- the number of spaces inserted for each indentation
 bo.shiftwidth       = Arunvi.option.tabwidth
 opt.autoindent      = true
