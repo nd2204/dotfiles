@@ -29,11 +29,11 @@ local plugins = {
         'nvim-tree/nvim-tree.lua',
         'lewis6991/impatient.nvim',
         'akinsho/toggleterm.nvim',
-        "andweeb/presence.nvim",
-        "ahmedkhalf/project.nvim",
+        -- "andweeb/presence.nvim",
+        -- "ahmedkhalf/project.nvim",
         'Wansmer/treesj',
         'LunarVim/bigfile.nvim',
-        'sevko/vim-nand2tetris-syntax',
+        -- 'sevko/vim-nand2tetris-syntax',
     },
     {
         -------------------------------------------------------------------------
@@ -67,6 +67,7 @@ local plugins = {
                     return math.floor(vim.o.columns * 0.75)
                 end,
             },
+            enabled = is_enabled('notify')
         },
         {
             -- noice
@@ -86,8 +87,8 @@ local plugins = {
         },
         {
             -- Focus mode
-            "folke/zen-mode.nvim",
-            "folke/twilight.nvim",
+            -- "folke/zen-mode.nvim",
+            -- "folke/twilight.nvim",
         },
     },
 
@@ -153,7 +154,7 @@ local plugins = {
 
     -------------------------------------------------------------------------
     -- Markdown
-    'godlygeek/tabular',
+    -- 'godlygeek/tabular',
     'preservim/vimux',
 }
 
