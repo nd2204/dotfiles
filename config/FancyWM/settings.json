@@ -434,7 +434,10 @@
     "Messenger",
     "FancyWM",
     "explorer",
-    "SystemSettings"
+    "SystemSettings",
+    "procexp",
+    "steamwebhelper",
+    "vcxsrv"
   ],
   "ClassIgnoreList": [
     "OperationStatusWindow"
