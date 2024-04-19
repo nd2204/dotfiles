@@ -31,8 +31,7 @@ local M = {}
 -- }
 
 local theme = {
-  -- bg_dim  = { ["dark"] = "#1b1b1b", ["light"] = "#eee0b7" },
-  bg_dim  = { ["dark"] = "#141617", ["light"] = "#eee0b7" },
+  bg_dim  = { ["dark"] = "#1b1b1b", ["light"] = "#eee0b7" },
   bg_0    = { ["dark"] = "#282828", ["light"] = "#f5edca" },
   bg_1    = { ["dark"] = "#32302f", ["light"] = "#eddeb5" },
   bg_2    = { ["dark"] = "#3a3735", ["light"] = "#e6d5ae" },
