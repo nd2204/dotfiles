@@ -36,7 +36,7 @@ local plugins = {
     -- 'sevko/vim-nand2tetris-syntax',
     {
       'nd2204/quickimpl.nvim',
-      dependencies = { 'nvim-treesitter/nvim-treesitter', }
+      dependencies = { 'nvim-treesitter/nvim-treesitter' }
     }
   },
   {

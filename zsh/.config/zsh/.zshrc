@@ -101,7 +101,7 @@ function run_multplexer() {
 # directory jumper
 function jd() {
     local dir
-    abs_dir=$(find $HOME -type d -name ".*" -prune -o -type d -print | fzf +m)
+    abs_dir=$(find $HOME -type d -name ".*" -not -name ".config" -not -name ".local" -prune -o -type d -print | fzf +m)
     # abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
     if [ -d "$abs_dir" ]; then
         cd "$abs_dir"
