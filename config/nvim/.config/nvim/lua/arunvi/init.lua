@@ -12,7 +12,7 @@ Arunvi.option = {
 }
 
 Arunvi.plugins = {
-    lsp = {enable = true},
+    lsp = {enable = false},
     notify = {enable = false},
     dap = {
         enable = false,
