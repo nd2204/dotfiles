@@ -22,7 +22,6 @@ hl(0, "Green",  {ctermfg = 142, bg = nil, fg = colors.green })
 hl(0, "Aqua",   {ctermfg = 108, bg = nil, fg = colors.aqua })
 hl(0, "Blue",   {ctermfg = 109, bg = nil, fg = colors.blue })
 hl(0, "Purple", {ctermfg = 175, bg = nil, fg = colors.purple })
-
 ---------------------------------------- Builtin ----------------------------------------
 hl(0, "Cursorline",         { bg = nil })
 -- hl(0, "SignColumn",         { bg = colors.bg_1 })
@@ -36,8 +35,8 @@ hl(0, "OrangeSign",         { ctermfg = 208, bg = signBg, fg = colors.orange})
 hl(0, "AquaSign",           { ctermfg = 108, bg = signBg, fg = colors.aqua})
 hl(0, "CursorlineNr",       { fg = colors.fg_1 })
 hl(0, "CurrentWord",        { bg = colors.bg_3 })
-hl(0, "FloatBorder",        { bg = nil, fg = colors.grey_1 })
-hl(0, "LineNr",             { fg = colors.grey_0 })
+hl(0, "FloatBorder",        { bg = nil, fg = colors.bg_5 })
+hl(0, "LineNr",             { fg = colors.bg_5 })
 hl(0, "Normal",             { bg = colors.bg_0, fg = colors.fg_0 })
 hl(0, "NormalFloat",        { bg = colors.bg_dim, fg = colors.fg_0 })
 hl(0, "Terminal",           { bg = colors.bg_dim, fg = colors.fg_0 })
@@ -55,7 +54,7 @@ hl(0, "NonText",            { fg = colors.bg_1 })
 hl(0, "StatusLine",         { link = "NvimTreeNormal" })
 hl(0, "StatusLineNC",       { link = "NormalNC" })
 hl(0, "WhiteSpace",         { fg = colors.bg_2 })
-hl(0, "Comment",            { bg=nil, fg=colors.grey_0})
+hl(0, "Comment",            { bg=nil, fg=colors.bg_5})
 hl(0, "Search",             { bg=nil, bold=true, underline=true})
 hl(0, "IncSearch",          { fg=colors.bg_0, bg=colors.green, bold=true})
 hl(0, "VirtualTextHint",    { fg=colors.blue, bg="#2e3b3b"})
@@ -77,7 +76,7 @@ hl(0, "NvimTreeIndentMarker",   { link = "IndentBlanklineChar" } )
 hl(0, "NvimTreeGitNew",         { link = "Yellow" } )
 ---------------------------------------- Syntax ----------------------------------------
 -- Treesitter --
--- hl(0, "TSPunctBracket",         { bg = nil, fg = colors.fg_0 })
+hl(0, "TSPunctBracket",         { bg = nil, fg = colors.bg_5 })
 hl(0, "TSProperty",             { bg = nil, fg = colors.fg_0 })
 hl(0, "TSField",                { bg = nil, fg = colors.fg_0 })
 hl(0, "Identifier",             { bg = nil, fg = colors.fg_0 })
@@ -95,15 +94,17 @@ hl(0, "TSKeywordReturn",        { bg = nil, fg = colors.red })
 hl(0, "TSTypeDefinition",       { bg = nil, fg = colors.red })
 hl(0, "@lsp.type.enumMember",   { bg = nil, fg = colors.blue })
 hl(0, "TSComment",              { link = "Comment" })
+
 -- Telescope --
 hl(0, "TelescopeSelection",     { bg = colors.bg_1 })
+hl(0, "TelescopeBorder",        { fg = colors.bg_5 })
 -- IndentBlankline --
 hl(0, "IndentBlanklineChar",    { bg = nil, fg = colors.bg_2 })
 -- LspSaga
 hl(0, "SagaNormal",             { link = "Normal" })
 -- Gitsign
-hl(0, "GitSignsChange",         { link = "GreenSign" })
-hl(0, "GitSignsAdd",         { link = "AquaSign" })
+hl(0, "GitSignsChange",         { bg = nil, fg = colors.blue})
+hl(0, "GitSignsAdd",            { bg = nil, fg = colors.bg_5 })
 
 local istransparent = Arunvi.option.background.transparent
 if istransparent then
