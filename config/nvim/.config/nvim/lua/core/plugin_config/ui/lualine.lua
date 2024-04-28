@@ -95,6 +95,7 @@ require('lualine').setup {
         'diagnostics',
         symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
       },
+      { '' },
       { 'encoding' },
       { 'fileformat' }
     },

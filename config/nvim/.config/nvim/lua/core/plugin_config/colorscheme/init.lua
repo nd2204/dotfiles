@@ -24,7 +24,6 @@ hl(0, "Blue",   {ctermfg = 109, bg = nil, fg = colors.blue })
 hl(0, "Purple", {ctermfg = 175, bg = nil, fg = colors.purple })
 ---------------------------------------- Builtin ----------------------------------------
 hl(0, "Cursorline",         { bg = nil })
--- hl(0, "SignColumn",         { bg = colors.bg_1 })
 hl(0, "SignColumn",         { bg = nil })
 hl(0, "GreenSign",          { ctermfg = 147, bg = signBg, fg = colors.green,})
 hl(0, "RedSign",            { ctermfg = 167, bg = signBg, fg = colors.red})
@@ -38,7 +37,7 @@ hl(0, "CurrentWord",        { bg = colors.bg_3 })
 hl(0, "FloatBorder",        { bg = nil, fg = colors.bg_5 })
 hl(0, "LineNr",             { fg = colors.bg_5 })
 hl(0, "Normal",             { bg = colors.bg_0, fg = colors.fg_0 })
-hl(0, "NormalFloat",        { bg = colors.bg_dim, fg = colors.fg_0 })
+hl(0, "NormalFloat",        { bg = colors.bg_0, fg = colors.fg_0 })
 hl(0, "Terminal",           { bg = colors.bg_dim, fg = colors.fg_0 })
 hl(0, "VertSplit",          { bg = colors.bg_dim, fg = colors.bg_3 })
 hl(0, "WinSeparator",       { bg = nil, fg = colors.bg_4 })
@@ -94,7 +93,6 @@ hl(0, "TSKeywordReturn",        { bg = nil, fg = colors.red })
 hl(0, "TSTypeDefinition",       { bg = nil, fg = colors.red })
 hl(0, "@lsp.type.enumMember",   { bg = nil, fg = colors.blue })
 hl(0, "TSComment",              { link = "Comment" })
-
 -- Telescope --
 hl(0, "TelescopeSelection",     { bg = colors.bg_1 })
 hl(0, "TelescopeBorder",        { fg = colors.bg_5 })
@@ -138,19 +136,6 @@ if istransparent then
 
     vim.opt.fillchars       = 'msgsep:─,lastline:~,eob: ,vert:▕,vertright:▕,vertleft:▕,verthoriz:▕,horizup:─,horizdown:─' --▕▏
     vim.opt.listchars       = 'trail: ,space: ,eol:↵' -- ',tab:·,eol:¬,eol:↵,extends:>,precedes:<,'
-    -- vim.cmd('hi BufferLineFill guibg=NONE')
-    -- vim.cmd('hi BufferLineOffSetSeparator ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineCloseButton ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineCloseButtonVisible ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineCloseButtonSelected ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineBuffer ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineBufferVisible ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineBufferSelected ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineBackground ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineVisibleIndex ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineModified ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineModifiedVisible ctermbg=NONE guibg=NONE')
-    -- vim.cmd('hi BufferLineModifiedSelected ctermbg=NONE guibg=NONE')
 
     vim.cmd('hi ToggleTerm1Normal ctermbg=NONE guibg=NONE')
 end

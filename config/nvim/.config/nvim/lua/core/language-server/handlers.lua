@@ -12,9 +12,8 @@ M.setup = function()
     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.numhl })
   end
 
-  local diagnostic_config = {
+  vim.diagnostic.config({
     virtual_text = false,
-    -- show signs
     signs = {
       active = signs,
     },
@@ -29,9 +28,7 @@ M.setup = function()
       header = "",
       prefix = "",
     },
-  }
-
-  vim.diagnostic.config(diagnostic_config)
+  })
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
@@ -44,32 +41,28 @@ M.setup = function()
   })
 end
 
-
-local keymap = vim.keymap.set
 local function lsp_keymaps(bufnr)
+  local keymap = vim.keymap.set
   local bufopts = { noremap = true, silent = true , buffer = bufnr}
   -- local keymap = vim.api.nvim_buf_set_keymap
-  keymap('n', 'gd', function() vim.lsp.buf.definition() end, bufopts)
-  keymap('n', 'K', function() vim.lsp.buf.hover() end, bufopts)
-  keymap('n', ']d', function() vim.diagnostic.goto_next() end, bufopts)
-  keymap('n', '[d', function() vim.diagnostic.goto_prev() end, bufopts)
-  keymap('n', '<leader>ld', function() vim.diagnostic.open_float() end, bufopts)
-  keymap('n', '<leader>lvw', function() vim.lsp.buf.hover() end, bufopts)
-  keymap('n', '<leader>lca', function() vim.lsp.buf.code_action() end, bufopts)
-  keymap('n', "<leader>lF",  function() vim.lsp.buf.format(){async=true} end, bufopts)
-  keymap('n', "<leader>lk",  function() vim.lsp.buf.signature_help() end, bufopts)
-  keymap("n", "<leader>lD",  function() vim.lsp.buf.declaration() end, bufopts)
-  keymap("n", "<leader>li",  function() vim.lsp.buf.implementation() end, bufopts)
-  keymap("n", "<leader>lr",  function() vim.lsp.buf.references() end, bufopts)
-  keymap("n", "<leader>lq",  function() vim.diagnostic.setloclist() end, bufopts)
+  keymap('n', 'gd',           function() vim.lsp.buf.definition() end, bufopts)
+  keymap('n', 'K',            function() vim.lsp.buf.hover() end, bufopts)
+  keymap('n', ']d',           function() vim.diagnostic.goto_next() end, bufopts)
+  keymap('n', '[d',           function() vim.diagnostic.goto_prev() end, bufopts)
+  keymap('n', '<leader>ld',   function() vim.diagnostic.open_float() end, bufopts)
+  keymap('n', '<leader>lvw',  function() vim.lsp.buf.hover() end, bufopts)
+  keymap('n', '<leader>lca',  function() vim.lsp.buf.code_action() end, bufopts)
+  keymap('n', "<leader>lF",   function() vim.lsp.buf.format(){async=true} end, bufopts)
+  keymap('n', "<leader>lk",   function() vim.lsp.buf.signature_help() end, bufopts)
+  keymap("n", "<leader>lD",   function() vim.lsp.buf.declaration() end, bufopts)
+  keymap("n", "<leader>li",   function() vim.lsp.buf.implementation() end, bufopts)
+  keymap("n", "<leader>lr",   function() vim.lsp.buf.references() end, bufopts)
+  keymap("n", "<leader>lq",   function() vim.diagnostic.setloclist() end, bufopts)
 end
 
 M.on_attach = function(client, bufnr)
-  -- vim.notify(client.name .. " starting...")
-  -- TODO: refactor this into a method that checks if string in list
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false
-
   end
   if client.name == "clangd" then
     client.server_capabilities.signatureHelpProvider = false
@@ -77,13 +70,12 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
   return
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M
