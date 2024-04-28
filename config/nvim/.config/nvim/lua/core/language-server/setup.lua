@@ -14,27 +14,27 @@ local servers = {
     "rust_analyzer"
 }
 
-require("lspsaga").setup({
-    border_style = "round",
-    symbol_in_winbar = {
-        enable = false,
-        separator = " › ",
-        show_file = true,
-        folder_level = 0,
-        color_mode = true,
-    },
-    -- ui = {
-    --     kind = {
-    --         border = "rounded",
-    --         ["Folder"] = { "  ", "NvimTreeFolderIcon" },
-    --     },
-    -- },
-    diagnostic = {
-        -- diagnostic_only_current = true,
-        show_layout = 'float',
-        border_folow = false
-    }
-})
+-- require("lspsaga").setup({
+--     border_style = "round",
+--     symbol_in_winbar = {
+--         enable = false,
+--         separator = " › ",
+--         show_file = true,
+--         folder_level = 0,
+--         color_mode = true,
+--     },
+--     -- ui = {
+--     --     kind = {
+--     --         border = "rounded",
+--     --         ["Folder"] = { "  ", "NvimTreeFolderIcon" },
+--     --     },
+--     -- },
+--     diagnostic = {
+--         -- diagnostic_only_current = true,
+--         show_layout = 'float',
+--         border_folow = false
+--     }
+-- })
 
 mason.setup({})
 require("mason-lspconfig").setup {

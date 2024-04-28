@@ -57,7 +57,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
 # dimensions = { columns = 100, lines = 100 }
-decorations = "full"
+decorations = "none"
 opacity = 1
 startup_mode = "Windowed"
 padding = { x = 4, y = 4 }
