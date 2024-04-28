@@ -24,7 +24,7 @@ opt.timeoutlen      = 200
 opt.ignorecase      = true
 opt.mouse           = "a"           -- allow the mouse to be used in neovim
 opt.scrolloff       = 10             -- spare n line between your cursor and the bottom of the screen when scroll down
-opt.sidescrolloff   = 5
+opt.sidescrolloff   = 0
 -- opt.clipboard       = "unnamedplus"
 vim.cmd("set guicursor=\"n-v-c-sm-i-ci-ve:block,r-cr-e:hor20\"")
 

@@ -46,7 +46,6 @@ hl(0, "MsgSeparator",       { bg = nil, fg = colors.grey_0 })
 hl(0, "ColorColumn",        { ctermbg = 236, bg = nil })
 -- Uis --
 hl(0, "NormalNC",           { link = "Normal" })
-hl(0, "NormalFloat",        { link = "NvimTreeNormal" })
 hl(0, "Visual",             { bg = colors.bg_2 })
 hl(0, "EndOfBuffer",        { fg = colors.bg_5 })
 hl(0, "NonText",            { fg = colors.bg_1 })
@@ -98,8 +97,6 @@ hl(0, "TelescopeSelection",     { bg = colors.bg_1 })
 hl(0, "TelescopeBorder",        { fg = colors.bg_5 })
 -- IndentBlankline --
 hl(0, "IndentBlanklineChar",    { bg = nil, fg = colors.bg_2 })
--- LspSaga
-hl(0, "SagaNormal",             { link = "Normal" })
 -- Gitsign
 hl(0, "GitSignsChange",         { bg = nil, fg = colors.blue})
 hl(0, "GitSignsAdd",            { bg = nil, fg = colors.bg_5 })
