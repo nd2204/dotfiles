@@ -1,5 +1,5 @@
 {
-  "ActivationHotkey": "Ctrl_Win",
+  "ActivationHotkey": "Shift_Win",
   "ActivateOnCapsLock": false,
   "ShowStartupWindow": true,
   "NotifyVirtualDesktopServiceIncompatibility": true,
