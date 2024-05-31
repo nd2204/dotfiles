@@ -27,7 +27,7 @@ local theme = {
   grey_2  = { ["dark"] = "#60728A", ["light"] = "#60728A" },
   fg_0    = { ["dark"] = "#C0C8D8", ["light"] = "#ECEFF4" },
   fg_1    = { ["dark"] = "#D8DEE9", ["light"] = "#E5E9F0" },
-  red     = { ["dark"] = "#BF616A", ["light"] = "#BF616A" },
+  red     = { ["dark"] = "#D3869B", ["light"] = "#BF616A" },
   orange  = { ["dark"] = "#D08770", ["light"] = "#D08770" },
   yellow  = { ["dark"] = "#EBCB8B", ["light"] = "#EBCB8B" },
   green   = { ["dark"] = "#A3BE8C", ["light"] = "#A3BE8C" },
@@ -79,12 +79,19 @@ M.setup = function()
     }
   }
   local colors = M.getcolors(Arunvi.option.background.mode)
-  vim.api.nvim_set_hl(0, "TSPunctBracket",    { bg = nil, fg = colors.bg_5 })
-  -- vim.api.nvim_set_hl(0, "TSOperator",        { bg = nil, fg = colors.orange })
-  -- vim.api.nvim_set_hl(0, "TSTypeQualifier",   { bg = nil, fg = colors.red })
-  -- vim.api.nvim_set_hl(0, "TSTag",             { bg = nil, fg = colors.aqua })
-  -- vim.api.nvim_set_hl(0, "TSTagDelimiter",    { bg = nil, fg = colors.grey_0 })
-  -- vim.api.nvim_set_hl(0, "TSTagAttribute",    { bg = nil, fg = colors.yellow })
+  local hl = vim.api.nvim_set_hl;
+  hl(0, "TSPunctBracket",    { bg = nil, fg = colors.bg_5 })
+  hl(0, "Function",          { bg = nil, fg = colors.green })
+  hl(0, "TSOperator",        { bg = nil, fg = colors.orange })
+  hl(0, "TSTypeQualifier",   { bg = nil, fg = colors.orange })
+  hl(0, "TSTypeBuiltin",     { bg = nil, fg = colors.yellow })
+  hl(0, "TSType",            { bg = nil, fg = colors.yellow })
+  hl(0, "TSTag",             { bg = nil, fg = colors.aqua })
+  hl(0, "TSTagDelimiter",    { bg = nil, fg = colors.grey_0 })
+  hl(0, "TSTagAttribute",    { bg = nil, fg = colors.yellow })
+  hl(0, "TSKeyword",         { bg = nil, fg = colors.red })
+  hl(0, "TSProperty",        { bg = nil, fg = colors.aqua })
+  hl(0, "TSField",           { bg = nil, fg = colors.aqua })
 end
 
 return M

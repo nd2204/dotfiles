@@ -1,13 +1,13 @@
 [colors.primary]
-background = "#191D24"
+background = "#1E222A"
 foreground = "#C0C8D8"
 
 [colors.normal]
 black   = "#434C5E"
-red     = "#e67e80"
+red     = "#E67E80"
 yellow  = "#EBCB8B"
 green   = "#A3BE8C"
-blue    = "#83a598"
+blue    = "#83A598"
 magenta = "#B48EAD"
 cyan    = "#8FBCBB"
 white   = "#ECEFF4"
