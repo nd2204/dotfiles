@@ -77,8 +77,11 @@ M.setup = function()
   vim.cmd("colorscheme gruvbox-material")
   local colors = M.getcolors(Arunvi.option.background.mode)
   vim.api.nvim_set_hl(0, "TSPunctBracket",    { bg = nil, fg = colors.bg_5 })
-  vim.api.nvim_set_hl(0, "TSOperator",        { bg = nil, fg = colors.aqua })
+  vim.api.nvim_set_hl(0, "TSOperator",        { bg = nil, fg = colors.orange })
   vim.api.nvim_set_hl(0, "TSTypeQualifier",   { bg = nil, fg = colors.red })
+  vim.api.nvim_set_hl(0, "TSTag",             { bg = nil, fg = colors.aqua })
+  vim.api.nvim_set_hl(0, "TSTagDelimiter",    { bg = nil, fg = colors.grey_0 })
+  vim.api.nvim_set_hl(0, "TSTagAttribute",    { bg = nil, fg = colors.yellow })
 end
 
 return M

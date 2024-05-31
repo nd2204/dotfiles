@@ -42,9 +42,17 @@ local plugins = {
   -- Colorscheme
   {"catppuccin/nvim", name = "catppuccin" },
   {'rose-pine/neovim', name = 'rose-pine'},
-  "ellisonleao/gruvbox.nvim",
-  "sainnhe/gruvbox-material",
-  "sainnhe/everforest",
+  {"ellisonleao/gruvbox.nvim"},
+  {"sainnhe/gruvbox-material"},
+  {"sainnhe/everforest"},
+  {
+    'AlexvZyl/nordic.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require 'nordic' .load()
+    end
+  },
   -- Syntax
   'nvim-treesitter/nvim-treesitter',
   'windwp/nvim-ts-autotag',

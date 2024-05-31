@@ -49,7 +49,7 @@ opt.expandtab       = true
 
 opt.backspace       = 'indent,eol,start'
 opt.showcmd         = true
-opt.laststatus      = 3
+opt.laststatus      = 2
 opt.shiftround      = true
 opt.smartindent     = true
 opt.linebreak       = false         -- wrap whole word when wrap is enable

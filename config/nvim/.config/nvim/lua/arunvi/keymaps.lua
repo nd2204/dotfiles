@@ -11,6 +11,12 @@ keymap('n','<ESC>',':nohlsearch<CR>', opts)
 -- Navigate buffers
 keymap('n','<S-h>',':bprevious<CR>',opts)
 keymap('n','<S-l>',':bnext<CR>',opts)
+-- Navigate between quickfix items
+keymap('n',']q', ':cnext<CR>zz', {desc = 'Forward Quickfix List'})
+keymap('n','[q', ':cprev<CR>zz', {desc = 'Backward Quickfix List'})
+-- Navigate between quickfix items
+keymap('n',']l', ':lnext<CR>zz', {desc = 'Forward Quickfix List'})
+keymap('n','[l', ':lprev<CR>zz', {desc = 'Backward Quickfix List'})
 -- Navigate tabs
 keymap('n','<Tab>','<cmd>tabnext<CR>',opts)
 keymap('n','<S-Tab>','<cmd>tabprevious<CR>',opts)
@@ -26,7 +32,7 @@ keymap('n', '<M-h>', ':vertical resize -2<CR>', opts)
 keymap('n', '<M-l>', ':vertical resize +2<CR>', opts)
 -- (theprimeagen keymap) 
 keymap('x', '<leader>p', "\"_dP") -- Remap for not overwrite the copy register with the currently deleted 
-keymap({'n', 'v'}, '<leader>p', "\"+y") -- Remap for not overwrite the copy register with the currently deleted 
+keymap({'n', 'v'}, '<leader>y', "\"+y") -- Remap for not overwrite the copy register with the currently deleted 
 keymap('n', '<C-d>', '<C-d>zz')
 keymap('n', '<C-d>', '<C-d>zz')
 keymap('n', 'n', 'nzzzv')

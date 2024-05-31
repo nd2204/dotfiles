@@ -134,32 +134,14 @@ local mappings = {
     },
     ["f"] = {
         name = "Search/Telescope",
-        ["p"] = {'<cmd>Telescope projects<CR>', 'Recent Projects'},
-        ["D"] = {'<cmd>Telescope diagnostics bufnr=0<CR>', "Diagnostics"},
-        ["f"] = {
-            "<cmd>lua require'telescope.builtin'.find_files(require'telescope.themes'.get_dropdown({previewer = false}))<cr>",
-            "Cwd Files",
-        },
-        ["d"] = {"<cmd>Telescope fd<cr>", "Find Files"},
+        ["d"] = {'<cmd>Telescope diagnostics bufnr=0<CR>', "Diagnostics"},
+        ["f"] = {"<cmd>lua require'telescope.builtin'.find_files(require'telescope.themes'.get_dropdown({previewer = false}))<cr>", "Cwd Files"},
         ["o"] = {"<cmd>Telescope oldfiles<cr>", "Recent File"},
-        ["g"] = {
-            "<cmd>lua require'telescope.builtin'.live_grep(require'telescope.themes'.get_dropdown({previewer = false}))<cr>",
-            "Grep",
-        },
-        ["h"] = {
-            "<cmd>lua require'telescope.builtin'.help_tags(require'telescope.themes'.get_dropdown({previewer = true}))<cr>",
-            "Help Tags",
-        },
+        ["g"] = {"<cmd>lua require'telescope.builtin'.live_grep(require'telescope.themes'.get_ivy({previewer = false}))<cr>", "Grep"},
+        ["h"] = {"<CMD>Telescope help_tags", "Help Tags",},
         ["k"] = {"<cmd>Telescope keymaps<cr>", "Keymaps"},
-        ["n"] = {"<cmd>Telescope notify<cr>", "Notification"},
-        ["b"] = {
-            "<cmd>lua require'telescope.builtin'.buffers(require'telescope.themes'.get_dropdown({previewer = false}))<cr>",
-            "Current Buffer",
-        },
-        ["B"] = {
-            "<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require'telescope.themes'.get_dropdown({previewer = false}))<cr>",
-            "Current Buffer",
-        },
+        ["b"] = {"<cmd>lua require'telescope.builtin'.buffers(require'telescope.themes'.get_dropdown({previewer = false}))<cr>", "Current Buffer"},
+        ["B"] = {"<cmd>lua require'telescope.builtin'.current_buffer_fuzzy_find(require'telescope.themes'.get_dropdown({previewer = false}))<cr>", "Current Buffer"},
     },
     t = {
         name = "Terminal",

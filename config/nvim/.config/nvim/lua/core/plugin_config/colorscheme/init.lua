@@ -1,7 +1,7 @@
 local theme = Arunvi.option.background.colorscheme local _, cls = pcall(require, "core.plugin_config.colorscheme." .. theme)
 if not _ then
-    vim.notify("Failed to load config file " .. theme .. ".lua")
-    return
+  vim.notify("Failed to load config file " .. theme .. ".lua")
+  return
 end
 
 local M = {}
@@ -15,6 +15,8 @@ M.theme = colors
 cls.setup()
 local hl = vim.api.nvim_set_hl
 --------------------------------- Override default color --------------------------------
+hl(0, "Fg",     {ctermfg = 223, bg = nil, fg = colors.fg_0 })
+hl(0, "Grey",   {ctermfg = 245, bg = nil, fg = colors.grey_0 })
 hl(0, "Red",    {ctermfg = 167, bg = nil, fg = colors.red })
 hl(0, "Yellow", {ctermfg = 214, bg = nil, fg = colors.yellow })
 hl(0, "Orange", {ctermfg = 208, bg = nil, fg = colors.orange })
@@ -24,6 +26,7 @@ hl(0, "Blue",   {ctermfg = 109, bg = nil, fg = colors.blue })
 hl(0, "Purple", {ctermfg = 175, bg = nil, fg = colors.purple })
 ---------------------------------------- Builtin ----------------------------------------
 hl(0, "Cursorline",         { bg = nil })
+hl(0, "CursorlineNr",       { bg = nil, fg = colors.fg_1 })
 hl(0, "SignColumn",         { bg = nil })
 hl(0, "GreenSign",          { ctermfg = 147, bg = signBg, fg = colors.green,})
 hl(0, "RedSign",            { ctermfg = 167, bg = signBg, fg = colors.red})
@@ -32,7 +35,6 @@ hl(0, "YellowSign",         { ctermfg = 214, bg = signBg, fg = colors.yellow})
 hl(0, "PurpleSign",         { ctermfg = 175, bg = signBg, fg = colors.purple})
 hl(0, "OrangeSign",         { ctermfg = 208, bg = signBg, fg = colors.orange})
 hl(0, "AquaSign",           { ctermfg = 108, bg = signBg, fg = colors.aqua})
-hl(0, "CursorlineNr",       { fg = colors.fg_1 })
 hl(0, "CurrentWord",        { bg = colors.bg_3 })
 hl(0, "FloatBorder",        { bg = nil, fg = colors.bg_5 })
 hl(0, "LineNr",             { fg = colors.bg_5 })
@@ -69,21 +71,26 @@ hl(0, "NvimTreeNormal",         { bg = colors.bg_dim, fg = colors.fg_0 })
 hl(0, "NvimTreeEndOfBuffer",    { fg = colors.bg_dim })
 hl(0, "NvimTreeWinSeparator",   { bg = colors.bg_dim, fg = colors.bg_dim})
 hl(0, "NvimTreeVertSplit" ,     { bg = colors.bg_dim, fg = colors.bg_dim})
-hl(0, "NvimTreeCursorLine" ,    { link = "Cursorline" } )
+hl(0, "NvimTreeCursorLine" ,    { bg = colors.bg_0 } )
+hl(0, "NvimTreeCursorLineNr" ,  { bg = colors.bg_0 } )
 hl(0, "NvimTreeIndentMarker",   { link = "IndentBlanklineChar" } )
 hl(0, "NvimTreeGitNew",         { link = "Yellow" } )
+
 ---------------------------------------- Syntax ----------------------------------------
+
 -- Treesitter --
-hl(0, "TSPunctBracket",         { bg = nil, fg = colors.bg_5 })
+hl(0, "TSPunctBracket",         { bg = nil, fg = colors.grey_0 })
 hl(0, "TSProperty",             { bg = nil, fg = colors.fg_0 })
 hl(0, "TSField",                { bg = nil, fg = colors.fg_0 })
 hl(0, "Identifier",             { bg = nil, fg = colors.fg_0 })
 hl(0, "TSTypeBuiltin",          { bg = nil, fg = colors.red })
-hl(0, "Function",               { bg = nil, fg = colors.green })
-hl(0, "TSFunctionCall",         { bg = nil, fg = colors.green })
-hl(0, "TSFuncBuiltin",          { bg = nil, fg = colors.green })
-hl(0, "TSFuncMacro",            { bg = nil, fg = colors.green })
-hl(0, "TSFunction",             { bg = nil, fg = colors.green })
+hl(0, "Function",               { bg = nil, fg = colors.aqua })
+hl(0, "TSFunctionCall",         { link = "Function" })
+hl(0, "TSFuncBuiltin",          { link = "Function" })
+hl(0, "TSFuncMacro",            { link = "Function" })
+hl(0, "TSFunction",             { link = "Function" })
+hl(0, "TSMethod",               { link = "Function" })
+hl(0, "TSMethodCall",           { link = "Function" })
 hl(0, "TSString",               { bg = nil, fg = colors.green })
 hl(0, "TSConditional",          { bg = nil, fg = colors.red })
 hl(0, "TSKeyword",              { bg = nil, fg = colors.red })
@@ -103,38 +110,38 @@ hl(0, "GitSignsAdd",            { bg = nil, fg = colors.bg_5 })
 
 local istransparent = Arunvi.option.background.transparent
 if istransparent then
-    vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
-    vim.cmd('hi NormalFloat ctermbg=NONE guibg=NONE')
-    vim.cmd('hi FloatBorder ctermbg=NONE guibg=NONE')
-    vim.cmd('hi Winbar ctermbg=NONE guibg=NONE') --tranparent winbar
-    vim.cmd('hi WinbarNC ctermbg=NONE guibg=NONE') --tranparent winbar
-    vim.cmd('hi NormalNC ctermbg=NONE guibg=NONE') --tranparent winbar
+  vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
+  vim.cmd('hi NormalFloat ctermbg=NONE guibg=NONE')
+  vim.cmd('hi FloatBorder ctermbg=NONE guibg=NONE')
+  vim.cmd('hi Winbar ctermbg=NONE guibg=NONE') --tranparent winbar
+  vim.cmd('hi WinbarNC ctermbg=NONE guibg=NONE') --tranparent winbar
+  vim.cmd('hi NormalNC ctermbg=NONE guibg=NONE') --tranparent winbar
 
-    vim.cmd('hi WinSeparator ctermbg=NONE guibg=NONE')
-    vim.cmd('hi SignColumn ctermbg=NONE guibg=NONE')
-    vim.cmd('hi EndOfBuffer guibg=NONE ctermbg=NONE')
-    vim.cmd('hi NvimTreeVertSplit guibg=NONE')
-    vim.cmd('hi VertSplit guibg=NONE')
-    vim.cmd('hi WinSeparator guibg=NONE')
-    vim.cmd('hi Cursorline ctermbg=240 guibg=NONE gui=NONE')
+  vim.cmd('hi WinSeparator ctermbg=NONE guibg=NONE')
+  vim.cmd('hi SignColumn ctermbg=NONE guibg=NONE')
+  vim.cmd('hi EndOfBuffer guibg=NONE ctermbg=NONE')
+  vim.cmd('hi NvimTreeVertSplit guibg=NONE')
+  vim.cmd('hi VertSplit guibg=NONE')
+  vim.cmd('hi WinSeparator guibg=NONE')
+  vim.cmd('hi Cursorline ctermbg=240 guibg=NONE gui=NONE')
 
-    hl(0, "GreenSign",          { ctermfg = 147, bg = nil, fg = colors.green,})
-    hl(0, "RedSign",            { ctermfg = 167, bg = nil, fg = colors.red})
-    hl(0, "BlueSign",           { ctermfg = 109, bg = nil, fg = colors.blue})
-    hl(0, "YellowSign",         { ctermfg = 214, bg = nil, fg = colors.yellow})
-    hl(0, "PurpleSign",         { ctermfg = 175, bg = nil, fg = colors.purple})
-    hl(0, "OrangeSign",         { ctermfg = 208, bg = nil, fg = colors.orange})
-    hl(0, "AquaSign",           { ctermfg = 108, bg = nil, fg = colors.aqua})
+  hl(0, "GreenSign",          { ctermfg = 147, bg = nil, fg = colors.green,})
+  hl(0, "RedSign",            { ctermfg = 167, bg = nil, fg = colors.red})
+  hl(0, "BlueSign",           { ctermfg = 109, bg = nil, fg = colors.blue})
+  hl(0, "YellowSign",         { ctermfg = 214, bg = nil, fg = colors.yellow})
+  hl(0, "PurpleSign",         { ctermfg = 175, bg = nil, fg = colors.purple})
+  hl(0, "OrangeSign",         { ctermfg = 208, bg = nil, fg = colors.orange})
+  hl(0, "AquaSign",           { ctermfg = 108, bg = nil, fg = colors.aqua})
 
-    hl(0, "NvimTreeNormal",         { bg = nil, fg = colors.fg_0 })
-    hl(0, "NvimTreeEndOfBuffer",    { fg = nil })
-    hl(0, "NvimTreeWinSeparator",   { bg = nil, fg = colors.bg_4})
-    hl(0, "NvimTreeVertSplit" ,     { bg = nil, fg = colors.bg_4})
+  hl(0, "NvimTreeNormal",         { bg = nil, fg = colors.fg_0 })
+  hl(0, "NvimTreeEndOfBuffer",    { fg = nil })
+  hl(0, "NvimTreeWinSeparator",   { bg = nil, fg = colors.bg_4})
+  hl(0, "NvimTreeVertSplit" ,     { bg = nil, fg = colors.bg_4})
 
-    vim.opt.fillchars       = 'msgsep:─,lastline:~,eob: ,vert:▕,vertright:▕,vertleft:▕,verthoriz:▕,horizup:─,horizdown:─' --▕▏
-    vim.opt.listchars       = 'trail: ,space: ,eol:↵' -- ',tab:·,eol:¬,eol:↵,extends:>,precedes:<,'
+  vim.opt.fillchars       = 'msgsep:─,lastline:~,eob: ,vert:▕,vertright:▕,vertleft:▕,verthoriz:▕,horizup:─,horizdown:─' --▕▏
+  vim.opt.listchars       = 'trail: ,space: ,eol:↵' -- ',tab:·,eol:¬,eol:↵,extends:>,precedes:<,'
 
-    vim.cmd('hi ToggleTerm1Normal ctermbg=NONE guibg=NONE')
+  vim.cmd('hi ToggleTerm1Normal ctermbg=NONE guibg=NONE')
 end
 
 return M

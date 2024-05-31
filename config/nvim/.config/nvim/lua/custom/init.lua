@@ -13,6 +13,7 @@ local aucmds =
   ["c"]   = "<CMD>term gcc -O2 -Wall % -o main && ./main ; rm main<CR>",
   ["rs"]  = "<CMD>term rustc --edition=2018 -C opt-level=3 % -o main && ./main ; rm main<CR>",
   ["py"]  = "<CMD>term python3 %<CR>",
+  ['lua'] = "<CMD>luafile %<CR>"
 }
 
 local buffopts = {buffer = true, noremap = false}
@@ -25,38 +26,3 @@ for ext, cmd in pairs(aucmds)  do
   })
   -- print(ext, cmd)
 end
-
--- local new_popup = Popup({
---     enter = true,
---     focusable = true,
---     relative = 'win',
---     border = {
---         style = 'single',
---         text = {
---             top = ' Output ',
---         }
---     },
---     position = '50%',
---     size = {
---         width = '90%',
---         height = '90%',
---     },
---     buf_options = {
---         modifiable = true,
---         readonly = false,
---     },
---     win_options = {
---         winblend = 0,
---         winhighlight = "Normal:Normal, FloatBorder:FloatBorder"
---     }
--- })
-
--- new_popup:mount()
-
--- for i = 1,1000000,1 do
---     new_popup.border:set_text("top", tostring(i),"right")
--- end
-
--- new_popup:on(Event.BufLeave, function()
---     new_popup:unmount()
--- end)

@@ -1,97 +1,92 @@
 #!/usr/bin/bash
 
 if [[ -d $DOTFILES && ! -z $DOTFILES ]]; then
-    ALACRITTY_DIR="$DOTFILES/config/alacritty_win"
+  ALACRITTY_DIR="$DOTFILES/config/alacritty_win"
 else
-    read -r -p "Where's the dotfiles: " dotfiles_path
-    if [ -d $dotfiles_path ]; then
-        export DOTFILES=$(realpath $dotfiles_path)
-        ALACRITTY_DIR="$DOTFILES/config/alacritty_win"
-    else
-        echo "Error: $dotfiles_path Not a directory"
-        exit 1
-    fi
+  read -r -p "Where's the dotfiles: " dotfiles_path
+  if [ -d $dotfiles_path ]; then
+    export DOTFILES=$(realpath $dotfiles_path)
+    ALACRITTY_DIR="$DOTFILES/config/alacritty_win"
+  else
+    echo "Error: $dotfiles_path Not a directory"
+    exit 1
+  fi
 fi
 
 # Append to a list of usernames that has alacritty directory
 dirs_name=()
 while IFS= read -r -d '' dir; do
-    # eval echo ${dir/-/ }
-    if [ -d "${dir/-/ }/AppData/Roaming/alacritty" ]; then
-        dirs_name+=("$( basename $dir | tr ' ' '-')")
-    else
-        mkdir "$(eval echo ${dir/-/ })/AppData/Roaming/alacritty" 2> /dev/null \
-            && dirs_name+=("$( basename "$dir" | tr ' ' '-')")
-        fi
+  # eval echo ${dir/-/ }
+  if [ -d "${dir/-/ }/AppData/Roaming/alacritty" ]; then
+    dirs_name+=("$( basename $dir | tr ' ' '-')")
+  else
+    mkdir "$(eval echo ${dir/-/ })/AppData/Roaming/alacritty" 2> /dev/null \
+        && dirs_name+=("$( basename "$dir" | tr ' ' '-')")
+    fi
 done < <(find /mnt/c/Users -mindepth 1 -maxdepth 1 -type d -print0 | tr ' ' '-')
 
-# for name in ${dirs_name[@]}; do
-#     echo "${name/-/ }"
-# done
-
-
 function refresh() {
-    for usrname in ${dirs_name[@]}; do
-        dest="\"/mnt/c/Users/${usrname/-/ }/AppData/Roaming/alacritty/\""
-        eval cp -r ${ALACRITTY_DIR}/themes ${dest}
-        eval cp ${ALACRITTY_DIR}/alacritty.toml ${dest}
-    done
+  for usrname in ${dirs_name[@]}; do
+    dest="\"/mnt/c/Users/${usrname/-/ }/AppData/Roaming/alacritty/\""
+    eval cp -r ${ALACRITTY_DIR}/themes ${dest}
+    eval cp ${ALACRITTY_DIR}/alacritty.toml ${dest}
+  done
 }
 
 function temu() {
-    case "$1" in
-        "-o" | "--opacity" | "-t" | "--transparency")
-            result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0 || n1 > 1) print 0; else print 1 }')
-            if [ $result -eq 0 ]; then
-                echo "Decimal must in range 0.00 to 1.00"
-                exit 1
-            fi
-            sed -i "s/\(opacity.*=\).*/\1 $2/" \
-                ${ALACRITTY_DIR}/alacritty.toml
-            ;;
-        "--font-size" | "-f")
-            result=$(awk -v n1="$2" 'BEGIN { if (n1 <= 0) print 0; else print 1 }')
-            if [ $result -eq 0 ]; then
-                echo "font size must be a positive integer"
-                exit 1
-            fi
-            sed -i "s/\(\bsize\b.*=\).*/\1 $2/" \
-                ${ALACRITTY_DIR}/alacritty.toml
-            ;;
-        "-p" | "--padding" )
-            result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0) print 0; else print 1 }')
-            if [ $result -eq 0 ]; then
-                echo "Padding value must be a non negative integer"
-                exit 1
-            fi
-            sed -i "s/\(padding.*=.*{\).*/\1 x = $2, y = $2 }/" \
-                ${ALACRITTY_DIR}/alacritty.toml
-            ;;
-        "-d" | "--decoration")
-            decorations="full | none | transparent | buttonless"
-            if ! [[ $decorations =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
-                echo "Available value: [$decorations]"
-                exit 1
-            fi
-            sed -i "s/\(decorations.*=\).*/\1 \"$2\"/" \
-                ${ALACRITTY_DIR}/alacritty.toml
-            echo "Please restart for setting to take effect"
-            ;;
-        "--theme")
-            themes="gruvbox | gruvbox_light | catppuccin | everforest"
-            if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
-                echo "Usage: $0 $1 [$themes]"
-                exit 1
-            fi
-            for usrname in ${dirs_name[@]}; do
-                winpath="['C:\\\Users\\\\${usrname}\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.toml']"
-                winpath=$(printf "%s" ${winpath})
-                echo $winpath
-                sed -i "s/\(import.*\=\).*/\1 ${winpath/-/ }/" \
-                    ${ALACRITTY_DIR}/alacritty.toml
-            done
-            ;;
-    esac
+  case "$1" in
+    "-o" | "--opacity" | "-t" | "--transparency")
+      result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0 || n1 > 1) print 0; else print 1 }')
+      if [ $result -eq 0 ]; then
+        echo "Decimal must in range 0.00 to 1.00"
+        exit 1
+      fi
+      sed -i "s/\(opacity.*=\).*/\1 $2/" \
+        ${ALACRITTY_DIR}/alacritty.toml
+      ;;
+    "--font-size" | "-f")
+      result=$(awk -v n1="$2" 'BEGIN { if (n1 <= 0) print 0; else print 1 }')
+      if [ $result -eq 0 ]; then
+        echo "font size must be a positive integer"
+        exit 1
+      fi
+      sed -i "s/\(\bsize\b.*=\).*/\1 $2/" \
+        ${ALACRITTY_DIR}/alacritty.toml
+      ;;
+    "-p" | "--padding" )
+      result=$(awk -v n1="$2" 'BEGIN { if (n1 < 0) print 0; else print 1 }')
+      if [ $result -eq 0 ]; then
+        echo "Padding value must be a non negative integer"
+        exit 1
+      fi
+      sed -i "s/\(padding.*=.*{\).*/\1 x = $2, y = $2 }/" \
+        ${ALACRITTY_DIR}/alacritty.toml
+      ;;
+    "-d" | "--decoration")
+      decorations="full | none | transparent | buttonless"
+      if ! [[ $decorations =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
+        echo "Available value: [$decorations]"
+        exit 1
+      fi
+      sed -i "s/\(decorations.*=\).*/\1 \"$2\"/" \
+        ${ALACRITTY_DIR}/alacritty.toml
+      echo "Please restart for setting to take effect"
+      ;;
+  "--theme")
+    themes="gruvbox | gruvbox_light | catppuccin | everforest | nordic"
+    if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
+      echo "Usage: $0 $1 [$themes]"
+      exit 1
+    fi
+    for usrname in ${dirs_name[@]}; do
+      winpath="['C:\\\Users\\\\${usrname}\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.toml']"
+      winpath=$(printf "%s" ${winpath})
+      echo $winpath
+      sed -i "s/\(import.*\=\).*/\1 ${winpath/-/ }/" \
+          ${ALACRITTY_DIR}/alacritty.toml
+    done
+    ;;
+  esac
 }
 
 if [[ $# -lt 1 ]]; then
