@@ -1,5 +1,5 @@
 # custom_cursor_colors = true
-import = ['C:\Users\dn200\AppData\Roaming\alacritty\themes\nordic.toml']
+import = ['C:\Users\dn200\AppData\Roaming\alacritty\themes\gruvbox.toml']
 live_config_reload = true
 
 [shell]
@@ -22,7 +22,7 @@ history     = 10000
 multiplier  = 10
 
 [env]
-TERM = "xterm-256color"
+TERM = "xterm-kitty"
 
 [font]
 normal      = { family = "JetBrainsMono Nerd Font Mono", style = "Medium" }
@@ -30,7 +30,7 @@ bold        = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
 italic      = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
 
-size                = 15
+size                = 13
 offset              = { x = 0, y = 0 }
 glyph_offset        = { x = 0, y = 0 }
 builtin_box_drawing = false
@@ -47,7 +47,6 @@ bindings = [
     { key = "Key0"      , action = "ResetFontSize"      , mods = "Control" }
 ]
 
-
 [mouse]
 hide_when_typing = true
 
@@ -56,12 +55,12 @@ save_to_clipboard = true
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
-# dimensions = { columns = 100, lines = 100 }
-decorations = "none"
+dimensions = { columns = 120, lines = 40 }
+decorations = "full"
 opacity = 1
 startup_mode = "Windowed"
 padding = { x = 4, y = 4 }
 blur = true
 title = "Alacritty"
 dynamic_title = false
-resize_increments = false
+resize_increments = true

@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+#
+decorations="full | none | transparent | buttonless"
+themes="gruvbox | gruvbox_light | catppuccin | everforest | nordic"
 
 if [[ -d $DOTFILES && ! -z $DOTFILES ]]; then
   ALACRITTY_DIR="$DOTFILES/config/alacritty_win"
@@ -33,6 +36,19 @@ function refresh() {
   done
 }
 
+function printUsage() {
+  echo "
+temu [option] [value]
+usage:
+  temu -o | --opacity | --transparency [value]
+  temu -f | --font-size [value]
+  temu -p | --padding [value]
+  temu -d | --decoration [$decorations]
+  temu -t | --theme [$themes]
+"
+}
+
+
 function temu() {
   case "$1" in
     "-o" | "--opacity" | "-t" | "--transparency")
@@ -63,7 +79,6 @@ function temu() {
         ${ALACRITTY_DIR}/alacritty.toml
       ;;
     "-d" | "--decoration")
-      decorations="full | none | transparent | buttonless"
       if ! [[ $decorations =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
         echo "Available value: [$decorations]"
         exit 1
@@ -72,31 +87,31 @@ function temu() {
         ${ALACRITTY_DIR}/alacritty.toml
       echo "Please restart for setting to take effect"
       ;;
-  "--theme")
-    themes="gruvbox | gruvbox_light | catppuccin | everforest | nordic"
-    if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
-      echo "Usage: $0 $1 [$themes]"
-      exit 1
-    fi
-    for usrname in ${dirs_name[@]}; do
-      winpath="['C:\\\Users\\\\${usrname}\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.toml']"
-      winpath=$(printf "%s" ${winpath})
-      echo $winpath
-      sed -i "s/\(import.*\=\).*/\1 ${winpath/-/ }/" \
-          ${ALACRITTY_DIR}/alacritty.toml
-    done
+    "-t" | "--theme")
+      if ! [[ $themes =~ (^|[[:space:]])"$2"($|[[:space:]]) && ! "|" =~ "$2" ]]; then
+        echo "Usage: $0 $1 [$themes]"
+        exit 1
+      fi
+      for usrname in ${dirs_name[@]}; do
+        winpath="['C:\\\Users\\\\${usrname}\\\\AppData\\\\Roaming\\\\alacritty\\\\themes\\\\$2.toml']"
+        winpath=$(printf "%s" ${winpath})
+        echo $winpath
+        sed -i "s/\(import.*\=\).*/\1 ${winpath/-/ }/" \
+            ${ALACRITTY_DIR}/alacritty.toml
+      done
     ;;
   esac
 }
 
 if [[ $# -lt 1 ]]; then
-    refresh
+  printUsage
+  refresh
 else
-    # alter $1 $2
-    # refresh
-    args=("$@")
-    for num in $(seq 0 2 $#); do
-        temu ${args[$num]} ${args[$num+1]}
-        refresh
-    done
+  # alter $1 $2
+  # refresh
+  args=("$@")
+  for num in $(seq 0 2 $#); do
+    temu ${args[$num]} ${args[$num+1]}
+    refresh
+  done
 fi

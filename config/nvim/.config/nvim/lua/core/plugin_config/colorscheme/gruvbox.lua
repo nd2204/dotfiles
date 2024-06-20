@@ -41,16 +41,16 @@ local theme = {
   grey_0  = { ["dark"] = "#7c6f64", ["light"] = "#a89984" },
   grey_1  = { ["dark"] = "#928374", ["light"] = "#928374" },
   grey_2  = { ["dark"] = "#a89984", ["light"] = "#7c6f64" },
-  fg_0    = { ["dark"] = "#ebdbb2", ["light"] = "#654735" },
+  fg_0    = { ["dark"] = "#d5c4a1", ["light"] = "#654735" },
   fg_1    = { ["dark"] = "#ebdbb2", ["light"] = "#654735" },
   red     = { ["dark"] = "#f2594b", ["light"] = "#c14a4a" },
-  orange  = { ["dark"] = "#f28534", ["light"] = "#c35e0a" },
-  yellow  = { ["dark"] = "#e9b143", ["light"] = "#b47109" },
-  green   = { ["dark"] = "#b8bb26", ["light"] = "#6c782e" },
+  orange  = { ["dark"] = "#e78a4e", ["light"] = "#c35e0a" },
+  yellow  = { ["dark"] = "#E5AF48", ["light"] = "#b47109" },
+  green   = { ["dark"] = "#B0B84C", ["light"] = "#6c782e" },
   aqua    = { ["dark"] = "#8ec07c", ["light"] = "#4c7a5d" },
-  blue    = { ["dark"] = "#80aa9e", ["light"] = "#45707a" },
+  blue    = { ["dark"] = "#8AA98A", ["light"] = "#45707a" },
   purple  = { ["dark"] = "#d3869b", ["light"] = "#945e80" },
-  accent  = { ["dark"] = "#b8bb26", ["light"] = "#6c782e" },
+  accent  = { ["dark"] = "#b0b846", ["light"] = "#6c782e" },
 }
 
 M.getcolors = function(mode)
@@ -76,12 +76,19 @@ M.setup = function()
 
   vim.cmd("colorscheme gruvbox-material")
   local colors = M.getcolors(Arunvi.option.background.mode)
-  vim.api.nvim_set_hl(0, "TSPunctBracket",    { bg = nil, fg = colors.bg_5 })
-  vim.api.nvim_set_hl(0, "TSOperator",        { bg = nil, fg = colors.orange })
-  vim.api.nvim_set_hl(0, "TSTypeQualifier",   { bg = nil, fg = colors.red })
-  vim.api.nvim_set_hl(0, "TSTag",             { bg = nil, fg = colors.aqua })
-  vim.api.nvim_set_hl(0, "TSTagDelimiter",    { bg = nil, fg = colors.grey_0 })
-  vim.api.nvim_set_hl(0, "TSTagAttribute",    { bg = nil, fg = colors.yellow })
+  local hl = vim.api.nvim_set_hl
+  hl(0, "TSPunctBracket",    { bg = nil, fg = colors.bg_5 })
+  hl(0, "Function",          { bg = nil, fg = colors.green })
+  hl(0, "TSOperator",        { bg = nil, fg = colors.orange })
+  hl(0, "TSTypeQualifier",   { bg = nil, fg = colors.red })
+  hl(0, "TSTypeBuiltin",     { bg = nil, fg = colors.yellow })
+  hl(0, "TSType",            { bg = nil, fg = colors.yellow })
+  hl(0, "TSTag",             { bg = nil, fg = colors.aqua })
+  hl(0, "TSTagDelimiter",    { bg = nil, fg = colors.grey_0 })
+  hl(0, "TSTagAttribute",    { bg = nil, fg = colors.yellow })
+  hl(0, "TSKeyword",         { bg = nil, fg = colors.red })
+  hl(0, "TSProperty",        { bg = nil, fg = colors.blue })
+  hl(0, "TSField",           { bg = nil, fg = colors.blue })
 end
 
 return M
