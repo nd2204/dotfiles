@@ -5,12 +5,15 @@
   "NotifyVirtualDesktopServiceIncompatibility": true,
   "AllocateNewPanelSpace": true,
   "AutoCollapsePanels": true,
+  "AutoSplitCount": 2,
+  "DelayReposition": false,
   "AnimateWindowMovement": true,
   "ModifierMoveWindow": true,
   "ModifierMoveWindowAutoFocus": false,
   "WindowPadding": 8,
   "PanelHeight": 18,
   "PanelFontSize": 12,
+  "ShowFocus": false,
   "ShowFocusDuringAction": true,
   "OverrideAccentColor": false,
   "CustomAccentColor": "#0064FFFF",
@@ -437,7 +440,8 @@
     "SystemSettings",
     "procexp",
     "steamwebhelper",
-    "vcxsrv"
+    "vcxsrv",
+    ""
   ],
   "ClassIgnoreList": [
     "OperationStatusWindow"
