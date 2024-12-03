@@ -1,5 +1,10 @@
 # zmodload zsh/zprof
 
+# MacOS specific code
+if [[ "$(uname)" == "Darwin" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Custom Env --------------------------------------------------------------
 [[ ! -z $(command -v cargo) ]] && export PATH="$PATH:$HOME/.cargo/bin" 
 [[ ! -z $(command -v gem) ]] && export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin" 
@@ -35,7 +40,6 @@ ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="dd-mm-yyyy"
 # End Theme ------------------------------------------------------------
-
 
 # Uncomment the following line to change how often to auto-update (in days).
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
@@ -102,7 +106,7 @@ function run_multplexer() {
 # directory jumper
 function jd() {
     local dir
-    abs_dir=$(find $HOME -type d -name ".*" -not -name ".config" -not -name ".local" -prune -o -type d -print | fzf +m)
+    abs_dir=$(find $HOME -type d -name ".*" -not -name ".config" -not -name ".local" -prune -o -type d -print 2>/dev/null | fzf +m)
     # abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
     if [ -d "$abs_dir" ]; then
         cd "$abs_dir"
@@ -112,7 +116,7 @@ function jd() {
 
 function ffd() {
     local dir
-    dir=$(find $(pwd) -type d -print 2> /dev/null | fzf +m) && cd "$dir"
+    dir=$(find $(pwd) -type d -print 2>/dev/null | fzf +m) && cd "$dir"
     run_multplexer $MUX
 }
 
@@ -127,3 +131,4 @@ function fe() {
 source ${DOTFILES:-~/dotfiles}/config/fzf_config.sh
 # . $(dirname $(gem which colorls))/tab_complete.sh
 # End Autorun -------------------------------------------------------------
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

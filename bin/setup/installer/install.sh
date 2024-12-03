@@ -1,9 +1,23 @@
-#!/usr/bin/bash
+#!/bin/bash
 
-RED="\e[0;31m"
-NC="\e[0m"
-YELLOW="\e[0;33m"
-GREEN="\e[0;32m"
+if tput colors &>/dev/null && [[ $(tput colors) -ge 8 ]]; then
+    COLOR_SUPPORTED=true
+else
+    COLOR_SUPPORTED=false
+fi
+
+if [[ $COLOR_SUPPORTED == true ]]; then
+    RED="\033[31m"
+    NC="\033[0m"
+    YELLOW="\033[33m"
+    GREEN="\033[32m"
+else
+    RED=""
+    NC=""
+    YELLOW=""
+    GREEN=""
+fi
+
 
 #====================================================================================
 # Oh my zsh Installer
