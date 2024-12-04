@@ -4,7 +4,7 @@
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
-alias  bat="batcat --style auto"
+alias  bat="bat --style auto"
 alias   nv=nvim
 alias   vi=nvim
 alias  mux=zellij

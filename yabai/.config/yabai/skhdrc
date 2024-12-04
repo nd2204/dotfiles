@@ -1,4 +1,0 @@
-# Changing window focus
-
-alt - j : yabai -m window --focus south
-alt - j : yabai -m window --focus south

@@ -1,0 +1,43 @@
+# Changing window focus
+
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+
+# Change focus between display
+
+## rotate layout clockwise
+alt - r : yabai -m space --rotate 270
+
+## flip along x-axis
+alt - x : yabai -m space x-axis
+
+## flip along x-axis
+shift + alt - y : yabai -m space y-axis
+
+## toggle floating window
+shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# Modify window size
+
+## Maximize window
+shift + alt - m : yabai -m window --toggle zoom-fullscreen
+
+## Balance layout
+shift + alt - e : yabai -m space --balance
+
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - h : yabai -m window --swap west
+shift + alt - l : yabai -m window --swap east
+
+# Moving window to next space
+shift + alt - l : yabai -m window --space next
+shift + alt - h : yabai -m window --space prev
+
+# Restart yabai
+ctrl + alt + cmd - r : yabai --restart-service; skhd --restart-service; brew services restart sketchybar
+
+# Custom shortcuts for openning apps
+ctrl + alt - t : wezterm

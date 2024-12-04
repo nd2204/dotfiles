@@ -106,10 +106,10 @@ function run_multplexer() {
 # directory jumper
 function jd() {
     local dir
-    abs_dir=$(find $HOME -type d -name ".*" -not -name ".config" -not -name ".local" -prune -o -type d -print 2>/dev/null | fzf +m)
+    abs_dir=$(find -x $HOME -maxdepth 5 -type d -name ".*" -not -name ".config" -not -name ".local" -prune -o -type d -print 2>/dev/null | fzf +m)
     # abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
     if [ -d "$abs_dir" ]; then
-        cd "$abs_dir"
+        cd "$abs_dir" || return 1
         run_multplexer $MUX
     fi
 }
@@ -122,7 +122,7 @@ function ffd() {
 
 function fe() {
     local file
-    file=$(fzf --preview 'batcat --style auto {}') && $EDITOR "$file"
+    file=$(fzf --preview 'bat --style auto {}') && $EDITOR "$file"
 }
 # End Custom Function -----------------------------------------------------
 
