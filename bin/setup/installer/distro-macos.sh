@@ -37,5 +37,5 @@ echo -e "${GREEN}DONE${NC}"
 [[ -z $(command -v fzf) ]]     && echo -e "${YELLOW}INSTALLING FZF${NC}"            && brew install fzf && echo -e "${GREEN}DONE${NC}"; 
 [[ -z $(command -v fzf) ]]     && echo -e "${YELLOW}INSTALLING SKETCHYBAR${NC}" \ 
   && brew tap FelixKratz/formulae && brew install sketchybar && echo -e "${GREEN}DONE${NC}"; 
-brew install --cask font-jetbrains-mono-nerd-font
+brew install --cask font-jetbrains-mono-nerd-font font-roboto-mono-nerd-font
 $DOTFILES/bin/setup/installer/install.sh omz;

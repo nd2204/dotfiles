@@ -15,10 +15,11 @@ config.font = wezterm.font {
 }
 config.font_size = 15
 
-config.window_background_opacity = 0.80
-config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
+config.window_background_opacity = 1.80
+config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_ENABLE_SHADOW"
 config.macos_window_background_blur = 50
 config.line_height = 1.1
+config.default_cursor_style = 'SteadyBlock'
 
 config.enable_tab_bar = false
 config.window_close_confirmation = 'NeverPrompt'

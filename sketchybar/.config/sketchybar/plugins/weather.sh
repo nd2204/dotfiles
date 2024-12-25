@@ -8,14 +8,12 @@ set_label_and_icon() {
   sketchybar --set $NAME.moon icon=$ICON
 }
 
-set_label_and_icon
-
 IP=$(curl -s https://ipinfo.io/ip)
 LOCATION_JSON=$(curl -s https://ipinfo.io/$IP/json)
 
 if [ $? -ne 0 ]; then
-  LABEL="No Location Info"
   set_label_and_icon
+  exit 1
 fi
 
 LOCATION="$(echo $LOCATION_JSON | jq '.city' | tr -d '"')"
@@ -27,9 +25,7 @@ LOCATION_ESCAPED="${LOCATION// /+}+${REGION// /+}"
 WEATHER_JSON=$(curl -s "https://wttr.in/$LOCATION_ESCAPED?format=j1")
 
 if [ -z $WEATHER_JSON ]; then
-  LABEL="$LOCATION"
-  set_label_and_icon
-  return
+  exit 1
 fi
 
 TEMPERATURE=$(echo $WEATHER_JSON | jq '.current_condition[0].temp_C' | tr -d '"')

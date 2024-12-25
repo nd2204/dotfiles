@@ -62,67 +62,88 @@ plugins=(
 
 # Lazyloading -------------------------------------------------------------
 nvm() {
-    NVM_DIR="$HOME/.nvm"
-    if [[ -d $NVM_DIR ]]; then
-        export NVM_DIR
-        # shellcheck disable=SC1090
-        source "${NVM_DIR}/nvm.sh"
-        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-        [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-        if [[ -e "$HOME/.nvm/alias/default" ]]; then
-            PATH="${PATH}:${HOME}.nvm/versions/node/$(cat ~/.nvm/alias/default)/bin"
-        fi
-        # invoke the real nvm function now
-	[ $# -lt 2 ] && nvm "$@"
-    else
-        echo "nvm is not installed" >&2
-        return 1
-    fi
+  local NVM_DIR="$HOME/.nvm"
+  if [[ -d $NVM_DIR ]]; then
+    load_nvm && command nvm "$@"
+  else
+    echo "nvm is not installed" >&2
+    return 1
+  fi
+}
+
+load_nvm() {
+  local NVM_DIR="$HOME/.nvm"
+  export NVM_DIR
+  source "${NVM_DIR}/nvm.sh"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  if [[ -e "$HOME/.nvm/alias/default" ]]; then
+    PATH="${PATH}:${HOME}.nvm/versions/node/$(cat ~/.nvm/alias/default)/bin"
+    export PATH
+  fi
+}
+
+npm() {
+  unset -f npm
+  local NVM_DIR="$HOME/.nvm"
+  if [[ -d $NVM_DIR ]]; then
+    load_nvm
+    command npm "$@"
+  fi
+}
+
+node() {
+  unset -f node
+  local NVM_DIR="$HOME/.nvm"
+  if [[ -d $NVM_DIR ]]; then
+    load_nvm
+    command node "$@"
+  fi
 }
 # End Lazyloading ---------------------------------------------------------
 
 
 # Custom function ---------------------------------------------------------
 function run_multplexer() {
-    case $1 in
-        tmux)
-            if [[ -z "$TMUX" && -z "$ZELLIJ" ]]; then
-                tmux
-                return 0
-            fi
-            ;;
-        zellij)
-            if [[ -z "$ZELLIJ" && -z "$TMUX" ]]; then
-                zellij
-                return 0
-            fi
-            ;;
-        *)
-            return 1
-            ;;
-    esac
+  case $1 in
+    tmux)
+      if [[ -z "$TMUX" && -z "$ZELLIJ" ]]; then
+        tmux
+        return 0
+      fi
+      ;;
+    zellij)
+      if [[ -z "$ZELLIJ" && -z "$TMUX" ]]; then
+        zellij
+        return 0
+      fi
+      ;;
+    *)
+      return 1
+      ;;
+  esac
 }
 
 # directory jumper
 function jd() {
-    local dir
-    abs_dir=$(find -x $HOME -maxdepth 5 -type d -name ".*" -not -name ".config" -not -name ".local" -prune -o -type d -print 2>/dev/null | fzf +m)
-    # abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
-    if [ -d "$abs_dir" ]; then
-        cd "$abs_dir" || return 1
-        run_multplexer $MUX
-    fi
+  local dir
+  abs_dir=$(find -x $HOME -maxdepth 5 -type d -name ".*" -not -name ".config" -not -name ".local" -prune -o -type d -print 2>/dev/null | fzf +m)
+  # abs_dir=$(cd "$HOME" && realpath ${dir#./} 2> /dev/null)
+  if [ -d "$abs_dir" ]; then
+    cd "$abs_dir" || return 1
+    run_multplexer $MUX
+  fi
 }
 
 function ffd() {
-    local dir
-    dir=$(find $(pwd) -type d -print 2>/dev/null | fzf +m) && cd "$dir"
-    run_multplexer $MUX
+  local dir
+  dir=$(find $(pwd) -type d -print 2>/dev/null | fzf +m) && cd "$dir"
+  run_multplexer $MUX
 }
 
 function fe() {
-    local file
-    file=$(fzf --preview 'bat --style auto {}') && $EDITOR "$file"
+  local file
+  file=$(fzf --preview 'bat --style auto {}') && $EDITOR "$file"
 }
 # End Custom Function -----------------------------------------------------
 
@@ -131,4 +152,4 @@ function fe() {
 source ${DOTFILES:-~/dotfiles}/config/fzf_config.sh
 # . $(dirname $(gem which colorls))/tab_complete.sh
 # End Autorun -------------------------------------------------------------
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"

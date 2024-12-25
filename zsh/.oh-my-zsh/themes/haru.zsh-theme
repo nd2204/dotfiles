@@ -83,6 +83,13 @@ local char_vertical_divider="─"                                 #Unicode: \u25
 
 # # UTILS ========================================================================
 
+# Define a function to get the Python virtual environment name
+get_venv() {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    echo "(${VIRTUAL_ENV##*/}) "  # Extract just the env name from the full path
+  fi
+}
+
 # setopt PROMPT_SUBST
 
 # # Prepare git status line
@@ -124,7 +131,7 @@ printPsOneLimiter() {
 # # ENV/VARIABLES/PROMPT_LINES ===================================================
 
 # PROMPT="$(time_stat)${ssh_marker}$(sep)$(username):$(dir)$(sep)%F{white}${char_prompt}%f "
-PROMPT='[%*] %{$fg[cyan]%}%n%{$reset_color%}:%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
+PROMPT='[%*] $(get_venv)%{$fg[cyan]%}%n%{$reset_color%}:%{$fg[green]%}%c%{$reset_color%}$(git_prompt_info) %(!.#.$) '
 
 # RPROMPT="$(prepareGitStatusLine)"
 

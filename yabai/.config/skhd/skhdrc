@@ -1,9 +1,9 @@
 # Changing window focus
 
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - h : yabai -m window --focus west
-alt - l : yabai -m window --focus east
+shift + cmd - j : yabai -m window --focus south
+shift + cmd - k : yabai -m window --focus north
+shift + cmd - h : yabai -m window --focus west
+shift + cmd - l : yabai -m window --focus east
 
 # Change focus between display
 
@@ -39,5 +39,7 @@ shift + alt - h : yabai -m window --space prev
 # Restart yabai
 ctrl + alt + cmd - r : yabai --restart-service; skhd --restart-service; brew services restart sketchybar
 
-# Custom shortcuts for openning apps
+# Custom shortcuts
 ctrl + alt - t : wezterm
+cmd - e : open ~/Desktop/
+cmd - d : yabai -m space --toggle show-desktop

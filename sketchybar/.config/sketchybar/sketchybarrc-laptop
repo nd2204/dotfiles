@@ -10,14 +10,14 @@ PLUGIN_SHARED_DIR="$HOME/.config/sketchybar/plugins"
 SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 
 sketchybar --bar \
-  height=36 \
+  height=38 \
   blur_radius=30 \
   color=0x661b1b1b \
   margin=0 \
   sticky=on \
   padding_left=23 \
   padding_right=23 \
-  notch_width=188 \
+  notch_width=222 \
   display=main
 
 # Alternatiive background colors
