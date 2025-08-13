@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+source $HOME/.config/sketchybar/animation.sh
+
 case "$SENDER" in
   "mouse.clicked")
     # Reload sketchybar
@@ -11,7 +13,7 @@ case "$SENDER" in
   *)
     sketchybar --set $NAME \
       icon=󰀵 \
-      icon.padding_left=7 \
-      icon.padding_right=6 \
     ;;
 esac
+
+hover_border "$SENDER" "sin" "12" "$NAME" "$GREEN" "$GREY"

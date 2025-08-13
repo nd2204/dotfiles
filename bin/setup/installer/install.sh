@@ -176,6 +176,16 @@ function install_fzf() {
 }
 
 #====================================================================================
+# VCPKG Installer
+#====================================================================================
+function install_vcpkg() {
+    echo -e "${YELLOW}INSTALLING VCPKG${NC}"
+    git clone https://github.com/microsoft/vcpkg "$HOME/vcpkg"
+    export VCPKG_ROOT="$HOME/vcpkg"
+    echo -e "${GREEN}DONE${NC}";
+}
+
+#====================================================================================
 # Rustup Installer
 #====================================================================================
 function install_rustup() {

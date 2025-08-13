@@ -1,5 +1,7 @@
 #!/bin/sh
 
+source $HOME/.config/sketchybar/animation.sh
+
 # Max number of characters so it fits nicely to the right of the notch
 # MAY NOT WORK WITH NON-ENGLISH CHARACTERS
 
@@ -10,6 +12,16 @@ HALF_LENGTH=$(((MAX_LENGTH + 1) / 2))
 
 # Spotify JSON / $INFO comes in malformed, line below sanitizes it
 SPOTIFY_JSON="$INFO"
+
+setbar() {
+  PLAYER_STATE=$(echo "$SPOTIFY_JSON" | jq -r '.["Player State"]')
+
+  if [ $PLAYER_STATE = "Paused" ]; then
+    sketchybar --set $NAME icon=  icon.color=$AQUA
+  else
+    sketchybar --set $NAME icon=  icon.color=$AQUA
+  fi
+}
 
 # Calculations so it fits nicely
 set_label() {
@@ -35,37 +47,43 @@ set_label() {
           ARTIST="${ARTIST:0:$((MAX_LENGTH - TRACK_LENGTH - 1))}…"
       fi
   fi
-  sketchybar --set $NAME label="${TRACK} < ${ARTIST}" label.drawing=yes icon.color=0xffa6da95
+  setbar
+  if [ $TRACK_LENGTH -eq 0 ] || [ $ARTIST_LENGTH -eq 0 ]; then
+    sketchybar --set $NAME label="${TRACK}${ARTIST}" label.drawing=yes
+  else
+    sketchybar --set $NAME label="${TRACK} < ${ARTIST}" label.drawing=yes
+  fi
 }
 
 update_track() {
+  if [[ -z $SPOTIFY_JSON ]]; then
+    if [ -z $TRACK ] || [ -z $ARTIST ]; then
+      set_label "No Track" 
+    fi
+    return
+  fi
 
   TRACK="$(echo "$SPOTIFY_JSON" | jq -r .Name)"
   ARTIST="$(echo "$SPOTIFY_JSON" | jq -r .Artist)"
-
-  if [[ -z $SPOTIFY_JSON ]]; then
-    TRACK=$(osascript -e 'tell application "Spotify" to name of current track')
-    ARTIST=$(osascript -e 'tell application "Spotify" to artist of current track')
-    set_label "$TRACK" "$ARTIST"
-    return
-  fi
 
   PLAYER_STATE=$(echo "$SPOTIFY_JSON" | jq -r '.["Player State"]')
 
   if [ $PLAYER_STATE = "Playing" ]; then
     set_label "$TRACK" "$ARTIST"
-  elif [ $PLAYER_STATE = "Paused" ]; then
-    sketchybar --set $NAME icon.color=0xffeed49f
-  elif [ $PLAYER_STATE = "Stopped" ]; then
-    sketchybar --set $NAME label="${TRACK} < ${ARTIST}" label.drawing=yes icon.color=0xffeed49f
+    blink_default $NAME 32 2
   else
-    sketchybar --set $NAME label="No Track Currently Playing" label.drawing=yes icon.color=0xffeed49f
+    setbar
   fi
+
 }
+
 
 case "$SENDER" in
   "mouse.clicked")
     osascript -e 'tell application "Spotify" to playpause'
+    ;;
+  "mouse.entered" | "mouse.exited")
+    hover_border "$SENDER" "sin" "12" "$NAME" "$AQUA" "$GREY"
     ;;
   *)
     update_track

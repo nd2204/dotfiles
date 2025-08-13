@@ -1,0 +1,73 @@
+font-family = "RobotoMono Nerd Font SmBd"
+font-size = 13.7
+adjust-cell-height = 30%
+
+window-padding-balance = true
+window-padding-x = 8
+window-colorspace = display-p3
+window-padding-y = 6
+
+background-blur-radius = 20
+background-opacity = 0.90
+
+palette =  0=#45403d
+palette =  1=#e67e80
+palette =  2=#b8bb26
+palette =  3=#fabd2f
+palette =  4=#83a598
+palette =  5=#d3869b
+palette =  6=#8ec07c
+palette =  7=#d5c4a1
+
+palette =  8=#45403d
+palette =  9=#fe8019
+palette = 10=#b8bb26
+palette = 11=#f28534
+palette = 12=#bdae93
+palette = 13=#d5c4a1
+palette = 14=#d65d0e
+palette = 15=#d5c4a1
+
+# background = #141617
+background = #121212
+foreground = #d5c4a1
+
+cursor-color = #d5c4a1
+
+# palette = 0=#191D24
+# palette = 1=#BF616A
+# palette = 2=#A3BE8C
+# palette = 3=#EBCB8B
+# palette = 4=#5E81AC
+# palette = 5=#B48EAD
+# palette = 6=#8FBCBB
+# palette = 7=#BBC3D4
+ 
+# palette =  8=#191D24
+# palette =  9=#BF616A
+# palette = 10=#A3BE8C
+# palette = 11=#EBCB8B
+# palette = 12=#5E81AC
+# palette = 13=#B48EAD
+# palette = 14=#8FBCBB
+# palette = 15=#BBC3D4
+ 
+# background = #191D24
+# foreground = #BBC3D4
+ 
+# cursor-color = #BBC3D4
+# cursor-text = #191D24
+ 
+# selection-background = #403d52
+# selection-foreground = #e0def4
+
+cursor-style = bar
+cursor-style = bar
+cursor-opacity = 0.8
+
+mouse-hide-while-typing = true
+
+selection-background = 333333
+selection-foreground = d5c4a1
+
+macos-titlebar-style = hidden

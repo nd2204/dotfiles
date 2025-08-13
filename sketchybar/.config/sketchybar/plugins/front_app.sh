@@ -5,33 +5,33 @@ ICON_PADDING_RIGHT=5
 if [ "$SENDER" = "front_app_switched" ]; then
   case $INFO in
     "Arc")
-      ICON_PADDING_RIGHT=5
+      ICON_PADDING_RIGHT=8
       ICON=󰞍
       ;;
     "Code")
-      ICON_PADDING_RIGHT=4
+      ICON_PADDING_RIGHT=8
       ICON=󰨞
       ;;
     "Calendar")
-      ICON_PADDING_RIGHT=3
+      ICON_PADDING_RIGHT=8
       ICON=
       ;;
     "Discord")
       ICON=
       ;;
     "FaceTime")
-      ICON_PADDING_RIGHT=5
+      ICON_PADDING_RIGHT=8
       ICON=
       ;;
     "Finder")
       ICON=󰀶
       ;;
     "Google Chrome")
-      ICON_PADDING_RIGHT=7
+      ICON_PADDING_RIGHT=8
       ICON=
       ;;
     "IINA")
-      ICON_PADDING_RIGHT=4
+      ICON_PADDING_RIGHT=8
       ICON=󰕼
       ;;
     "kitty")
@@ -41,31 +41,43 @@ if [ "$SENDER" = "front_app_switched" ]; then
       ICON=
       ;;
     "Notion")
-      ICON_PADDING_RIGHT=6
+      ICON_PADDING_RIGHT=8
       ICON=󰎚
       ;;
     "Preview")
-      ICON_PADDING_RIGHT=3
-      ICON=
+      ICON_PADDING_RIGHT=8
+      ICON=󰋩
       ;;
     "PS Remote Play")
-      ICON_PADDING_RIGHT=3
+      ICON_PADDING_RIGHT=8
       ICON=
       ;;
     "Spotify")
-      ICON_PADDING_RIGHT=2
+      ICON_PADDING_RIGHT=8
       ICON=
       ;;
     "TextEdit")
-      ICON_PADDING_RIGHT=4
+      ICON_PADDING_RIGHT=8
       ICON=
       ;;
+    "Microsoft Edge")
+      ICON_PADDING_RIGHT=8
+      ICON=󰇩
+      ;;
+    "Ghostty")
+      ICON_PADDING_RIGHT=8
+      ICON=󰊠
+      ;;
     "Transmission")
-      ICON_PADDING_RIGHT=3
+      ICON_PADDING_RIGHT=8
       ICON=󰶘
       ;;
+    "Calculator")
+      ICON_PADDING_RIGHT=8
+      ICON=
+      ;;
     *)
-      ICON_PADDING_RIGHT=2
+      ICON_PADDING_RIGHT=8
       ICON=
       ;;
   esac

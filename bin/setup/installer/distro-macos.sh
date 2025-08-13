@@ -35,7 +35,7 @@ echo -e "${GREEN}DONE${NC}"
 [[ -z $(command -v gh) ]]      && echo -e "${YELLOW}INSTALLING GH${NC}"             && brew install gh && echo -e "${GREEN}DONE${NC}"; 
 [[ -z $(command -v lazygit) ]] && echo -e "${YELLOW}INSTALLING LAZYGIT${NC}"        && brew install gh && echo -e "${GREEN}DONE${NC}"; 
 [[ -z $(command -v fzf) ]]     && echo -e "${YELLOW}INSTALLING FZF${NC}"            && brew install fzf && echo -e "${GREEN}DONE${NC}"; 
-[[ -z $(command -v fzf) ]]     && echo -e "${YELLOW}INSTALLING SKETCHYBAR${NC}" \ 
+[[ -z $(command -v sketchybar) ]]     && echo -e "${YELLOW}INSTALLING SKETCHYBAR${NC}" \ 
   && brew tap FelixKratz/formulae && brew install sketchybar && echo -e "${GREEN}DONE${NC}"; 
-brew install --cask font-jetbrains-mono-nerd-font font-roboto-mono-nerd-font
+  brew install --cask font-jetbrains-mono-nerd-font font-roboto-mono-nerd-font
 $DOTFILES/bin/setup/installer/install.sh omz;

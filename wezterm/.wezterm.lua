@@ -1,6 +1,5 @@
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
-
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
@@ -13,10 +12,13 @@ config.font = wezterm.font {
   family = 'RobotoMono Nerd Font',
   weight = 'DemiBold'
 }
-config.font_size = 15
+config.font_size = 18
 
-config.window_background_opacity = 1.80
-config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_ENABLE_SHADOW"
+-- Use ALT instead of SHIFT to bypass application mouse reporting
+config.bypass_mouse_reporting_modifiers = 'ALT'
+
+config.window_background_opacity = 0.80
+config.window_decorations = "RESIZE | MACOS_FORCE_ENABLE_SHADOW"
 config.macos_window_background_blur = 50
 config.line_height = 1.1
 config.default_cursor_style = 'SteadyBlock'

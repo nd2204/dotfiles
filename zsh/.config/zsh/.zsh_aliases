@@ -9,12 +9,16 @@ alias   nv=nvim
 alias   vi=nvim
 alias  mux=zellij
 alias   lg='lazygit'
-alias    l='exa --color=never --icons -F --sort type'
-alias   ls='exa --color=never --icons -F --sort type'
-alias   la='exa --color=never --icons -F --sort type -la'
-alias  las='exa --color=never --icons -F --sort type -la --git '
-alias  lss='exa --color=never --icons -F --sort type --git'
-alias tree='exa --color=never --icons -F --sort type --tree -L 2'
+# Only set aliases if exa is installed
+if command -v exa >/dev/null 2>&1; then
+  alias   lg='lazygit'
+  alias    l='exa --color=never --icons -F --sort type'
+  alias   ls='exa --color=never --icons -F --sort type'
+  alias   la='exa --color=never --icons -F --sort type -la'
+  alias  las='exa --color=never --icons -F --sort type -la --git'
+  alias  lss='exa --color=never --icons -F --sort type --git'
+  alias tree='exa --color=never --icons -F --sort type --tree -L 2'
+fi
 alias rshift="pkill -USR1 '^redshift$'"
 alias python='python3'
 alias py='python3'

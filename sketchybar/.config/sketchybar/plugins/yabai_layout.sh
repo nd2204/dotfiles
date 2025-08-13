@@ -2,6 +2,8 @@
 
 NEXT_LAYOUT=""
 
+source $HOME/.config/sketchybar/animation.sh
+
 update_layout_icon() {
   LAYOUT="$(yabai -m query --spaces --display | jq -r 'map(select(."has-focus"))[-1].type')"
   sketchybar -m --set $NAME icon="$LAYOUT"
@@ -32,3 +34,5 @@ case "$SENDER" in
     update_layout_icon
     ;;
 esac
+
+hover_border_default "$SENDER" "$NAME"
