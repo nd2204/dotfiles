@@ -34,5 +34,3 @@ case "$SENDER" in
     update_layout_icon
     ;;
 esac
-
-hover_border_default "$SENDER" "$NAME"

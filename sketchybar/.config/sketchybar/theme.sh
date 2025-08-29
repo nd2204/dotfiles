@@ -3,8 +3,9 @@
 export HAS_CUSTOM_THEME=1
 
 export AQUA=0xff8ec07c
-export BLACK=0xdd161616
-export BLACK_1=0xdd282828
+# export BLACK=0xdd161616
+export BLACK=0xdd000000
+export BLACK_1=0xdd1b1b1b
 export FG=0xffebdbb2
 export BLUE=0xff8AA98A
 export GREEN=0xffb8bb26
@@ -12,9 +13,12 @@ export YELLOW=0xffE5AF48
 export ORANGE=0xffe78a4e
 export PURPLE=0xffd3869b
 export RED=0xffe67e80
-export GREY=0xff484848
-export GREY_1=0xff686868
+export GREY=0xff3c3c3c
+export GREY_1=0xff3c3836
 export ACCENT=$GREY
+
+export BORDER=$BLACK_1
+export BACKGROUND=$BLACK_1
 
 # export AQUA=0xff8ec07c
 # export BLACK=0xdd1b1b1b

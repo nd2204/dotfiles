@@ -16,4 +16,4 @@ case "$SENDER" in
     ;;
 esac
 
-hover_border "$SENDER" "sin" "12" "$NAME" "$GREEN" "$GREY"
+# hover_border "$SENDER" "quadratic" "12" "$NAME" "$GREEN" "$BORDER"
