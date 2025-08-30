@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-source $HOME/.config/sketchybar/theme.sh
+source "$HOME/.config/sketchybar/globals.sh"
 
 hover_border() {
   local SENDER="$1"

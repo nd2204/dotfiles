@@ -1,5 +1,6 @@
 #!/bin/sh
 
+source $HOME/.config/sketchybar/globals.sh
 source $HOME/.config/sketchybar/animation.sh
 
 # Max number of characters so it fits nicely to the right of the notch
@@ -17,9 +18,9 @@ setbar() {
   PLAYER_STATE=$(echo "$SPOTIFY_JSON" | jq -r '.["Player State"]')
 
   if [ $PLAYER_STATE = "Paused" ]; then
-    sketchybar --set $NAME icon=  icon.color=$AQUA
+    sketchybar --set $NAME icon=""  icon.color=$AQUA
   else
-    sketchybar --set $NAME icon=  icon.color=$AQUA
+    sketchybar --set $NAME icon=""  icon.color=$AQUA
   fi
 }
 

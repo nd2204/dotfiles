@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
 source $HOME/.config/sketchybar/animation.sh
-
 case "$SENDER" in
   "mouse.clicked")
     # Reload sketchybar
@@ -16,4 +15,4 @@ case "$SENDER" in
     ;;
 esac
 
-# hover_border "$SENDER" "quadratic" "12" "$NAME" "$GREEN" "$BORDER"
+hover_border "$SENDER" "quadratic" "5" "$NAME" "$GREEN" "$BORDER"

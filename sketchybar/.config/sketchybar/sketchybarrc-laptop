@@ -1,12 +1,5 @@
 #!/usr/bin/env zsh
 
-source $HOME/.config/sketchybar/theme.sh
-
-FONT_FACE="JetBrainsMono Nerd Font"
-
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins-laptop"
-PLUGIN_SHARED_DIR="$HOME/.config/sketchybar/plugins"
-
 sketchybar --bar          \
   color=0x001b1b1b        \
   border_color=0x00000000 \
@@ -18,8 +11,8 @@ sketchybar --bar          \
   corner_radius=0         \
   border_width=0          \
   blur_radius=20          \
-  padding_left=20         \
-  padding_right=23        \
+  padding_left=8          \
+  padding_right=8         \
   notch_width=222         \
   notch_offset=0          \
   display=main            \
@@ -29,19 +22,18 @@ sketchybar --bar          \
   font_smoothing=off      \
   shadow=off
 
-default=( 
-  background.height=34
-  background.color=$BLACK
-  background.border_color=$BLACK_1
+default=(
+  background.height=$BG_HEIGHT
+  background.corner_radius=17
+  background.border_color=none
   background.border_width=0
-  background.corner_radius=16
   background.drawing=off
-  icon.font="$FONT_FACE:EXTRABOLD:17.0"
-  icon.padding_left=10
-  icon.padding_right=10
   label.font="$FONT_FACE:EXTRABOLD:14.0"
   label.color=$FG
-  label.y_offset=0
+  icon.font="$FONT_FACE:EXTRABOLD:17.0"
+  icon.color=$FG
+  icon.padding_left=$DEFAULT_ICON_PADDING
+  icon.padding_right=$DEFAULT_ICON_PADDING
 )
 
 sketchybar --default "${default[@]}"
@@ -50,12 +42,17 @@ sketchybar --default "${default[@]}"
 sketchybar \
   --add item Logo left \
   --set      Logo script="$PLUGIN_SHARED_DIR/Logo.sh" \
+                  background.padding_left=4 \
+                  background.padding_right=0 \
+                  background.height=26 \
                   label.drawing=off \
-                  icon.font="$FONT_FACE:EXTRABOLD:18.0" \
+                  icon.font="$FONT_FACE:EXTRABOLD:20.0" \
                   icon.color=$GREEN \
-                  icon.y_offset=1 \
-                  icon.padding_left=12 \
-                  icon.padding_right=0 \
+                  icon.y_offset=2 \
+
+source $ITEMS_DIR/spaces.sh
+
+sketchybar \
   --add item front_app left \
   --set      front_app script="$PLUGIN_SHARED_DIR/front_app.sh" \
                        background.color=none\
@@ -70,28 +67,18 @@ sketchybar \
                             background.padding_right=0 \
                             background.padding_right=0 \
                             icon.drawing=off \
-                            label.font="$FONT_FACE:EXTRABOLD:14.0" \
                             label.drawing=yes \
+                            label.font="$FONT_FACE:EXTRABOLD:14.0" \
+                            label.padding_right=10 \
                             label.y_offset=1 \
-  --add item current_space left \
-  --set      current_space script="$PLUGIN_SHARED_DIR/current_space.sh" \
-                           background.padding_left=4 \
-                           icon.color=$YELLOW \
-                           icon.padding_left=8 \
-                           icon.padding_right=13 \
-                           label.drawing=off \
+
+
+sketchybar \
   --add item weather.moon q \
   --set      weather.moon script="$PLUGIN_SHARED_DIR/weather.moon.sh" \
                           background.padding_right=-1 \
                           background.border_color=$ACCENT \
-                          icon.color=$FG \
-                          icon.font="$FONT_FACE:Bold:22.0" \
-                          icon.padding_right=9 \
-                          label.drawing=off \
-  --add item weather.moon q \
-  --set      weather.moon script="$PLUGIN_SHARED_DIR/weather.moon.sh" \
-                          background.padding_right=-1 \
-                          background.border_color=$ACCENT \
+                          icon= \
                           icon.color=$FG \
                           icon.font="$FONT_FACE:Bold:22.0" \
                           icon.padding_right=9 \
@@ -101,51 +88,67 @@ sketchybar \
                      icon= \
                      icon.color=$PURPLE \
                      icon.font="$FONT_FACE:Bold:15.0" \
-                     update_freq=1800 \
-  --add item empty q \
-  --set      empty background.padding_right=100 \
+                     label="N/a" \
+                     update_freq=3600 \
+  --add item empty_q q \
+  --set      empty_q icon.padding_left=2 \
+             empty_q icon.padding_right=2 \
+
+source $ITEMS_DIR/cpu_usage.sh
+source $ITEMS_DIR/mem_usage.sh
 
 # Right side ============================================================================
 sketchybar \
   --add item yabai_layout e \
-  --set      yabai_layout icon.color=$FG \
+  --set      yabai_layout script="$PLUGIN_SHARED_DIR/yabai_layout.sh" \
+                          icon="􀢌"\
+                          icon.font="$FONT_FACE:Bold:15.0" \
+                          icon.color=$FG \
                           icon.y_offset=1 \
-                          icon.font="$FONT_FACE:ExtraBold:16.0" \
-                          label.drawing=off \
-                          script="$PLUGIN_SHARED_DIR/yabai_layout.sh" \
-  --add item empty_e_right e \
-  --set      empty_e_right icon.padding_left=1 \
-             empty_e_right icon.padding_right=1 \
+                          label.font="$FONT_FACE:Bold:15.0" \
+                          label.padding_left=0 \
+                          label.padding_right=14 \
+                          label.y_offset=1 \
+                          label="float"\
+  --add item empty_e e \
+  --set      empty_e icon.padding_left=2 \
+             empty_e icon.padding_right=2 \
   --add item spotify e \
   --set      spotify icon.y_offset=1 \
                      icon.font="$FONT_FACE:Bold:20.0" \
                      label.drawing=off \
-                     script="$PLUGIN_DIR/spotify.sh" \
-  --add item clock right \
-  --set      clock script="$PLUGIN_SHARED_DIR/clock.sh" \
-                   icon=󰃰 \
-                   icon.color=$PURPLE \
-                   update_freq=10 \
-                   label.padding_right=10 \
+                     script="$PLUGIN_LAPTOP_DIR/spotify.sh" \
+
+source $ITEMS_DIR/clock.sh
+
+sketchybar \
   --add item battery right \
-  --set      battery script="$PLUGIN_DIR/battery.sh" \
+  --set      battery script="$PLUGIN_LAPTOP_DIR/battery.sh" \
                      update_freq=10 \
+                     label.padding_right=10 \
                      icon.font="$FONT_FACE:Bold:18.0" \
-  --add item volume right \
-  --set      volume icon.color=$BLUE \
-                     icon.font="$FONT_FACE:Bold:20.0" \
-                     script="$PLUGIN_SHARED_DIR/volume.sh" \
+                     icon.y_offset=1 \
+  # --add item volume right \
+  # --set      volume icon.color=$BLUE \
+  #                   icon.font="$FONT_FACE:Bold:19.0" \
+  #                   script="$PLUGIN_SHARED_DIR/volume.sh" \
+source $ITEMS_DIR/volume.sh
 
 # Brackets ==============================================================================
 sketchybar \
-  --add bracket left_bracket Logo front_app front_app.name current_space \
-  --set         left_bracket background.color=0xcc000000 \
+  --add bracket ctrl_bracket volume_bracket battery \
+  --set         ctrl_bracket background.height=26 \
+                             background.color=0xff646464 \
+                             background.border_width=1 \
+                             background.border_color=0xffffffff \
+  --add bracket left_bracket Logo front_app front_app.name spaces_bracket cpu_usage_bracket \
+  --set         left_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
   --add bracket weather_bracket weather weather.moon \
-  --set         weather_bracket background.color=0xcc000000 \
-  --add bracket right_bracket clock battery volume spotify \
-  --set         right_bracket background.color=0xcc000000 \
+  --set         weather_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
+  --add bracket right_bracket clock_bracket control_bracket spotify \
+  --set         right_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
   --add bracket layout_bracket yabai_layout \
-  --set         layout_bracket background.color=0xcc000000 \
+  --set         layout_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
 
 
 # Events ================================================================================
@@ -153,16 +156,13 @@ SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 sketchybar --add event spotify_change $SPOTIFY_EVENT \
 
 sketchybar \
-  --subscribe current_space     space_change \
   --subscribe front_app         front_app_switched \
   --subscribe weather.moon      mouse.entered mouse.exited mouse.clicked \
   --subscribe weather           mouse.entered mouse.exited mouse.clicked system_woke \
   --subscribe Logo              mouse.entered mouse.exited mouse.clicked \
   --subscribe yabai_layout      mouse.entered mouse.exited mouse.clicked \
   --subscribe spotify           mouse.entered mouse.exited mouse.clicked spotify_change \
-  --subscribe volume            mouse.entered mouse.exited mouse.clicked volume_change \
-  --subscribe clock             mouse.entered mouse.exited mouse.clicked \
- 
+
 # Finalizing Setup ======================================================================
-sketchybar --update
-sketchybar --trigger space_change
+  sketchybar --update
+  sketchybar --trigger space_change

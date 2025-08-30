@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 NEXT_LAYOUT=""
+ICON="􀢌"
 
 source $HOME/.config/sketchybar/animation.sh
 
 update_layout_icon() {
   LAYOUT="$(yabai -m query --spaces --display | jq -r 'map(select(."has-focus"))[-1].type')"
-  sketchybar -m --set $NAME icon="$LAYOUT"
+  sketchybar --set $NAME icon=$ICON label="$LAYOUT"
 }
 
 update_next_layout() {
@@ -14,12 +15,15 @@ update_next_layout() {
   case $LAYOUT in
     bsp)
       NEXT_LAYOUT="stack"
+      # ICON="􀢌"
       ;;
     stack)
       NEXT_LAYOUT="float"
+      # ICON="􀏭"
       ;;
     float)
       NEXT_LAYOUT="bsp"
+      # ICON="􀢌"
       ;;
   esac
 }

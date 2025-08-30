@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
 SKETCHYBAR_CONFIG="$HOME/.config/sketchybar"
+source "$HOME/.config/sketchybar/icons.sh"
+source "$HOME/.config/sketchybar/animation.sh"
+source "$HOME/.config/sketchybar/globals.sh"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 # This is used to determine if a monitor is used
 # Since the notch is -only- on the laptop, if a monitor isn't used,
@@ -12,5 +16,3 @@ if [[ $MAIN_DISPLAY = "Built-in" ]]; then
 else
     source "$SKETCHYBAR_CONFIG/sketchybarrc-desktop"
 fi
-
-PLUGIN_DIR="$CONFIG_DIR/plugins"

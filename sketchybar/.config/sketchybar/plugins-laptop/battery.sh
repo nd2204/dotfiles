@@ -5,7 +5,7 @@
 PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 CHARGING=$(pmset -g batt | grep 'AC Power')
 
-source $HOME/.config/sketchybar/theme.sh
+source "$HOME/.config/sketchybar/globals.sh"
 
 if [ $PERCENTAGE = "" ]; then
     exit 0
@@ -13,29 +13,29 @@ fi
 
 case ${PERCENTAGE} in
   [8-9][0-9] | 100)
-    ICON=""
+    ICON="􀛨"
     ICON_COLOR=${GREEN}
     ;;
   7[0-9])
-    ICON=""
+    ICON="􀺸"
     ICON_COLOR=${AQUA}
     ;;
   [4-6][0-9])
-    ICON=""
+    ICON="􀺶"
     ICON_COLOR=${YELLOW}
     ;;
   [1-3][0-9])
-    ICON=""
+    ICON="􀛩"
     ICON_COLOR=${ORANGE}
     ;;
   [0-9])
-    ICON=""
+    ICON="􀛪"
     ICON_COLOR=${RED}
     ;;
 esac
 
 if [[ $CHARGING != "" ]]; then
-  ICON=""
+  ICON="􀢋"
   ICON_COLOR=${YELLOW}
 fi
 
