@@ -3,15 +3,17 @@
 # export LANG=en_US.UTF-8
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+alias get_idf='. $HOME/esp/esp-idf/export.sh' # esp-idf environment loader for embedded development
+alias idf='idf.py'
 alias wgcc=x86_64-w64-mingw32-gcc #compiling c program for 64bit window
 alias  bat="bat --style auto"
 alias   nv=nvim
 alias   vi=nvim
+alias   v=$EDITOR
 alias  mux=zellij
 alias   lg='lazygit'
 # Only set aliases if exa is installed
 if command -v exa >/dev/null 2>&1; then
-  alias   lg='lazygit'
   alias    l='exa --color=never --icons -F --sort type'
   alias   ls='exa --color=never --icons -F --sort type'
   alias   la='exa --color=never --icons -F --sort type -la'

@@ -9,6 +9,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
   export PATH="$PATH:$HOME/.dotnet/tools"
   export PATH="/usr/local/sbin:$PATH"
+  export GEM_HOME=$HOME/.gem
+  export PATH=$GEM_HOME/bin:$PATH
 else
   export BROWSER=wslview
 fi
