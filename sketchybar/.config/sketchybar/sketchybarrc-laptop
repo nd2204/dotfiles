@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
+sketchybar \
+  --add event spotify_change $SPOTIFY_EVENT \
+  --add event aerospace_workspace_change \
+
 sketchybar --bar          \
   color=0x001b1b1b        \
   border_color=0x00000000 \
@@ -99,8 +104,8 @@ source $ITEMS_DIR/mem_usage.sh
 
 # Right side ============================================================================
 sketchybar \
-  --add item yabai_layout e \
-  --set      yabai_layout script="$PLUGIN_SHARED_DIR/yabai_layout.sh" \
+  --add item aerospace_layout e \
+  --set      aerospace_layout script="$PLUGIN_SHARED_DIR/aerospace_layout.sh" \
                           icon="􀢌"\
                           icon.font="$FONT_FACE:Bold:15.0" \
                           icon.color=$FG \
@@ -147,20 +152,18 @@ sketchybar \
   --set         weather_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
   --add bracket right_bracket clock_bracket control_bracket spotify \
   --set         right_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
-  --add bracket layout_bracket yabai_layout \
+  --add bracket layout_bracket aerospace_layout \
   --set         layout_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
 
 
 # Events ================================================================================
-SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
-sketchybar --add event spotify_change $SPOTIFY_EVENT \
 
 sketchybar \
   --subscribe front_app         front_app_switched \
   --subscribe weather.moon      mouse.entered mouse.exited mouse.clicked \
   --subscribe weather           mouse.entered mouse.exited mouse.clicked system_woke \
   --subscribe Logo              mouse.entered mouse.exited mouse.clicked \
-  --subscribe yabai_layout      mouse.entered mouse.exited mouse.clicked \
+  --subscribe aerospace_layout  mouse.entered mouse.exited mouse.clicked \
   --subscribe spotify           mouse.entered mouse.exited mouse.clicked spotify_change \
 
 # Finalizing Setup ======================================================================

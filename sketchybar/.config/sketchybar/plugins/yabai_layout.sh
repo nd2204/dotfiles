@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NEXT_LAYOUT=""
+NEXT_LAYOUT="N/a"
 ICON="􀢌"
 
 source $HOME/.config/sketchybar/animation.sh

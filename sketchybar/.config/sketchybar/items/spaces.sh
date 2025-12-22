@@ -1,8 +1,11 @@
 #!/bin/bash
 
-
 # Destroy space on right click, focus space on left click.
 # New space by left clicking separator (>)
+
+sketchybar \
+  --add event spotify_change $SPOTIFY_EVENT \
+  --add event aerospace_workspace_change \
 
 sid=0
 space=(
@@ -18,15 +21,14 @@ space=(
   script="$PLUGIN_SHARED_DIR/space.sh"
 )
 
-for i in {1..5}
+for i in {1..3}
 do
   sketchybar --add item space.$i left \
               --set      space.$i "${space[@]}" associated_space=$i \
-              --subscribe space.$i space_change
-  [ $i -eq 1 ] && sketchybar --set space.$i icon.padding_left=8
-  [ $i -eq 5 ] && sketchybar --set space.$i icon.padding_right=8
+              --subscribe space.$i aerospace_workspace_change
 done
-
+sketchybar --set space.1 icon.padding_left=8
+sketchybar --set space.3 icon.padding_right=8
 
 spaces=(
   ${bracket_default_styles[@]}

@@ -11,6 +11,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export PATH="/usr/local/sbin:$PATH"
   export GEM_HOME=$HOME/.gem
   export PATH=$GEM_HOME/bin:$PATH
+  alias ibrew='arch -x86_64 /usr/local/bin/brew'
 else
   export BROWSER=wslview
 fi

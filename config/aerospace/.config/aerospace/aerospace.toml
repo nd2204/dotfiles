@@ -8,7 +8,7 @@ persistent-workspaces = []
 after-startup-command = [
     # JankyBorders has a built-in detection of already running process,
     # so it won't be run twice on AeroSpace restart
-    # 'exec-and-forget borders active_color=0xffb8bb26 inactive_color=0xff3c3836 ax_focus=on width=4.0'
+    'exec-and-forget borders'
 ]
 
 # A callback that runs every time binding mode changes
@@ -41,6 +41,10 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+exec-on-workspace-change = [
+  '/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE'
+]
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
