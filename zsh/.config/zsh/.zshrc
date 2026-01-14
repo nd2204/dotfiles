@@ -18,6 +18,7 @@ fi
 
 # Custom Env --------------------------------------------------------------
 [[ -d $HOME/.cargo/bin ]] && export PATH="$PATH:$HOME/.cargo/bin" 
+[[ -d $HOME/.pub-cache/bin ]] && export PATH="$PATH:$HOME/.pub-cache/bin" 
 [[ ! -z $(command -v gem) ]] && export PATH="$PATH:$HOME/.local/share/gem/ruby/3.0.0/bin" 
 [[ -d $HOME/.oh-my-zsh ]] && export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH"
@@ -64,6 +65,7 @@ plugins=(
   web-search
   virtualenv
   colored-man-pages
+  zsh-vi-mode
 )
 
 [[ ! -z $ZSH ]] && . $ZSH/oh-my-zsh.sh || echo "omz not found. Installing"

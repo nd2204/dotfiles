@@ -147,13 +147,13 @@ sketchybar \
                              background.border_width=1 \
                              background.border_color=0xffffffff \
   --add bracket left_bracket Logo front_app front_app.name spaces_bracket cpu_usage_bracket \
-  --set         left_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
+  --set         left_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xCC) \
   --add bracket weather_bracket weather weather.moon \
-  --set         weather_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
+  --set         weather_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xCC) \
   --add bracket right_bracket clock_bracket control_bracket spotify \
-  --set         right_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
+  --set         right_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xCC) \
   --add bracket layout_bracket aerospace_layout \
-  --set         layout_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xC0) \
+  --set         layout_bracket background.color=$(set_alpha $BACKGROUND_DIM 0xCC) \
 
 
 # Events ================================================================================

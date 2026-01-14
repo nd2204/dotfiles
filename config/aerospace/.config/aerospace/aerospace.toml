@@ -32,11 +32,16 @@ accordion-padding = 0
 #               tall monitor (anything higher than wide) gets vertical orientation
 default-root-container-orientation = 'auto'
 
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = true
+
 # i3 doesn't have "normalizations" feature that why we disable them here.
 # But the feature is very helpful.
 # Normalizations eliminate all sorts of weird tree configurations that don't make sense.
 # Give normalizations a chance and enable them back.
-enable-normalization-flatten-containers = false
+enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = false
 
 # Mouse follows focus when focused monitor changes
@@ -55,12 +60,12 @@ exec-on-workspace-change = [
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-    inner.horizontal = 8
-    inner.vertical = 8
-    outer.top = 8
-    outer.left = 8
-    outer.right = 8
-    outer.bottom = 8
+    inner.horizontal = 10
+    inner.vertical = 10
+    outer.top = 10
+    outer.left = 10
+    outer.right = 10
+    outer.bottom = 10
 
 [mode.main.binding]
     # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
@@ -85,17 +90,12 @@ exec-on-workspace-change = [
     alt-minus = 'resize smart -50'
     alt-equal = 'resize smart +50'
 
-    # Consider using 'join-with' command as a 'split' replacement if you want to enable
-    # normalizations
-    alt-v = 'split vertical'
-
     alt-f = 'fullscreen'
 
-    alt-s = 'layout v_accordion' # 'layout stacking' in i3
-    alt-w = 'layout h_accordion' # 'layout tabbed' in i3
-    alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
-
-    alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+    alt-t = 'layout tiles'
+    alt-s = 'layout tiles accordion'
+    alt-shift-space = 'layout floating tiles accordion' # 'floating toggle' in i3
+    alt-v = 'layout horizontal vertical'
 
     # Not supported, because this command is redundant in AeroSpace mental model.
     # See: https://nikitabobko.github.io/AeroSpace/guide#floating-windows
@@ -126,10 +126,35 @@ exec-on-workspace-change = [
     alt-shift-8 = 'move-node-to-workspace 8'
     alt-shift-9 = 'move-node-to-workspace 9'
     alt-shift-0 = 'move-node-to-workspace 10'
+    alt-d = 'workspace-back-and-forth'
 
-    alt-shift-c = 'reload-config'
+    alt-shift-r = 'reload-config'
 
     alt-u = 'resize width -50'
     alt-i = 'resize height +50'
     alt-o = 'resize height -50'
     alt-p = 'resize width +50'
+
+[[on-window-detected]]
+    if.app-id = 'app.zen-browser.zen'
+    run = ['layout h_tiles', 'move-node-to-workspace 1']
+
+[[on-window-detected]]
+    if.app-id = 'com.mitchellh.ghostty'
+    run = ['layout h_tiles', 'move-node-to-workspace 2']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.iphonesimulator'
+    run = ['layout h_tiles', 'move-node-to-workspace 2']
+
+[[on-window-detected]]
+    if.app-id = 'com.larksuite.larkApp'
+    run = ['layout h_accordion', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+    if.app-id = 'com.figma.Desktop'
+    run = ['layout h_accordion', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+    run = ['layout floating']
+

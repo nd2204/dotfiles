@@ -14,21 +14,21 @@ space=(
   ignore_association=on
   icon.font="$FONT_FACE:Regular:12.0"
   icon.color=$BACKGROUND_1
-  icon.highlight_color=$GREEN
-  icon.y_offset=1
+  icon.highlight_color=$GREEN icon.y_offset=1
   icon.padding_left=4
   icon.padding_right=4
   script="$PLUGIN_SHARED_DIR/space.sh"
 )
 
-for i in {1..3}
+ws_count=$(aerospace list-workspaces --all --count)
+for i in {1..4}
 do
   sketchybar --add item space.$i left \
-              --set      space.$i "${space[@]}" associated_space=$i \
-              --subscribe space.$i aerospace_workspace_change
+             --set      space.$i "${space[@]}" associated_space=$i \
+             --subscribe space.$i aerospace_workspace_change
 done
 sketchybar --set space.1 icon.padding_left=8
-sketchybar --set space.3 icon.padding_right=8
+sketchybar --set space.4 icon.padding_right=8
 
 spaces=(
   ${bracket_default_styles[@]}
