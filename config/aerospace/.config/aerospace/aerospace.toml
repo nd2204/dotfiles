@@ -92,8 +92,8 @@ exec-on-workspace-change = [
 
     alt-f = 'fullscreen'
 
-    alt-t = 'layout tiles'
-    alt-s = 'layout tiles accordion'
+    alt-t = 'layout tiling tiles h_tiles v_tiles'
+    alt-s = 'layout accordion h_accordion v_accordion'
     alt-shift-space = 'layout floating tiles accordion' # 'floating toggle' in i3
     alt-v = 'layout horizontal vertical'
 
@@ -136,6 +136,10 @@ exec-on-workspace-change = [
     alt-p = 'resize width +50'
 
 [[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = ['layout v_accordion', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
     if.app-id = 'app.zen-browser.zen'
     run = ['layout h_tiles', 'move-node-to-workspace 1']
 
@@ -158,3 +162,8 @@ exec-on-workspace-change = [
 [[on-window-detected]]
     run = ['layout floating']
 
+[workspace-to-monitor-force-assignment]
+    1 = 'secondary'      # Monitor sequence number from left to right. 1-based indexing
+    2 = 'secondary'      # Main monitor
+    3 = 'main' # Non-main monitor in case when there are only two monitors
+    4 = 'secondary' # Case insensitive regex substring
