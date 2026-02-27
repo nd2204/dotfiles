@@ -7,3 +7,8 @@
 
 2025/02/23 (21:04:05) | ===> btop++ v.1.4.0
 2025/02/23 (21:04:05) | WARNING: Failed to set locale UTF-8 continuing anyway.
+
+2026/06/14 (11:03:16) | ===> btop++ v.1.4.0
+2026/06/14 (11:03:16) | ERROR: Stall in Runner thread, restarting!
+2026/06/14 (11:03:22) | ERROR: Stall in Runner thread, restarting!
+2026/06/14 (11:03:29) | ERROR: Stall in Runner thread, restarting!
